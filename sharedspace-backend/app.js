@@ -20,3 +20,5 @@ io.on('connection', socket => {
 
 
 io.listen(8080)
+
+console.log("backend up and running!")
