@@ -1,5 +1,6 @@
 const pry = require('pryjs')
 const User = require('./models/User')
+const Message = require('./models/Message')
 const io = require('socket.io')()
 
 io.on('connection', socket => {
@@ -10,8 +11,8 @@ io.on('connection', socket => {
 
     Message.findAll()
     .then( messages => {
-      const roomMessages = messages.filter(msg.roomID === response.roomID)
-      console.log(roomMessages)
+      const roomMessages = messages.filter(msg => msg.roomID === response.roomID)
+      console.log("this is working, I promise")
       //respond()
     })
   })
@@ -20,3 +21,5 @@ io.on('connection', socket => {
 
 
 io.listen(8080)
+
+console.log("backend up and running!")
