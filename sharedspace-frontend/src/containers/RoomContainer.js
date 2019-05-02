@@ -10,7 +10,6 @@ export default class RoomContainer extends React.Component {
   }
 
   selectInstrument = (inst) => {
-    console.log(inst)
     this.setState({ selectedInstrument: inst})
   }
 
@@ -19,13 +18,12 @@ export default class RoomContainer extends React.Component {
   }
 
   render() {
-    console.log(this.state)
     return (
       <div>
         <h1>Room Container</h1>
+        <ActivityContainer />
         <OptionsContainer selectedInstrument={this.state.selectedInstrument} selectInstrument={this.selectInstrument} resetInstrument={this.resetInstrument} />
         <ChatContainer />
-        <ActivityContainer />
       </div>
     )
   }
