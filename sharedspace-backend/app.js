@@ -12,7 +12,7 @@ io.on('connection', socket => {
     .then( messages => {
       const roomMessages = messages.filter(msg.roomID === response.roomID)
       console.log(roomMessages)
-      respond()
+      //respond()
     })
   })
 })
