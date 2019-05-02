@@ -6,14 +6,13 @@ const io = require('socket.io')()
 io.on('connection', socket => {
   console.log(socket)
 
-  socket.on('messages.index', response => {
-    console.log(response)
+  socket.on('messages.index', (room, respond) => {
+    console.log(room)
 
     Message.findAll()
     .then( messages => {
-      const roomMessages = messages.filter(msg => msg.roomID === response.roomID)
-      console.log("this is working, I promise")
-      //respond()
+      const roomMessages = messages.filter(msg => msg.roomID === room.roomID)
+      respond(roomMessages)
     })
   })
 })

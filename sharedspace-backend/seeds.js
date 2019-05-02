@@ -2,8 +2,6 @@ const Message = require('./models/Message')
 
 Message.sync()
 
-Message.destroy({ where: {roomID: [1]}})
-
 const messages = [
   {
     userID: 1,
@@ -32,4 +30,6 @@ const messages = [
   }
 ]
 
-messages.forEach( message => Message.create(message))
+Message.destroy({ where: {}}).then(res =>
+  messages.forEach( message => Message.create(message))
+)
