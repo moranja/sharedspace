@@ -1,5 +1,5 @@
 import React from 'react'
-import RoomContainer from 'react'
+import RoomContainer from './containers/RoomContainer'
 
 function App() {
   return (

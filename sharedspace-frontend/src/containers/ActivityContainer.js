@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import ViewContainer from 'react'
-import InstrumentContainer from 'react'
+import ViewContainer from './ViewContainer'
+import InstrumentContainer from './InstrumentContainer'
 
 export default class ActivityContainer extends Component{
 
