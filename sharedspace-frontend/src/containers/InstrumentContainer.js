@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import Piano from '../components/Piano.js'
 
 export default class InstrumentContainer extends Component{
 
@@ -9,6 +10,7 @@ export default class InstrumentContainer extends Component{
         return(
             <div>
                 Instrument Container
+                <Piano />
             </div>
         )
     }

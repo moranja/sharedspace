@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-
+import MusicView from '../components/MusicView'
 export default class ViewContainer extends Component{
 
 
@@ -9,6 +9,7 @@ export default class ViewContainer extends Component{
         return(
             <div>
                 View Container
+                <MusicView/>
             </div>
         )
     }
