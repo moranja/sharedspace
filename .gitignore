@@ -1,6 +1,7 @@
 # Don't track content of these folders
-sharedspace-backend/node_modules/
-sharedspace-frontend/node_modules/
+/sharedspace-backend/node_modules/
+/sharedspace-frontend/node_modules/
+
 
 
 # Compiled source #
