@@ -1,7 +1,8 @@
 # Don't track content of these folders
 /sharedspace-backend/node_modules/
+/sharedspace-backend/package-lock.json
 /sharedspace-frontend/node_modules/
-
+/sharedspace-frontend/package-lock.json
 
 
 # Compiled source #
