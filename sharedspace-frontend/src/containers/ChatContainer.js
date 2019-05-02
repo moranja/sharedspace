@@ -12,7 +12,7 @@ export default class ChatContainer extends React.Component {
   handleChange = (e) => {
     e.persist()
     this.setState({workingMessage: e.target.value})
-  }
+  } // Mark is typing?
 
   handleSubmit = (e) => {
     e.persist()
@@ -24,8 +24,6 @@ export default class ChatContainer extends React.Component {
     }
     this.setState({ messages: [...this.state.messages, newMessage]})
   }
-  // Don't think this needs a controlled form, no reason to care what every letter they type is til they send it, unless we wanted to implement some sort of "Mark is typing..." detail
-
 
   render() {
     console.log(this.state)
