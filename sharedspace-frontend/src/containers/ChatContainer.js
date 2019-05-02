@@ -35,7 +35,12 @@ export default class ChatContainer extends React.Component {
   }
 
   componentDidMount() {
-    io.emit('messages.index', { roomID: this.state.roomID })
+    io.emit('messages.index', { roomID: this.state.roomID }, roomMessages => {
+      console.log(roomMessages)
+      this.setState({ messages: roomMessages })
+    })
+
+    io.on('messages.index', )
 
   }
 
