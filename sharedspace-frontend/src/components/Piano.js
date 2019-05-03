@@ -78,10 +78,10 @@ export default class Piano extends Component{
                 Piano <br></br>
                 <div>
                     <div>
-                        <img src={require("../media/pianoKeyboard.jpg")} alt="piano keyboard" height="100px"></img>
+                        <img src={require("../media/pianoKeyboard.jpg")} alt="piano keyboard" width="100%"></img>
                     </div>
                     <div>
-                        <img src={require("../media/computerKeyboard.jpg")} height="200px" alt="computer keyboard"></img>
+                        <img src={require("../media/computerKeyboardForPiano.png")} width="100%" alt="computer keyboard"></img>
                     </div>
                 </div>
             </div>

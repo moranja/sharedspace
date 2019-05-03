@@ -52,7 +52,7 @@ export default class ChatContainer extends React.Component {
   render() {
     console.log(this.state)
     return (
-      <div>
+      <div className="four wide column">
         <ChatHistoryContainer messages={this.state.messages} />
         <ChatBox handleSubmit={this.handleSubmit} handleChange={this.handleChange}/>
       </div>

@@ -19,11 +19,12 @@ export default class RoomContainer extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>Room Container</h1>
+      <div className="ui grid">
         <ActivityContainer />
-        <OptionsContainer selectedInstrument={this.state.selectedInstrument} selectInstrument={this.selectInstrument} resetInstrument={this.resetInstrument} />
-        <ChatContainer />
+        <div className="four wide column">
+          <OptionsContainer selectedInstrument={this.state.selectedInstrument} selectInstrument={this.selectInstrument} resetInstrument={this.resetInstrument} />
+          <ChatContainer />
+        </div>
       </div>
     )
   }

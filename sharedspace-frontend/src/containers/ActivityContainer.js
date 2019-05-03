@@ -9,7 +9,7 @@ export default class ActivityContainer extends Component{
 
     render(){
         return(
-            <div>
+            <div className="twelve wide column">
                 Activity Container
                 <ViewContainer />
                 <InstrumentContainer />

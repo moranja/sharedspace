@@ -6,7 +6,7 @@ export default class OptionsContainer extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="four wide column">
         {!this.props.selectedInstrument ? <InstrumentSelector selectInstrument={this.props.selectInstrument}/> : <MusicOptions selectedInstrument={this.props.selectedInstrument} resetInstrument={this.props.resetInstrument}/>}
       </div>
     )

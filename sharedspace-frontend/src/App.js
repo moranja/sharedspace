@@ -7,7 +7,7 @@ export default class App extends React.Component {
 
   render (){
       return (
-      <div className="App">
+      <div className="ui container">
         <h1>Shared Space</h1>
         <RoomContainer />
       </div>
