@@ -16,6 +16,11 @@ import o from '../media/piano/448539__tedagame__c-4.ogg'
 import l from '../media/piano/448609__tedagame__d4.ogg'
 import p from '../media/piano/448602__tedagame__d-4.ogg'
 import semiColon from '../media/piano/448613__tedagame__e4.ogg'
+import socketIO from 'socket.io-client'
+
+const io = socketIO('http://localhost:8080')
+
+window.io = io
 
 export default class Piano extends Component{
 
@@ -38,39 +43,36 @@ export default class Piano extends Component{
     q = new Audio(semiColon)
 
     handleClick = (e) => {
-      if (!e.repeat) {
-        const note = e.key
-        this.playNote(note)
-        //this.sendNote(note)
-      }
+        if (!e.repeat) {
+            const note = e.key
+            this.sendNote(note)
+        }
     }
 
     playNote(note){
-        const keys = ["a", "w", "s", "e", "d", "f", "t", "g", "y", "h", "u", "j", "k", "o", "l", "p"]
         if (note === ";"){
             this.q.pause()
             this.q.currentTime = 0
             this.q.play()
-        } else if (keys.includes(note)) {
+        } else {
             this[note].pause()
             this[note].currentTime = 0
             this[note].play()
         }
     }
 
+    sendNote = (note) => {
+        const acceptableNotes = ["a", "w", "s", "e", "d", "f", "t", "g", "y", "h", "u", "j", "k", "o", "l", "p", ";"]
+        if (acceptableNotes.includes(note)){
+            io.emit('pianoSend', { note: note })
+        }
+    }
 
-
-    // componentDidMount() {
-    //     io.emit('piano', { roomID: this.state.roomID })
-
-    //     // , roomMessages => {
-    //     //     console.log(roomMessages)
-    //     //     this.setState({ messages: roomMessages })
-    //     //   })
-
-    //     io.on('piano', )
-
-    //   }
+    componentDidMount() {
+        io.on('pianoReceive', note => {
+            this.playNote(note.note)
+        })
+    }
 
     render(){
         return(
@@ -87,7 +89,6 @@ export default class Piano extends Component{
             </div>
         )
     }
-
 
 }
 
