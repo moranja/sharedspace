@@ -15,6 +15,13 @@ io.on('connection', socket => {
       respond(roomMessages)
     })
   })
+
+  socket.on('piano', (piano, response) => {
+    console.log(piano)
+    respond(response)
+  }
+
+
 })
 
 

@@ -17,25 +17,6 @@ import l from '../media/piano/448609__tedagame__d4.ogg'
 import p from '../media/piano/448602__tedagame__d-4.ogg'
 import semiColon from '../media/piano/448613__tedagame__e4.ogg'
 
-//Notes below show key bindings for note reference
-    // a = C3
-    // w = C#3 / Db3
-    // s = D3
-    // e = D#3 / Fb3
-    // d = E3
-    // f = F3
-    // t = F#3 / Gb
-    // g = G3
-    // y = G#3 / Ab3
-    // h = A3
-    // u = A#3 / Bb3
-    // j = B3
-    // k = C4
-    // o = C#4 / Db4
-    // l = D4
-    // p = D#4 / Eb4
-    // ; = E4
-
 export default class Piano extends Component{
 
     a = new Audio(a)
@@ -56,24 +37,77 @@ export default class Piano extends Component{
     p = new Audio(p)
     q = new Audio(semiColon)
 
-    handleClick = (e) => {
-        const keys = ["a", "w", "s", "e", "d", "f", "t", "g", "y", "h", "u", "j", "k", "o", "l", "p"]
-        // console.log(e.key)
-        // // this.note.pause()
-        // // this.note.currentTime = 0
-        // if (e.key == "a"){
-        //     this.a.play()
-        // } else if (e.k == "g"){
-        //     this.g.play()
-        // }
-        if (e.key === ";"){
-            this.q.pause()
-            this.q.currentTime = 0
-            this.q.play()
-        } else if (keys.includes(e.key)) {
-            this[e.key].pause()
-            this[e.key].currentTime = 0
-            this[e.key].play()
+    // handleClick = (e) => {
+    //     const note = e.key
+    //     this.playNote(note)
+    //     this.sendNote(note)
+    // }
+
+    // playNote(note){
+    //     const keys = ["a", "w", "s", "e", "d", "f", "t", "g", "y", "h", "u", "j", "k", "o", "l", "p"]
+    //     if (note === ";"){
+    //         this.q.pause()
+    //         this.q.currentTime = 0
+    //         this.q.play()
+    //     } else if (keys.includes(note)) {
+    //         this[note].pause()
+    //         this[note].currentTime = 0
+    //         this[note].play()
+    //     }
+    // }
+ 
+
+
+    // componentDidMount() {
+    //     io.emit('piano', { roomID: this.state.roomID })
+        
+    //     // , roomMessages => {
+    //     //     console.log(roomMessages)
+    //     //     this.setState({ messages: roomMessages })
+    //     //   })
+    
+    //     io.on('piano', )
+    
+    //   }
+
+    render(){
+        return(
+            <div onKeyDown={(e) => this.handleClick(e)} tabIndex="0" >
+                Piano <br></br>
+                <div>
+                    <div>
+                        <img src={require("../media/pianoKeyboard.jpg")} alt="piano keyboard" height="100px"></img>
+                    </div>
+                    <div>
+                        <img src={require("../media/computerKeyboard.jpg")} height="200px" alt="computer keyboard"></img>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
+
+}
+
+
+//Notes below show key bindings for note reference
+    // a = C3
+    // w = C#3 / Db3
+    // s = D3
+    // e = D#3 / Fb3
+    // d = E3
+    // f = F3
+    // t = F#3 / Gb
+    // g = G3
+    // y = G#3 / Ab3
+    // h = A3
+    // u = A#3 / Bb3
+    // j = B3
+    // k = C4
+    // o = C#4 / Db4
+    // l = D4
+    // p = D#4 / Eb4
+    // ; = E4
 
         // switch (e.key){
         //     case "a": this[e.key].play(); break
@@ -96,10 +130,8 @@ export default class Piano extends Component{
         //     default:
         //         console.log("no matches")
         // }
-        }
-    }
- 
-    // a = C3
+
+            // a = C3
     // w = C#3 / Db3
     // s = D3
     // e = D#3 / Fb3
@@ -116,23 +148,3 @@ export default class Piano extends Component{
     // l = D4
     // p = D#4 / Eb4
     // ; = E4
-
-
-    render(){
-        return(
-            <div onKeyDown={(e) => this.handleClick(e)} tabIndex="0" >
-                Piano <br></br>
-                <div>
-                    <div>
-                        <img src={require("../media/pianoKeyboard.jpg")} alt="piano keyboard" height="100px"></img>
-                    </div>
-                    <div>
-                        <img src={require("../media/computerKeyboard.jpg")} height="200px" alt="computer keyboard"></img>
-                    </div>
-                </div>
-            </div>
-        )
-    }
-
-
-}
