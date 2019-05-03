@@ -75,7 +75,7 @@ export default class Piano extends Component{
     render(){
         return(
             <div onKeyDown={(e) => this.handleClick(e)} tabIndex="0" >
-                Piano <br></br>
+                Piano is here<br></br>
                 <div>
                     <div>
                         <img src={require("../media/pianoKeyboard.jpg")} alt="piano keyboard" width="100%"></img>

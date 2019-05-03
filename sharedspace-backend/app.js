@@ -4,10 +4,14 @@ const express = require('express')
 const cors = require('cors')
 const io = require('socket.io')()
 const app = express()
+const bodyParser = require('body-parser')
+const pry = require('pryjs')
+
+app.use(bodyParser())
 
 io.on('connection', socket => {
 
-  console.log('connected')
+  // console.log('connected')
   // console.log(socket.handshake.headers.authorization)
   //if the authorization is good, cool, if not close the socket
 
@@ -54,7 +58,7 @@ io.on('connection', socket => {
   // }
 
   socket.on('messages.index', (room, respond) => {
-    console.log(room)
+    // console.log(room)
 
     Message.findAll()
     .then( messages => {
@@ -64,7 +68,7 @@ io.on('connection', socket => {
   })
 
   socket.on('pianoSend', (note) => {
-    console.log(note)
+    // console.log(note)
     io.emit('pianoReceive', (note))
   })
 
@@ -76,15 +80,24 @@ app.use(cors())
 
 io.listen(8080)
 
-console.log("backend up and running!")
 
 
 
-// app.post('/login', async (req, res) => {
-//   let users = User.findAll({
-//     where: {
-//       name: req.body.name
-//     }
+app.post('/createUser', (req, res) => {
+  newUser = User.build({username: req.body.username})
+  newUser.password = req.body.password
+  newUser.save().then(newUser => res.json(newUser.toJSON()))
+})
+
+// app.get('/', () => {
+//   console.log("Mark")
+//   res.json({"name": "Mark"})
+// })
+
+  // let users = User.findAll({
+  //   where: {
+  //     name: req.body.name
+  //   }
 //   })
 //   let user = users[0]
 //   console.log(user)
@@ -92,3 +105,8 @@ console.log("backend up and running!")
 //     res.json(user)
 //   }
 // })
+
+app.listen(3001)
+
+
+console.log("backend up and running!")

@@ -47,7 +47,8 @@ User.init({
   password_digest: {
     type: STRING
   }
-}, {sequelize, modelName: 'user'} )
+}, {sequelize, modelName: 'user'}
+)
 
 module.exports = User
 
