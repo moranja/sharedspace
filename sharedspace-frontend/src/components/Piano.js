@@ -16,9 +16,7 @@ import o from '../media/piano/448539__tedagame__c-4.ogg'
 import l from '../media/piano/448609__tedagame__d4.ogg'
 import p from '../media/piano/448602__tedagame__d-4.ogg'
 import semiColon from '../media/piano/448613__tedagame__e4.ogg'
-import socketIO from 'socket.io-client'
-
-const io = socketIO('http://localhost:8080')
+import io from '../components/ioConnection'
 
 window.io = io
 

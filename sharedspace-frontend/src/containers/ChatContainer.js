@@ -1,9 +1,7 @@
 import React from 'react'
 import ChatBox from '../components/ChatBox'
 import ChatHistoryContainer from './ChatHistoryContainer'
-import socketIO from 'socket.io-client'
-
-const io = socketIO('http://localhost:8080')
+import io from '../components/ioConnection'
 
 window.io = io
 
