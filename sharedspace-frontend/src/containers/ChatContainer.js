@@ -25,13 +25,14 @@ export default class ChatContainer extends React.Component {
     e.preventDefault()
     const newMessage = {
       userID: 1,
-      content: this.state.workingMessage,
-      sentAt: "test"
+      roomID: 1,
+      content: this.state.workingMessage
     }
 
+    io.emit('messages.new', newMessage)
 
     // io.emit('messages.update', )
-    this.setState({ messages: [...this.state.messages, newMessage]})
+    //this.setState({ messages: [...this.state.messages, newMessage]})
   }
 
   componentDidMount() {
@@ -40,7 +41,13 @@ export default class ChatContainer extends React.Component {
       this.setState({ messages: roomMessages })
     })
 
-    io.on('messages.index', )
+    io.on('messages.newMessageFromServer', roomMessages => {
+      this.setState({ messages: roomMessages })
+    })
+
+
+
+    //io.on('messages.new', )
 
   }
 

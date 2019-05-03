@@ -16,10 +16,23 @@ io.on('connection', socket => {
     })
   })
 
+  socket.on('messages.new', (message, respond) => {
+    console.log(message)
+    const roomID = message.roomID
+
+    Message.create(message)
+
+    Message.findAll()
+    .then( messages => {
+      const roomMessages = messages.filter(msg => msg.roomID === roomID)
+      io.emit('messages.newMessageFromServer', roomMessages)
+    })
+  })
+
   socket.on('piano', (piano, response) => {
     console.log(piano)
     respond(response)
-  }
+  })
 
 
 })

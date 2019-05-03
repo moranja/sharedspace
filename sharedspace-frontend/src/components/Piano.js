@@ -37,37 +37,39 @@ export default class Piano extends Component{
     p = new Audio(p)
     q = new Audio(semiColon)
 
-    // handleClick = (e) => {
-    //     const note = e.key
-    //     this.playNote(note)
-    //     this.sendNote(note)
-    // }
+    handleClick = (e) => {
+      if (!e.repeat) {
+        const note = e.key
+        this.playNote(note)
+        //this.sendNote(note)
+      }
+    }
 
-    // playNote(note){
-    //     const keys = ["a", "w", "s", "e", "d", "f", "t", "g", "y", "h", "u", "j", "k", "o", "l", "p"]
-    //     if (note === ";"){
-    //         this.q.pause()
-    //         this.q.currentTime = 0
-    //         this.q.play()
-    //     } else if (keys.includes(note)) {
-    //         this[note].pause()
-    //         this[note].currentTime = 0
-    //         this[note].play()
-    //     }
-    // }
- 
+    playNote(note){
+        const keys = ["a", "w", "s", "e", "d", "f", "t", "g", "y", "h", "u", "j", "k", "o", "l", "p"]
+        if (note === ";"){
+            this.q.pause()
+            this.q.currentTime = 0
+            this.q.play()
+        } else if (keys.includes(note)) {
+            this[note].pause()
+            this[note].currentTime = 0
+            this[note].play()
+        }
+    }
+
 
 
     // componentDidMount() {
     //     io.emit('piano', { roomID: this.state.roomID })
-        
+
     //     // , roomMessages => {
     //     //     console.log(roomMessages)
     //     //     this.setState({ messages: roomMessages })
     //     //   })
-    
+
     //     io.on('piano', )
-    
+
     //   }
 
     render(){
