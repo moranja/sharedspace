@@ -21,41 +21,42 @@ io.on('connection', socket => {
   //   console.log(result)
   //   let userID = result.id
   //
-  //   // socket.on('messages.index', (room, respond) => {
-  //   //   console.log(room)
-  //   //
-  //   //   Message.findAll()
-  //   //   .then( messages => {
-  //   //     const roomMessages = messages.filter(msg => msg.roomID === room.roomID)
-  //   //     respond(roomMessages)
-  //   //   })
-  //   // })
-  //   //
-  //   // socket.on('messages.new', (message, respond) => {
-  //   //   console.log(message)
-  //   //   const roomID = message.roomID
-  //   //
-  //   //   Message.create(message)
-  //   //
-  //   //   Message.findAll()
-  //   //   .then( messages => {
-  //   //     const roomMessages = messages.filter(msg => msg.roomID === roomID)
-  //   //     io.emit('messages.newMessageFromServer', roomMessages)
-  //   //   })
-  //   // })
-  //   //
-  //   // // socket.on('piano', (piano, response) => {
-  //   // //   console.log(piano)
-  //   // //   respond(response)
-  //   // // })
-  //   //
-  //   // socket.on('pianoSend', (note) => {
-  //   //   console.log(note)
-  //   //   io.emit('pianoReceive', (note))
-  //   // })
+    // socket.on('messages.index', (room, respond) => {
+    //   console.log(room)
+    //
+    //   Message.findAll()
+    //   .then( messages => {
+    //     const roomMessages = messages.filter(msg => msg.roomID === room.roomID)
+    //     respond(roomMessages)
+    //   })
+    // })
+    //
+    // socket.on('messages.new', (message, respond) => {
+    //   console.log(message)
+    //   const roomID = message.roomID
+    //
+    //   Message.create(message)
+    //
+    //   Message.findAll()
+    //   .then( messages => {
+    //     const roomMessages = messages.filter(msg => msg.roomID === roomID)
+    //     io.emit('messages.newMessageFromServer', roomMessages)
+    //   })
+    // })
+    //
+    // // socket.on('piano', (piano, response) => {
+    // //   console.log(piano)
+    // //   respond(response)
+    // // })
+    //
+    // socket.on('pianoSend', (note) => {
+    //   console.log(note)
+    //   io.emit('pianoReceive', (note))
+    // })
   // } else {
   //   //socket.close()
   // }
+
 
   socket.on('messages.index', (room, respond) => {
     // console.log(room)
@@ -67,9 +68,32 @@ io.on('connection', socket => {
     })
   })
 
+  socket.on('messages.new', (message, respond) => {
+    console.log(message)
+    const roomID = message.roomID
+
+    Message.create(message)
+
+    Message.findAll()
+    .then( messages => {
+      const roomMessages = messages.filter(msg => msg.roomID === roomID)
+      io.emit('messages.newMessageFromServer', roomMessages)
+    })
+  })
+
+  // socket.on('piano', (piano, response) => {
+  //   console.log(piano)
+  //   respond(response)
+  // })
+
   socket.on('pianoSend', (note) => {
-    // console.log(note)
-    io.emit('pianoReceive', (note))
+    console.log(note)
+    io.emit('pianoReceive', (`${note.note}_piano`))
+  })
+
+  socket.on('drumSend', (note) => {
+    console.log(note)
+    io.emit('drumReceive', (`${note.note}_drums`))
   })
 
 })

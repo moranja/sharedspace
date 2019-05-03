@@ -21,16 +21,16 @@ export default class ChatContainer extends React.Component {
   handleSubmit = (e) => {
     e.persist()
     e.preventDefault()
+    console.log(e)
     const newMessage = {
       userID: 1,
       roomID: 1,
       content: this.state.workingMessage
     }
 
-    io.emit('messages.new', newMessage)
+    this.setState({ workingMessage: "" })
 
-    // io.emit('messages.update', )
-    //this.setState({ messages: [...this.state.messages, newMessage]})
+    io.emit('messages.new', newMessage)
   }
 
   componentDidMount() {
@@ -43,18 +43,13 @@ export default class ChatContainer extends React.Component {
       this.setState({ messages: roomMessages })
     })
 
-
-
-    //io.on('messages.new', )
-
   }
 
   render() {
-    console.log(this.state)
     return (
       <div className="four wide column">
         <ChatHistoryContainer messages={this.state.messages} />
-        <ChatBox handleSubmit={this.handleSubmit} handleChange={this.handleChange}/>
+        <ChatBox workingMessage={this.state.workingMessage} handleSubmit={this.handleSubmit} handleChange={this.handleChange}/>
       </div>
     )
   }

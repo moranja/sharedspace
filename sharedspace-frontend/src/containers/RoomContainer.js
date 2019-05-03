@@ -9,7 +9,7 @@ import Header from '../components/Header'
 export default class RoomContainer extends React.Component {
   state = {
     mode: "music",
-    selectedInstrument: "",
+    chosenInstrument: "",
     roomMode: "createUser"
   }
 
@@ -18,11 +18,11 @@ export default class RoomContainer extends React.Component {
   }
 
   selectInstrument = (inst) => {
-    this.setState({ selectedInstrument: inst})
+    this.setState({ chosenInstrument: inst})
   }
 
   resetInstrument = () => {
-    this.setState({ selectedInstrument: "" })
+    this.setState({ chosenInstrument: "" })
   }
 
   changeRoomMode = () => {
@@ -48,9 +48,9 @@ export default class RoomContainer extends React.Component {
       return (
         <div className="ui grid">
           <Header logout={this.logout}/>
-          <ActivityContainer />
+          <ActivityContainer chosenInstrument={this.state.chosenInstrument}/>
           <div className="four wide column">
-            <OptionsContainer selectedInstrument={this.state.selectedInstrument} selectInstrument={this.selectInstrument} resetInstrument={this.resetInstrument}/>
+            <OptionsContainer chosenInstrument={this.state.chosenInstrument} selectInstrument={this.selectInstrument} resetInstrument={this.resetInstrument}/>
             <ChatContainer />
           </div>
         </div>
