@@ -16,11 +16,10 @@ io.on('connection', socket => {
     })
   })
 
-  socket.on('piano', (piano, response) => {
-    console.log(piano)
-    respond(response)
-  }
-
+  socket.on('pianoSend', (note) => {
+    console.log(note)
+    io.emit('pianoReceive', (note))
+  })
 
 })
 
