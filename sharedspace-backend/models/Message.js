@@ -1,10 +1,5 @@
-const Sequelize = require('sequelize')
-const { STRING, INTEGER } = Sequelize
-
-const sequelize = new Sequelize({
-  dialect: 'sqlite',
-  storage: './database.sqlite'
-})
+const { STRING, INTEGER } = require('sequelize')
+const sequelize = require('./sequelize')
 
 const Message = sequelize.define('message', {
   userID: {

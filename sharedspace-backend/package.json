@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/markpothers/sharedspace#readme",
   "dependencies": {
+    "bcrypt": "^3.0.6",
     "cors": "^2.8.5",
+    "jsonwebtoken": "^8.5.1",
     "pryjs": "^1.0.3",
     "sequelize": "^5.8.2",
     "socket.io": "^2.2.0",
