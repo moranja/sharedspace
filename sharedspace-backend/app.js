@@ -24,7 +24,7 @@ const io = socketIo(8080,  {
 app.use(bodyParser())
 
 io.on('connection', socket => {
-
+console.log("trying to connect")
   //if the authorization is good, cool, if not close the socket
 
   if (socket.handshake.headers.authorization !== "Bearer null") {
@@ -61,6 +61,7 @@ io.on('connection', socket => {
       io.emit('drumReceive', (`${note.note}_drums`))
 
     })
+
   } else {
     console.log("shutting this socket down")
     io.close()

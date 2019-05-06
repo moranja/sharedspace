@@ -1,10 +1,11 @@
 import React from 'react'
 
 const ChatMessage = (props) => (
-  <div>
-  {/* if userID === my ID ? align right : align left */}
-    <h1>{props.message.userID}</h1>
-    <p>{props.message.content}</p>
+  <div className="comment">
+        {/* <p className="metadata">{props.message.createdAt}</p> */}
+        <p className="author">{props.message.userID}</p>
+        <p className="text">{props.message.content}</p>
+        {/* if userID === my ID ? align right : align left */}
   </div>
 )
 
