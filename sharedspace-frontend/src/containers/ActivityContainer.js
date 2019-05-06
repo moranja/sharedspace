@@ -124,8 +124,7 @@ export default class ActivityContainer extends Component{
 
   render(){
       return(
-          <div className="twelve wide column">
-              Activity Container
+          <React.Fragment>
               <ViewContainer />
               <InstrumentContainer
                 chosenInstrument={this.props.chosenInstrument}
@@ -133,7 +132,7 @@ export default class ActivityContainer extends Component{
                 acceptableDrumNotes={this.acceptableDrumNotes}
                 playNote={this.playNote}
                 />
-          </div>
+          </React.Fragment>
       )
   }
 

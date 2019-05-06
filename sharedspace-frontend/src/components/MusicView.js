@@ -8,8 +8,7 @@ export default class MusicView extends Component{
     render(){
         return(
             <div>
-                Music View
-                <img src={require("../media/musicSheet.png")} alt="music sheet" height="200px"></img>
+                <img src={require("../media/musicSheet.png")} alt="music sheet" width="100%" style={{align: "center"}}></img>
             </div>
         )
     }

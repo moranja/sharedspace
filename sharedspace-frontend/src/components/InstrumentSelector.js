@@ -7,7 +7,7 @@ export default class InstrumentSelector extends React.Component {
 
   render() {
     return (
-      <ul>
+      <ul>Select an instrument from the list:
         {this.possibleInstruments.map(inst => {
           return (
             <li onClick={() => this.props.selectInstrument(inst)} >{inst}</li>

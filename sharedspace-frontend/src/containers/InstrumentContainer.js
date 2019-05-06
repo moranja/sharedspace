@@ -15,14 +15,13 @@ export default class InstrumentContainer extends Component{
       )
     } else {
       return(
-        <h1>Please Select Your Instrument</h1>
+        <h1 style={{textAlign: "center"}}>Please Select Your Instrument</h1>
       )
     }
   }
     render(){
         return(
             <div>
-                Instrument Container
                 {this.renderInstrument()}
             </div>
         )

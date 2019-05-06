@@ -48,10 +48,14 @@ export default class ChatContainer extends React.Component {
 
   render() {
     return (
-      <div className="four wide column">
-        <ChatHistoryContainer messages={this.state.messages} />
-        <ChatBox workingMessage={this.state.workingMessage} handleSubmit={this.handleSubmit} handleChange={this.handleChange}/>
-      </div>
+      <React.Fragment>
+          <div className="ui comments">
+            <ChatHistoryContainer messages={this.state.messages} />
+          </div>
+          <div className="ui reply form">
+            <ChatBox workingMessage={this.state.workingMessage} handleSubmit={this.handleSubmit} handleChange={this.handleChange}/>
+          </div>
+      </React.Fragment>
     )
   }
 }
