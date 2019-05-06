@@ -113,6 +113,16 @@ app.post('/createUser', (req, res) => {
   newUser.save().then(newUser => res.json(newUser.toJSON()))
 })
 
+app.post('/login', (req, res) => {
+  User.findOne({ where: {username: req.body.username} }).then(user => {
+    if (user.authenticate(req.body.password)) {
+      res.json(user.toJSON())
+    } else {
+      res.json("Login failed")
+    }
+  })
+})
+
 // app.get('/', () => {
 //   console.log("Mark")
 //   res.json({"name": "Mark"})

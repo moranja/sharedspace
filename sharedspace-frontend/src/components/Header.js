@@ -7,12 +7,25 @@ export default class Header extends Component {
         this.props.logout()
     }
 
+    isLoggedIn= () => {
+        if (localStorage.name){
+            return (
+                <React.Fragment>
+                    <h4>Logged in as {localStorage.name}</h4>
+                    <br></br>
+                    <br></br>
+                    <input type="submit" value="logout" onClick={this.logout}></input>
+                </React.Fragment>
+            )
+        } else {
+            return <h4>Logged Out</h4>
+        }
+    }
+
     render(){
-        console.log(this.props)
         return (
             <div>
-                <input type="submit" value="logout" onClick={this.logout}></input>
-                <br></br>
+                {this.isLoggedIn()}
                 <br></br>
             </div>
         )

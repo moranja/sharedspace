@@ -28,7 +28,8 @@ export default class CreateUser extends Component {
         .then(response => {
             console.log(response.token)
             localStorage.setItem('token', response.token)
-            this.props.changeRoomMode()
+            localStorage.setItem('name', response.username)
+            this.props.login()
         })
 
     }

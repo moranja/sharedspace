@@ -7,14 +7,15 @@ import CreateUser from '../components/CreateUser'
 import Header from '../components/Header'
 
 export default class RoomContainer extends React.Component {
+
   state = {
     mode: "music",
     chosenInstrument: "",
-    roomMode: "createUser"
+    login: "login"
   }
 
   logout = () => {
-    this.setState({roomMode: "login"})
+    this.setState({login: "login"})
   }
 
   selectInstrument = (inst) => {
@@ -25,26 +26,26 @@ export default class RoomContainer extends React.Component {
     this.setState({ chosenInstrument: "" })
   }
 
-  changeRoomMode = () => {
-    this.setState({roomMode: "loggedIn"})
+  login = () => {
+    this.setState({login: "loggedIn"})
   }
 
   selectRoomWindow(){
-    if (this.state.roomMode === "login"){
+    if (this.state.login === "login"){
       return (
         <div>
           <Header logout={this.logout}/>
-          <Login />
+          <Login login={this.login}/>
         </div>
       )
-    } else if (this.state.roomMode === "createUser"){
+    } else if (this.state.login === "createUser"){
       return (
         <div>
           <Header logout={this.logout}/>
-          <CreateUser changeRoomMode={this.changeRoomMode}/>
+          <CreateUser login={this.login}/>
         </div>
       )
-    } else if (this.state.roomMode === "loggedIn"){
+    } else if (this.state.login === "loggedIn"){
       return (
         <div className="ui grid">
           <Header logout={this.logout}/>
