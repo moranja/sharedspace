@@ -10,7 +10,7 @@ export default class Piano extends Component{
       currentKeys: []
     }
 
-    topRowKeys=["w", "e", " ", "t", "y", " ", "u", "o", "p"]
+    topRowKeys=["w", "e", "blank", "t", "y", "u", "blank", "o", "p"]
     bottomRowKeys=["a", "s", "d", "f", "g", "h", "j", "k", "l", ";"]
 
     handleKeyDown = (e) => {
@@ -44,10 +44,11 @@ export default class Piano extends Component{
                         <img src={require("../media/pianoKeyboard.jpg")} alt="piano keyboard" width="100%"></img>
                     </div>
                     <div>
-                        <img src={require("../media/computerKeyboardForPiano.png")} width="100%" alt="computer keyboard"></img>
                         <div className="ui grid">
                           <div className="row">
+                            <div className="halfKey" />
                             {this.topRowKeys.map(key => <Key character={key} currentKeys={this.state.currentKeys}/>)}
+                            <div className="halfKey" />
                           </div>
                           <div className="row">
                             {this.bottomRowKeys.map(key => <Key character={key} currentKeys={this.state.currentKeys}/>)}
