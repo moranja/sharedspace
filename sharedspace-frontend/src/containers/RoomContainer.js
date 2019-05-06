@@ -11,7 +11,7 @@ export default class RoomContainer extends React.Component {
   state = {
     mode: "music",
     chosenInstrument: "",
-    login: "loggedIn"
+    login: "login"
   }
 
   logout = () => {
