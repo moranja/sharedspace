@@ -30,22 +30,13 @@ export default class RoomContainer extends React.Component {
     this.setState({login: "loggedIn"})
   }
 
+  createUser = (e) => {
+    e.preventDefault()
+    this.setState({login: "createUser"})
+  }
+
   selectRoomWindow(){
-    if (this.state.login === "login"){
-      return (
-        <div>
-          <Header logout={this.logout}/>
-          <Login login={this.login}/>
-        </div>
-      )
-    } else if (this.state.login === "createUser"){
-      return (
-        <div>
-          <Header logout={this.logout}/>
-          <CreateUser login={this.login}/>
-        </div>
-      )
-    } else if (this.state.login === "loggedIn"){
+    if (localStorage.token) {
       return (
         <div className="ui grid">
           <Header logout={this.logout}/>
@@ -56,6 +47,22 @@ export default class RoomContainer extends React.Component {
           </div>
         </div>
       )
+    } else {
+      if (this.state.login === "login"){
+        return (
+          <div>
+            <Header logout={this.logout}/>
+            <Login login={this.login} createUser={this.createUser}/>
+          </div>
+        )
+      } else if (this.state.login === "createUser"){
+        return (
+          <div>
+            <Header logout={this.logout}/>
+            <CreateUser login={this.login}/>
+          </div>
+        )
+      }
     }
   }
 
