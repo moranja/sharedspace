@@ -27,6 +27,7 @@ export default class CreateUser extends Component {
         .then(response => {
             localStorage.setItem('token', response.token)
             localStorage.setItem('name', response.username)
+            localStorage.setItem('id', response.id)
             this.props.login()
         })
 

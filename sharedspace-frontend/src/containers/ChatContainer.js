@@ -23,7 +23,7 @@ export default class ChatContainer extends React.Component {
     e.preventDefault()
     console.log(e)
     const newMessage = {
-      userID: 1,
+      userID: localStorage.id,
       roomID: 1,
       content: this.state.workingMessage
     }
@@ -46,6 +46,7 @@ export default class ChatContainer extends React.Component {
   }
 
   render() {
+    console.log(localStorage.id)
     return (
       <React.Fragment>
           <div className="ui comments">

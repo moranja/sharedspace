@@ -29,6 +29,7 @@ export default class Login extends Component {
             if (typeof response === "object") {
                 localStorage.setItem('token', response.token)
                 localStorage.setItem('name', response.username)
+                localStorage.setItem('id', response.id)
                 this.props.login()
                 this.setState({"failType": ""})
             } else {
