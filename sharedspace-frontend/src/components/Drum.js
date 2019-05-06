@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import io from '../components/ioConnection'
+import {io} from '../components/ioConnection'
 
 window.io = io
 

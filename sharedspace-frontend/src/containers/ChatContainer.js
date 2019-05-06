@@ -1,9 +1,9 @@
 import React from 'react'
 import ChatBox from '../components/ChatBox'
 import ChatHistoryContainer from './ChatHistoryContainer'
-import io from '../components/ioConnection'
+import {io} from '../components/ioConnection'
 
-window.io = io
+//window.io = io
 
 export default class ChatContainer extends React.Component {
 
@@ -23,7 +23,8 @@ export default class ChatContainer extends React.Component {
     e.preventDefault()
     console.log(e)
     const newMessage = {
-      userID: 1,
+      userID: parseInt(localStorage.userID),
+      username: localStorage.name,
       roomID: 1,
       content: this.state.workingMessage
     }

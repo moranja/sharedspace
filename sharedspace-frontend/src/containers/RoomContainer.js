@@ -5,6 +5,7 @@ import OptionsContainer from './OptionsContainer'
 import Login from '../components/login'
 import CreateUser from '../components/CreateUser'
 import Header from '../components/Header'
+import {initSocket} from '../components/ioConnection'
 
 export default class RoomContainer extends React.Component {
 
@@ -36,7 +37,10 @@ export default class RoomContainer extends React.Component {
   }
 
   selectRoomWindow(){
+    console.log(localStorage.userID)
     if (localStorage.token) {
+      initSocket()
+      console.log(localStorage.token)
       return (
         <div className="ui grid">
           <Header logout={this.logout}/>

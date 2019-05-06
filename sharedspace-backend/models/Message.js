@@ -5,6 +5,9 @@ const Message = sequelize.define('message', {
   userID: {
     type: INTEGER
   },
+  username: {
+    type: STRING
+  },
   roomID: {
     type: INTEGER
   },

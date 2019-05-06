@@ -8,6 +8,7 @@ const pry = require('pryjs')
 const socketIo = require('socket.io')
 const jwt = require('jsonwebtoken')
 
+
 const io = socketIo(8080,  {
     handlePreflightRequest: function (req, res) {
         var headers = {
@@ -17,7 +18,6 @@ const io = socketIo(8080,  {
         }
         res.writeHead(200, headers)
         res.end()
-
     }
 })
 
@@ -26,6 +26,7 @@ app.use(bodyParser())
 io.on('connection', socket => {
 
   //if the authorization is good, cool, if not close the socket
+  console.log("attempting to connect")
 
   if (socket.handshake.headers.authorization !== "Bearer null") {
     console.log(socket.handshake.headers.authorization)
@@ -42,6 +43,7 @@ io.on('connection', socket => {
     })
 
     socket.on('messages.new', (message, respond) => {
+      console.log(message)
       const roomID = message.roomID
       Message.create(message)
       Message.findAll()
@@ -71,7 +73,7 @@ io.on('connection', socket => {
 app.use(cors())
 
 
-io.listen(8080)
+io.listen(8081)
 
 
 
