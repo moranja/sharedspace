@@ -1,16 +1,31 @@
 import React, {Component} from 'react'
+import Key from '../components/Key'
 import io from '../components/ioConnection'
 
 window.io = io
 
 export default class Piano extends Component{
 
-    handleClick = (e) => {
+    state={
+      currentKeys: []
+    }
+
+    topRowKeys=["w", "e", " ", "t", "y", " ", "u", "o", "p"]
+    bottomRowKeys=["a", "s", "d", "f", "g", "h", "j", "k", "l", ";"]
+
+    handleKeyDown = (e) => {
       e.preventDefault()
-        if (!e.repeat) {
-            const note = e.key
-            this.sendNote(note)
-        }
+      if (!e.repeat) {
+          const note = e.key
+          this.sendNote(note)
+          this.setState({currentKeys: [...this.state.currentKeys, e.key]})
+      }
+    }
+
+    handleKeyUp = (e) => {
+      e.persist()
+      let newKeys = [...this.state.currentKeys].filter(k => k !== e.key)
+      this.setState({currentKeys: [...newKeys]})
     }
 
     sendNote = (note) => {
@@ -19,10 +34,10 @@ export default class Piano extends Component{
         }
     }
 
-
     render(){
+      console.log(this.state)
         return(
-            <div onKeyDown={(e) => this.handleClick(e)} tabIndex="0" >
+            <div onKeyDown={this.handleKeyDown} onKeyUp={this.handleKeyUp} tabIndex="0" >
                 Piano is here<br></br>
                 <div>
                     <div>
@@ -30,6 +45,14 @@ export default class Piano extends Component{
                     </div>
                     <div>
                         <img src={require("../media/computerKeyboardForPiano.png")} width="100%" alt="computer keyboard"></img>
+                        <div className="ui grid">
+                          <div className="row">
+                            {this.topRowKeys.map(key => <Key character={key} currentKeys={this.state.currentKeys}/>)}
+                          </div>
+                          <div className="row">
+                            {this.bottomRowKeys.map(key => <Key character={key} currentKeys={this.state.currentKeys}/>)}
+                          </div>
+                        </div>
                     </div>
                 </div>
             </div>
