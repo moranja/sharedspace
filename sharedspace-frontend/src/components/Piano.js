@@ -38,10 +38,10 @@ export default class Piano extends Component{
       console.log(this.state)
         return(
             <div onKeyDown={this.handleKeyDown} onKeyUp={this.handleKeyUp} tabIndex="0" >
-                Piano is here<br></br>
+                <br></br>
                 <div>
                     <div>
-                        <img src={require("../media/pianoKeyboard.jpg")} alt="piano keyboard" width="100%"></img>
+                        <img src={require("../media/pianoKeyboard.jpg")} alt="piano keyboard" width="%"></img>
                     </div>
                     <div>
                         <img src={require("../media/computerKeyboardForPiano.png")} width="100%" alt="computer keyboard"></img>

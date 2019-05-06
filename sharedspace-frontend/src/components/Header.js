@@ -12,8 +12,6 @@ export default class Header extends Component {
             return (
                 <React.Fragment>
                     <h4>Logged in as {localStorage.name}</h4>
-                    <br></br>
-                    <br></br>
                     <input type="submit" value="logout" onClick={this.logout}></input>
                 </React.Fragment>
             )
@@ -24,10 +22,19 @@ export default class Header extends Component {
 
     render(){
         return (
-            <div>
-                {this.isLoggedIn()}
-                <br></br>
+            <div className="sixteen wide column" style={{borderStyle: "solid", borderWidth: "2px"}}>
+
+            <div className="ui grid" >
+                <div className="twelve wide column" style={{borderStyle: "solid", borderWidth: "2px"}}>
+                    <h1>Shared Space</h1>
+                </div>
+                <div className="four wide column" style={{borderStyle: "solid", borderWidth: "2px"}}>
+                    {this.isLoggedIn()}
+                </div>
             </div>
+
+            </div>
+
         )
     }
 }

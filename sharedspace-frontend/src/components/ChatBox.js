@@ -1,12 +1,12 @@
 import React from 'react'
 
 const ChatBox = (props) => (
-  <div>
+  <React.Fragment>
     <form onSubmit={props.handleSubmit} >
-      <input name="message" type="text" value={props.workingMessage}  onChange={props.handleChange}/>
+      <input name="message" type="text" value={props.workingMessage}  onChange={props.handleChange} style={{width: "100"}}/>
       <input type="submit" value="Send"/>
     </form>
-  </div>
+  </React.Fragment>
 )
 
 export default ChatBox
