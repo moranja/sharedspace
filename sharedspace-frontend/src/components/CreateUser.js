@@ -16,7 +16,6 @@ export default class CreateUser extends Component {
     submitUser = (e) => {
         e.persist()
         e.preventDefault()
-        // console.log(this.state)
         fetch('http://localhost:3001/createUser', {
             method: "POST",
             headers: {
@@ -26,7 +25,6 @@ export default class CreateUser extends Component {
         })
         .then(res => res.json())
         .then(response => {
-            console.log(response.token)
             localStorage.setItem('token', response.token)
             localStorage.setItem('name', response.username)
             this.props.login()
@@ -34,35 +32,23 @@ export default class CreateUser extends Component {
 
     }
 
-    testComms = (e) => {
-        e.persist()
-        e.preventDefault()
-        // console.log(this.state)
-        // fetch('http://localhost:3001/')
-        // .then(res => res.json())
-        // .then(response => console.log(response))
-    }
-
     render(){
         return(
             <div>
                 <h4>Please provide a username and password to register</h4>
                 <form onSubmit={(e) => this.submitUser(e)}>
-                    <label>Username:</label>
-                    <input type="text" id="username" placeholder="name" onChange={(e) => this.handleChange(e)}></input>
+                    <label>Username: &nbsp;</label>
+                    <input type="text" id="username" placeholder="&nbsp; name" onChange={(e) => this.handleChange(e)}></input>
                     <br></br>
                     <br></br>
-                    <label>Password:</label>
-                    <input type="password" id="password" placeholder="password" onChange={(e) => this.handleChange(e)}></input>
+                    <label>Password: &nbsp;</label>
+                    <input type="password" id="password" placeholder="&nbsp; password" onChange={(e) => this.handleChange(e)}></input>
                     <br></br>
                     <br></br>
                     <input type="submit"></input>
                 </form>
                     <br></br>
                     <br></br>
-                <form onSubmit={(e) => this.testComms(e)}>
-                    <input type="submit" value="Test Comms"></input>
-                </form>
             </div>
         )
     }

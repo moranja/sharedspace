@@ -2,100 +2,69 @@ const User = require('./models/User')
 const Message = require('./models/Message')
 const express = require('express')
 const cors = require('cors')
-const io = require('socket.io')()
 const app = express()
 const bodyParser = require('body-parser')
 const pry = require('pryjs')
+const socketIo = require('socket.io')
+const jwt = require('jsonwebtoken')
+
+const io = socketIo(8080,  {
+    handlePreflightRequest: function (req, res) {
+        var headers = {
+            'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+            'Access-Control-Allow-Origin': 'http://localhost:3000',
+            'Access-Control-Allow-Credentials': true
+        }
+        res.writeHead(200, headers)
+        res.end()
+
+    }
+})
 
 app.use(bodyParser())
 
 io.on('connection', socket => {
 
-  // console.log('connected')
-  // console.log(socket.handshake.headers.authorization)
   //if the authorization is good, cool, if not close the socket
 
-  // if (socket.handshake.headers.authorization) {
-  //   let [ type, token ] = socket.handshake.headers.authorization.split(' ')
-  //   let result = jwt.decode(token)
-  //   console.log(result)
-  //   let userID = result.id
-  //
-    // socket.on('messages.index', (room, respond) => {
-    //   console.log(room)
-    //
-    //   Message.findAll()
-    //   .then( messages => {
-    //     const roomMessages = messages.filter(msg => msg.roomID === room.roomID)
-    //     respond(roomMessages)
-    //   })
-    // })
-    //
-    // socket.on('messages.new', (message, respond) => {
-    //   console.log(message)
-    //   const roomID = message.roomID
-    //
-    //   Message.create(message)
-    //
-    //   Message.findAll()
-    //   .then( messages => {
-    //     const roomMessages = messages.filter(msg => msg.roomID === roomID)
-    //     io.emit('messages.newMessageFromServer', roomMessages)
-    //   })
-    // })
-    //
-    // // socket.on('piano', (piano, response) => {
-    // //   console.log(piano)
-    // //   respond(response)
-    // // })
-    //
-    // socket.on('pianoSend', (note) => {
-    //   console.log(note)
-    //   io.emit('pianoReceive', (note))
-    // })
-  // } else {
-  //   //socket.close()
-  // }
+  if (socket.handshake.headers.authorization !== "Bearer null") {
+    console.log(socket.handshake.headers.authorization)
+    let [ type, token ] = socket.handshake.headers.authorization.split(' ')
+    let result = jwt.decode(token)
+    let userID = result.id
 
-
-  socket.on('messages.index', (room, respond) => {
-    // console.log(room)
-
-    Message.findAll()
-    .then( messages => {
-      const roomMessages = messages.filter(msg => msg.roomID === room.roomID)
-      respond(roomMessages)
+    socket.on('messages.index', (room, respond) => {
+      Message.findAll()
+      .then( messages => {
+        const roomMessages = messages.filter(msg => msg.roomID === room.roomID)
+        respond(roomMessages)
+      })
     })
-  })
 
-  socket.on('messages.new', (message, respond) => {
-    console.log(message)
-    const roomID = message.roomID
-
-    Message.create(message)
-
-    Message.findAll()
-    .then( messages => {
-      const roomMessages = messages.filter(msg => msg.roomID === roomID)
-      io.emit('messages.newMessageFromServer', roomMessages)
+    socket.on('messages.new', (message, respond) => {
+      const roomID = message.roomID
+      Message.create(message)
+      Message.findAll()
+      .then( messages => {
+        const roomMessages = messages.filter(msg => msg.roomID === roomID)
+        io.emit('messages.newMessageFromServer', roomMessages)
+      })
     })
-  })
 
-  // socket.on('piano', (piano, response) => {
-  //   console.log(piano)
-  //   respond(response)
-  // })
+    socket.on('pianoSend', (note) => {
+      console.log(note)
+      io.emit('pianoReceive', (`${note.note}_piano`))
+    })
 
-  socket.on('pianoSend', (note) => {
-    console.log(note)
-    io.emit('pianoReceive', (`${note.note}_piano`))
-  })
+    socket.on('drumSend', (note) => {
+      console.log(note)
+      io.emit('drumReceive', (`${note.note}_drums`))
 
-  socket.on('drumSend', (note) => {
-    console.log(note)
-    io.emit('drumReceive', (`${note.note}_drums`))
-  })
-
+    })
+  } else {
+    console.log("shutting this socket down")
+    io.close()
+  }
 })
 
 
@@ -115,32 +84,18 @@ app.post('/createUser', (req, res) => {
 
 app.post('/login', (req, res) => {
   User.findOne({ where: {username: req.body.username} }).then(user => {
-    if (user.authenticate(req.body.password)) {
-      res.json(user.toJSON())
+    if (user == null){
+      res.json("Username")
     } else {
-      res.json("Login failed")
+      if (user.authenticate(req.body.password)) {
+        res.json(user.toJSON())
+      } else {
+        res.json("Password")
+      }
     }
   })
 })
 
-// app.get('/', () => {
-//   console.log("Mark")
-//   res.json({"name": "Mark"})
-// })
-
-  // let users = User.findAll({
-  //   where: {
-  //     name: req.body.name
-  //   }
-//   })
-//   let user = users[0]
-//   console.log(user)
-//   if (user.authenticate(req.body.password)) {
-//     res.json(user)
-//   }
-// })
-
 app.listen(3001)
-
 
 console.log("backend up and running!")
