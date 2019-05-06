@@ -22,7 +22,7 @@ export default class Drum extends Component{
     render(){
         return(
             <div onKeyDown={(e) => this.handleClick(e)} tabIndex="0" >
-                drum <br></br>
+                <br></br>
                 <div>
                     <div>
                         <img src={require("../media/Drumset.jpg")} alt="drum" width="100%"></img>
