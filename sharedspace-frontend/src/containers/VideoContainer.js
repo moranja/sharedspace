@@ -12,9 +12,7 @@ export default class VideoContainer extends React.Component {
   }
 
   handleStateChange = (e) => {
-    if (!this.state.yt) {
-      this.setState({ yt: e.target })
-    } // put the video object into state, so we can grab it later
+    // put the video object into state, so we can grab it later
 
     // e.data corresponds to...
     // -1 (unstarted)
@@ -39,6 +37,10 @@ export default class VideoContainer extends React.Component {
     this.state.yt.pauseVideo()
   }
 
+  handleReady = (event) => {
+    this.setState({ yt: event.target })
+  }
+
   componentDidMount() {
     io.on('connect', () => {
       io.emit('room', this.props.roomID )
@@ -56,8 +58,9 @@ export default class VideoContainer extends React.Component {
   }
 
   render() {
+    console.log(this.state)
     return(
-      <YouTube videoId={this.state.videoId} onStateChange={this.handleStateChange}/>
+      <YouTube videoId={this.state.videoId} onReady={this.handleReady} onStateChange={this.handleStateChange}/>
     )
   }
 }
