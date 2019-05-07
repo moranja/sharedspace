@@ -20,7 +20,7 @@ import l_piano from '../media/piano/448609__tedagame__d4.ogg'
 import p_piano from '../media/piano/448602__tedagame__d-4.ogg'
 import semiColon_piano from '../media/piano/448613__tedagame__e4.ogg'
 // Drum sounds
-import a_drums from '../media/Drums/85767__schatzl03__symbol-long-ring.aiff' // think this file is bad, aiffs are huge it might be too big
+import a_drums from '../media/Drums/241746__abhijitchirde__cymbol.wav' // think this file is bad, aiffs are huge it might be too big
 import s_drums from '../media/Drums/111202__corrodedmaster__bass.wav'
 import d_drums from '../media/Drums/111661__bigjoedrummer__tom-gretsch-cat-maple-14-floor-1.wav'
 import f_drums from '../media/Drums/173838__yellowtree__tom-high.wav'

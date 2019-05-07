@@ -47,12 +47,12 @@ export default class Login extends Component {
                 <div className="fields">
                     <div className="field">
                         <input type="text" id="username" placeholder="&nbsp;username" onChange={(e) => this.handleChange(e)} ></input>{
-                            (this.state.failType === "Username") ? <h4 style={{color: "red", display: "inline"}}>&nbsp;&nbsp;Username does not exist. Please Create User to register.</h4> : null
+                            (this.state.failType === "Username") ? <h4 className="ui pointing red basic label" style={{color: "red", display: "inline"}}>&nbsp;&nbsp;Username does not exist. Please Create User to register.</h4> : null
                             }
                     </div>
                     <div className="field">
                         <input type="password" id="password" placeholder="&nbsp;password" onChange={(e) => this.handleChange(e)}></input>{
-                            (this.state.failType === "Password") ? <h4 style={{color: "red", display: "inline"}}>&nbsp;&nbsp;Password was entered incorrectly.</h4> : null
+                            (this.state.failType === "Password") ? <h4 className="ui pointing red basic label"  style={{color: "red", display: "inline"}}>&nbsp;&nbsp;Password was entered incorrectly.</h4> : null
                             }
                     </div>
                     <div className="field">
