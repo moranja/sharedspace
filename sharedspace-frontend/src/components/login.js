@@ -46,7 +46,7 @@ export default class Login extends Component {
                 <h4>Please log in</h4>
                 <div>
                     <form onSubmit={(e) => this.submitUser(e)} className="ui input">
-                        <label>Username: &nbsp;</label>
+                        <label classNa="ui label">Username: &nbsp;</label>
                         <input type="text" id="username" placeholder="&nbsp;name" onChange={(e) => this.handleChange(e)} ></input>{
                             (this.state.failType === "Username") ? <h4 style={{color: "red", display: "inline"}}>&nbsp;&nbsp;Username does not exist. Please Create User to register.</h4> : null
                             }

@@ -7,11 +7,11 @@ export default class InstrumentContainer extends Component{
   renderInstrument = () => {
     if (this.props.chosenInstrument === "piano") {
       return(
-        <Piano acceptablePianoNotes={this.props.acceptablePianoNotes} playNote={this.props.playNote} />
+        <Piano roomID={this.props.roomID} acceptablePianoNotes={this.props.acceptablePianoNotes} playNote={this.props.playNote} />
       )
     } else if (this.props.chosenInstrument === "drums") {
       return(
-        <Drum acceptableDrumNotes={this.props.acceptableDrumNotes} playNote={this.props.playNote} />
+        <Drum roomID={this.props.roomID} acceptableDrumNotes={this.props.acceptableDrumNotes} playNote={this.props.playNote} />
       )
     } else {
       return(

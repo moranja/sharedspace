@@ -33,6 +33,10 @@ console.log("trying to connect")
     let result = jwt.decode(token)
     let userID = result.id
 
+    socket.on('room', (roomID) => {
+      socket.join(`room_${roomID}`)
+    })
+
     socket.on('messages.index', (room, respond) => {
       Message.findAll()
       .then( messages => {
@@ -52,15 +56,22 @@ console.log("trying to connect")
       })
     })
 
-    socket.on('pianoSend', (note) => {
-      console.log(note)
-      io.emit('pianoReceive', (`${note.note}_piano`))
+    socket.on('pianoSend', (obj) => {
+      io.sockets.in(`room_${obj.room}`).emit('pianoReceive', (`${obj.note}_piano`))
     })
 
-    socket.on('drumSend', (note) => {
-      console.log(note)
-      io.emit('drumReceive', (`${note.note}_drums`))
+    socket.on('drumSend', (obj) => {
+      io.sockets.in(`room_${obj.room}`).emit('drumReceive', (`${obj.note}_drums`))
+    })
 
+    socket.on('playVideo', (obj) => {
+      console.log(obj)
+      io.sockets.in(`room_${obj.room}`).emit('playVideoForAll', ("test"))
+    })
+
+    socket.on('pauseVideo', (obj) => {
+      console.log(obj)
+      io.sockets.in(`room_${obj.room}`).emit('pauseVideoForAll', ("test"))
     })
 
   } else {
