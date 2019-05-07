@@ -29,8 +29,8 @@ export default class Header extends Component {
                         <h1 style={{textAlign: "center", verticalAlign: "middle"}}>Shared Space</h1>
                     </div>
                     <div className="eight wide column" style={{borderStyle: "solid", borderWidth: "0.5px"}}>
-                        <h1>Change Room Mode</h1>
-                        <select onChange={(e) => this.props.handleChange(e, "mode")}>
+                        <h3 style={{display: "inline"}}>Change Room Mode</h3>
+                        <select onChange={(e) => this.props.handleChange(e, "mode")} class="ui selection dropdown" style={{display: "inline"}}>
                             <option value="chat">Chat</option>
                             <option value="music">Music</option>
                             <option value="video">Video</option>

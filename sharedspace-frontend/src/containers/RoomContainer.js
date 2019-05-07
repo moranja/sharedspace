@@ -119,11 +119,17 @@ export default class RoomContainer extends React.Component {
           <React.Fragment>
             <Header logout={this.logout}/>
             <div className="twelve wide column" style={{borderStyle: "solid", borderWidth: "0.5px", overflowY: "scroll",  wordWrap: "break-word", height: "680px"}}>
-              <h1>Please enter a room number</h1>
-              <form onSubmit={this.handleSubmit} >
-                <input type="text" onChange={(e) => this.handleChange(e, "typingID")}/>
-                <input type="submit" />
-              </form>
+              <h3>&nbsp;&nbsp;Please enter a room number:</h3>
+              <div className="ui form">
+                <div className="fields">
+                  <div className="field">
+                    <input type="text" placeholder="&nbsp;room number" onChange={(e) => this.handleChange(e, "typingID")}/>
+                  </div>
+                  <div className="field">
+                    <input type="submit" onClick={this.handleSubmit} className="ui black basic button"/>
+                  </div>
+                </div>
+              </div>
             </div>
             <div className="four wide column" style={{borderStyle: "solid", borderWidth: "0.5px"}}>
               <div className="ui one column grid">
