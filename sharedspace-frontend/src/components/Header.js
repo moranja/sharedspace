@@ -25,8 +25,16 @@ export default class Header extends Component {
             <div className="sixteen wide column" style={{borderStyle: "solid", borderWidth: "2px"}}>
 
             <div className="ui grid" >
-                <div className="twelve wide column" style={{borderStyle: "solid", borderWidth: "2px"}}>
+                <div className="four wide column" style={{borderStyle: "solid", borderWidth: "2px"}}>
                     <h1>Shared Space</h1>
+                </div>
+                <div className="eight wide column" style={{borderStyle: "solid", borderWidth: "2px"}}>
+                    <h1>Change Room Mode</h1>
+                      <select onChange={(e) => this.props.handleChange(e, "mode")}>
+                        <option value="chat">Chat</option>
+                        <option value="music">Music</option>
+                        <option value="video">Video</option>
+                      </select>
                 </div>
                 <div className="four wide column" style={{borderStyle: "solid", borderWidth: "2px"}}>
                     {this.isLoggedIn()}

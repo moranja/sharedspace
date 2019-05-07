@@ -35,7 +35,6 @@ export default class Piano extends Component{
     }
 
     render(){
-      console.log(this.state)
         return(
             <div onKeyDown={this.handleKeyDown} onKeyUp={this.handleKeyUp} tabIndex="0" >
                 <br></br>

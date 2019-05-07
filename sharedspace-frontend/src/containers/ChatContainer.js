@@ -9,7 +9,6 @@ export default class ChatContainer extends React.Component {
 
   state = {
     messages: [],
-    roomID: 1,
     workingMessage: ""
   }
 
@@ -24,7 +23,7 @@ export default class ChatContainer extends React.Component {
     const newMessage = {
       userID: parseInt(localStorage.userID),
       username: localStorage.name,
-      roomID: 1,
+      roomID: parseInt(this.props.roomID),
       content: this.state.workingMessage
     }
 
@@ -34,7 +33,7 @@ export default class ChatContainer extends React.Component {
   }
 
   componentDidMount() {
-    io.emit('messages.index', { roomID: this.state.roomID }, roomMessages => {
+    io.emit('messages.index', { roomID: parseInt(this.props.roomID) }, roomMessages => {
       this.setState({ messages: roomMessages })
     })
 
