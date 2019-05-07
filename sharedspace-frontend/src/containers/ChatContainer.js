@@ -12,6 +12,7 @@ export default class ChatContainer extends React.Component {
     workingMessage: ""
   }
 
+
   handleChange = (e) => {
     e.persist()
     this.setState({workingMessage: e.target.value})

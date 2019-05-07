@@ -101,7 +101,7 @@ export default class RoomContainer extends React.Component {
           return (
             <React.Fragment>
               <Header mode={this.state.mode} handleChange={this.handleChange} logout={this.logout}/>
-              <div className="twelve wide column" style={{borderStyle: "solid", borderWidth: "0.5px", overflowY: "scroll",  wordWrap: "break-word", height: "680px"}}>
+              <div className="twelve wide column scroller" style={{borderStyle: "solid", borderWidth: "0.5px", overflowY: "scroll",  wordWrap: "break-word", height: "680px"}}>
                 <ChatContainer roomID={this.state.roomID}/>
               </div>
               <div className="four wide column" style={{borderStyle: "solid", borderWidth: "0.5px"}}>
