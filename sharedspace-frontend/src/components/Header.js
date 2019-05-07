@@ -20,11 +20,42 @@ export default class Header extends Component {
         }
     }
 
+    isInARoom = () => {
+      if (this.props.roomID) {
+        return (
+          <React.Fragment>
+            <div className="four wide column" style={{borderStyle: "solid", borderWidth: "0.5px"}}>
+                <h1 style={{textAlign: "center", verticalAlign: "middle"}}>Shared Space</h1>
+            </div>
+            <div className="eight wide column" style={{borderStyle: "solid", borderWidth: "0.5px"}}>
+                <h1>Change Room Mode</h1>
+                <select onChange={(e) => this.props.handleChange(e, "mode")}>
+                    <option value="chat">Chat</option>
+                    <option value="music">Music</option>
+                    <option value="video">Video</option>
+                </select>
+            </div>
+          </React.Fragment>
+        )
+      } else {
+        return (
+          <React.Fragment>
+            <div className="four wide column">
+                <h1 style={{textAlign: "center", verticalAlign: "middle"}}>Shared Space</h1>
+            </div>
+            <div className="eight wide column" >
+            </div>
+          </React.Fragment>
+        )
+      }
+    }
+
     render(){
         return (
             <div className="sixteen wide column" style={{borderStyle: "solid", borderWidth: "0.5px", }}>
 
                 <div className="ui grid" >
+<<<<<<< HEAD
                     <div className="four wide column" style={{borderStyle: "solid", borderWidth: "0.5px"}}  align="center">
                         <img src={require("../media/logo.png")} alt="piano keyboard" width="50%"></img>
                     </div>
@@ -36,6 +67,9 @@ export default class Header extends Component {
                             <option value="video">Video</option>
                         </select>
                     </div>
+=======
+                    {this.isInARoom()}
+>>>>>>> adam
                     <div className="four wide column" style={{borderStyle: "solid", borderWidth: "0.5px", verticalAlign: "middle"}} align="right" >
                         {this.isLoggedIn()}
                     </div>
