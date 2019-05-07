@@ -1,8 +1,8 @@
 import React from 'react'
-import YouTube from 'react-youtube'
 import ChatContainer from './ChatContainer'
 import ActivityContainer from './ActivityContainer'
 import OptionsContainer from './OptionsContainer'
+import VideoContainer from './VideoContainer'
 import Login from '../components/login'
 import CreateUser from '../components/CreateUser'
 import Header from '../components/Header'
@@ -47,14 +47,6 @@ export default class RoomContainer extends React.Component {
     this.setState({roomID: this.state.typingID})
   }
 
-  handlePlay = () => {
-
-  }
-
-  handlePause = () => {
-
-  }
-
   selectRoomWindow(){
     if (localStorage.token) {
       initSocket()
@@ -83,7 +75,7 @@ export default class RoomContainer extends React.Component {
             <React.Fragment>
               <Header mode={this.state.mode} handleChange={this.handleChange} logout={this.logout}/>
               <div className="twelve wide column" style={{borderStyle: "solid", borderWidth: "2px", overflowY: "scroll",  wordWrap: "break-word", height: "680px"}}>
-                <YouTube videoId="cJsyMmC76aM" onPlay={this.handlePlay} onPause={this.handlePause}/>
+                <VideoContainer roomID={this.state.roomID} />
               </div>
               <div className="four wide column" style={{borderStyle: "solid", borderWidth: "2px"}}>
                 <div className="ui one column grid">

@@ -57,15 +57,22 @@ console.log("trying to connect")
     })
 
     socket.on('pianoSend', (obj) => {
-      console.log(obj)
       io.sockets.in(`room_${obj.room}`).emit('pianoReceive', (`${obj.note}_piano`))
     })
 
-    socket.on('drumSend', (note) => {
-      console.log(note)
-      io.sockets.in(`room_${obj.room}`).emit('drumReceive', (`${note.note}_drums`))
-
+    socket.on('drumSend', (obj) => {
+      io.sockets.in(`room_${obj.room}`).emit('drumReceive', (`${obj.note}_drums`))
     })
+
+    // socket.on('playVideo', (obj) => {
+    //   console.log(obj)
+    //   io.sockets.in(`room_${obj.room}`).emit('playVideoForAll', (`${obj.note}_piano`))
+    // })
+    //
+    // socket.on('pauseVideo', (obj) => {
+    //   console.log(obj)
+    //   io.sockets.in(`room_${obj.room}`).emit('pauseVideoForAll', (`${obj.note}_piano`))
+    // })
 
   } else {
     console.log("shutting this socket down")
