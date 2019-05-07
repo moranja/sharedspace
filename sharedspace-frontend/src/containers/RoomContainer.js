@@ -69,7 +69,7 @@ export default class RoomContainer extends React.Component {
                   <div className="row" style={{borderStyle: "solid", borderWidth: "0.5px"}}>
                     <OptionsContainer mode={this.state.mode} chosenInstrument={this.state.chosenInstrument} selectInstrument={this.selectInstrument} resetInstrument={this.resetInstrument}/>
                   </div>
-                  <div className="row" style={{borderStyle: "solid", borderWidth: "0.5px", overflowY: "scroll",  wordWrap: "break-word", height: "680px"}}>
+                  <div className="row" style={{borderStyle: "solid", borderWidth: "0.5px", overflowY: "scroll",  height: "680px"}}>
                     <ChatContainer roomID={this.state.roomID}/>
                   </div>
                 </div>
@@ -80,7 +80,7 @@ export default class RoomContainer extends React.Component {
           return (
             <React.Fragment>
               <Header mode={this.state.mode} handleChange={this.handleChange} logout={this.logout}/>
-              <div className="twelve wide column" style={{borderStyle: "solid", borderWidth: "2px", overflowY: "scroll",  wordWrap: "break-word", height: "680px"}}>
+              <div className="twelve wide column" style={{borderStyle: "solid", borderWidth: "2px", overflowY: "scroll",  height: "680px"}}>
                 <VideoContainer roomID={this.state.roomID} videoID={this.state.videoID} />
               </div>
               <div className="four wide column" style={{borderStyle: "solid", borderWidth: "0.5px"}}>
@@ -88,7 +88,7 @@ export default class RoomContainer extends React.Component {
                   <div className="row">
                     <OptionsContainer mode={this.state.mode} updateVideoID={this.updateVideoID} handleChange={this.handleChange}/>
                   </div>
-                  <div className="row" style={{borderStyle: "solid", borderWidth: "0.5px", overflowY: "scroll",  wordWrap: "break-word", height: "680px"}}>
+                  <div className="row" style={{borderStyle: "solid", borderWidth: "0.5px", overflowY: "scroll",  height: "680px"}}>
                     <ChatContainer roomID={this.state.roomID}/>
                   </div>
                 </div>
@@ -99,7 +99,7 @@ export default class RoomContainer extends React.Component {
           return (
             <React.Fragment>
               <Header mode={this.state.mode} handleChange={this.handleChange} logout={this.logout}/>
-              <div className="twelve wide column scroller" style={{borderStyle: "solid", borderWidth: "0.5px", overflowY: "scroll",  wordWrap: "break-word", height: "680px"}}>
+              <div className="twelve wide column scroller" style={{borderStyle: "solid", borderWidth: "0.5px", overflowY: "scroll",  height: "680px"}}>
                 <ChatContainer roomID={this.state.roomID}/>
               </div>
               <div className="four wide column" style={{borderStyle: "solid", borderWidth: "0.5px"}}>
@@ -116,7 +116,7 @@ export default class RoomContainer extends React.Component {
         return (
           <React.Fragment>
             <Header logout={this.logout}/>
-            <div className="twelve wide column" style={{borderStyle: "solid", borderWidth: "0.5px", overflowY: "scroll",  wordWrap: "break-word", height: "680px"}}>
+            <div className="twelve wide column" style={{borderStyle: "solid", borderWidth: "0.5px", overflowY: "scroll",  height: "680px"}}>
               <h3>&nbsp;&nbsp;Please enter a room number:</h3>
               <div className="ui form">
                 <div className="fields">

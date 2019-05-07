@@ -12,7 +12,7 @@ export default class Header extends Component {
             return (
                 <React.Fragment>
                     <h4 style={{textAlign: "right", verticalAlign: "middle"}} >Logged in as {localStorage.name}</h4>
-                    <input type="submit" value="logout" onClick={this.logout} class="ui black basic button"></input>
+                    <input type="submit" value="logout" onClick={this.logout} className="ui black basic button"></input>
                 </React.Fragment>
             )
         } else {
@@ -30,7 +30,7 @@ export default class Header extends Component {
                     </div>
                     <div className="eight wide column" style={{borderStyle: "solid", borderWidth: "0.5px"}}  align="right">
                         <h3 style={{display: "inline"}}>Room Mode</h3>
-                        <select onChange={(e) => this.props.handleChange(e, "mode")} class="ui selection dropdown" style={{display: "inline"}}>
+                        <select onChange={(e) => this.props.handleChange(e, "mode")} className="ui selection dropdown" style={{display: "inline"}}>
                             <option value="chat">Chat</option>
                             <option value="music">Music</option>
                             <option value="video">Video</option>

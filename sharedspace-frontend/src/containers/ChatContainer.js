@@ -50,7 +50,7 @@ export default class ChatContainer extends React.Component {
           <div className="ui comments" style={{width: "95%", margin: "2.5%"}}>
             <ChatHistoryContainer messages={this.state.messages} />
           </div>
-          <div className="ui reply form">
+          <div>
             <ChatBox workingMessage={this.state.workingMessage} handleSubmit={this.handleSubmit} handleChange={this.handleChange}/>
           </div>
       </React.Fragment>

@@ -8,7 +8,7 @@ const ChatMessage = (props) => (
         align={props.message.username === localStorage.name? "right" : "left"} >
           {/* <p className="metadata">{props.message.createdAt}</p> */}
           <p className="author" wordWrap="break-word">&nbsp;&nbsp;{props.message.username}&nbsp;&nbsp;</p>
-          <p  wordWrap="break-word">&nbsp;&nbsp;{props.message.content}&nbsp;&nbsp;</p>
+          <p>&nbsp;&nbsp;{props.message.content}&nbsp;&nbsp;</p>
   </div>
 )
 
