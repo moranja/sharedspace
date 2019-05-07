@@ -79,13 +79,8 @@ export default class RoomContainer extends React.Component {
         } else if (this.state.mode === "video") { // else if that room is in the video mode...
           return (
             <React.Fragment>
-<<<<<<< HEAD
-              <Header mode={this.state.mode} handleChange={this.handleChange} logout={this.logout}/>
+              <Header mode={this.state.mode} handleChange={this.handleChange} logout={this.logout} roomID={this.state.roomID} />
               <div className="twelve wide column" style={{borderStyle: "solid", borderWidth: "2px", overflowY: "scroll",  height: "680px"}}>
-=======
-              <Header roomID={this.state.roomID} mode={this.state.mode} handleChange={this.handleChange} logout={this.logout}/>
-              <div className="twelve wide column" style={{borderStyle: "solid", borderWidth: "2px", overflowY: "scroll",  wordWrap: "break-word", height: "680px"}}>
->>>>>>> adam
                 <VideoContainer roomID={this.state.roomID} videoID={this.state.videoID} />
               </div>
               <div className="four wide column" style={{borderStyle: "solid", borderWidth: "0.5px"}}>
@@ -104,7 +99,7 @@ export default class RoomContainer extends React.Component {
           return (
             <React.Fragment>
               <Header roomID={this.state.roomID} mode={this.state.mode} handleChange={this.handleChange} logout={this.logout}/>
-              <div className="sixteen wide column scroller" style={{borderStyle: "solid", borderWidth: "0.5px", overflowY: "scroll",  height: "680px"}}>
+              <div className="sixteen wide column scroller" align="center" style={{borderStyle: "solid", borderWidth: "0.5px", overflowY: "scroll",  height: "680px"}}>
                 <ChatContainer roomID={this.state.roomID}/>
               </div>
             </React.Fragment>

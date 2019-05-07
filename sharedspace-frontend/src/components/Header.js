@@ -24,8 +24,8 @@ export default class Header extends Component {
       if (this.props.roomID) {
         return (
           <React.Fragment>
-            <div className="four wide column" style={{borderStyle: "solid", borderWidth: "0.5px"}}>
-                <h1 style={{textAlign: "center", verticalAlign: "middle"}}>Shared Space</h1>
+            <div className="four wide column" style={{borderStyle: "non", borderWidth: "0.5px"}} align="middle">
+                <img src={require("../media/logo.png")} alt="piano keyboard" width="50%"></img>
             </div>
             <div className="eight wide column" style={{borderStyle: "solid", borderWidth: "0.5px"}}>
                 <h1>Change Room Mode</h1>
@@ -40,8 +40,8 @@ export default class Header extends Component {
       } else {
         return (
           <React.Fragment>
-            <div className="four wide column">
-                <h1 style={{textAlign: "center", verticalAlign: "middle"}}>Shared Space</h1>
+            <div className="four wide column" align="middle">
+                <img src={require("../media/logo.png")} alt="piano keyboard" width="50%"></img>
             </div>
             <div className="eight wide column" >
             </div>
@@ -55,21 +55,7 @@ export default class Header extends Component {
             <div className="sixteen wide column" style={{borderStyle: "solid", borderWidth: "0.5px", }}>
 
                 <div className="ui grid" >
-<<<<<<< HEAD
-                    <div className="four wide column" style={{borderStyle: "solid", borderWidth: "0.5px"}}  align="center">
-                        <img src={require("../media/logo.png")} alt="piano keyboard" width="50%"></img>
-                    </div>
-                    <div className="eight wide column" style={{borderStyle: "solid", borderWidth: "0.5px"}}  align="right">
-                        <h3 style={{display: "inline"}}>Room Mode</h3>
-                        <select onChange={(e) => this.props.handleChange(e, "mode")} className="ui selection dropdown" style={{display: "inline"}}>
-                            <option value="chat">Chat</option>
-                            <option value="music">Music</option>
-                            <option value="video">Video</option>
-                        </select>
-                    </div>
-=======
                     {this.isInARoom()}
->>>>>>> adam
                     <div className="four wide column" style={{borderStyle: "solid", borderWidth: "0.5px", verticalAlign: "middle"}} align="right" >
                         {this.isLoggedIn()}
                     </div>

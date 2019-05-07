@@ -92,7 +92,9 @@ io.listen(8081)
 app.post('/createUser', (req, res) => {
   newUser = User.build({username: req.body.username})
   newUser.password = req.body.password
-  newUser.save().then(newUser => res.json(newUser.toJSON()))
+  newUser.save()
+  .then(newUser => res.json(newUser.toJSON()))
+  .catch(error => res.json({validationError: error.errors[0].path}))
 })
 
 app.post('/login', (req, res) => {

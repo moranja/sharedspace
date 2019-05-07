@@ -42,10 +42,19 @@ class User extends Model {
 
 User.init({
   username: {
-    type: STRING
+    type: STRING, 
+    validate: {
+      // unique: true,
+      notEmpty: true,
+      len: [3 ,100]
+    }
   },
   password_digest: {
-    type: STRING
+    type: STRING,
+    validate: {
+      notEmpty: true,
+      len: [3 ,100],
+    }
   }
 }, {sequelize, modelName: 'user'}
 )
