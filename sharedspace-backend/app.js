@@ -64,15 +64,15 @@ console.log("trying to connect")
       io.sockets.in(`room_${obj.room}`).emit('drumReceive', (`${obj.note}_drums`))
     })
 
-    // socket.on('playVideo', (obj) => {
-    //   console.log(obj)
-    //   io.sockets.in(`room_${obj.room}`).emit('playVideoForAll', (`${obj.note}_piano`))
-    // })
-    //
-    // socket.on('pauseVideo', (obj) => {
-    //   console.log(obj)
-    //   io.sockets.in(`room_${obj.room}`).emit('pauseVideoForAll', (`${obj.note}_piano`))
-    // })
+    socket.on('playVideo', (obj) => {
+      console.log(obj)
+      io.sockets.in(`room_${obj.room}`).emit('playVideoForAll', ("test"))
+    })
+
+    socket.on('pauseVideo', (obj) => {
+      console.log(obj)
+      io.sockets.in(`room_${obj.room}`).emit('pauseVideoForAll', ("test"))
+    })
 
   } else {
     console.log("shutting this socket down")
