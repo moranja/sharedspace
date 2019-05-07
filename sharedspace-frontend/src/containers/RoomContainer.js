@@ -1,4 +1,5 @@
 import React from 'react'
+import YouTube from 'react-youtube'
 import ChatContainer from './ChatContainer'
 import ActivityContainer from './ActivityContainer'
 import OptionsContainer from './OptionsContainer'
@@ -46,6 +47,14 @@ export default class RoomContainer extends React.Component {
     this.setState({roomID: this.state.typingID})
   }
 
+  handlePlay = () => {
+
+  }
+
+  handlePause = () => {
+
+  }
+
   selectRoomWindow(){
     if (localStorage.token) {
       initSocket()
@@ -71,7 +80,22 @@ export default class RoomContainer extends React.Component {
           )
         } else if (this.state.mode === "video") { // else if that room is in the video mode...
           return (
-            <h1>Video</h1>
+            <React.Fragment>
+              <Header mode={this.state.mode} handleChange={this.handleChange} logout={this.logout}/>
+              <div className="twelve wide column" style={{borderStyle: "solid", borderWidth: "2px", overflowY: "scroll",  wordWrap: "break-word", height: "680px"}}>
+                <YouTube videoId="cJsyMmC76aM" onPlay={this.handlePlay} onPause={this.handlePause}/>
+              </div>
+              <div className="four wide column" style={{borderStyle: "solid", borderWidth: "2px"}}>
+                <div className="ui one column grid">
+                  <div className="row">
+                    <OptionsContainer roomMode={this.state.roomMode} chosenInstrument={this.state.chosenInstrument} selectInstrument={this.selectInstrument} resetInstrument={this.resetInstrument}/>
+                  </div>
+                  <div className="row" style={{borderStyle: "solid", borderWidth: "2px", overflowY: "scroll",  wordWrap: "break-word", height: "680px"}}>
+                    <ChatContainer roomID={this.state.roomID}/>
+                  </div>
+                </div>
+              </div>
+            </React.Fragment>
           )
         } else { // else if that room is in the chat mode (default)...
           return (
