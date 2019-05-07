@@ -64,7 +64,7 @@ export default class RoomContainer extends React.Component {
             <React.Fragment>
               <Header mode={this.state.mode} handleChange={this.handleChange} logout={this.logout}/>
               <div className="twelve wide column" style={{borderStyle: "solid", borderWidth: "2px"}}>
-                <ActivityContainer chosenInstrument={this.state.chosenInstrument}/>
+                <ActivityContainer roomID={this.state.roomID} chosenInstrument={this.state.chosenInstrument}/>
               </div>
               <div className="four wide column" style={{borderStyle: "solid", borderWidth: "2px"}}>
                 <div className="ui one column grid">

@@ -15,7 +15,7 @@ export default class Drum extends Component{
 
     sendNote = (note) => {
         if (this.props.acceptableDrumNotes.includes(note) || note === " "){
-            io.emit('drumSend', { note: note })
+            io.emit('drumSend', { note: note, room: this.props.roomID })
         }
     }
 

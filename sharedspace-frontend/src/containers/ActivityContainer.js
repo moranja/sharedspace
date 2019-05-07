@@ -66,7 +66,6 @@ export default class ActivityContainer extends Component{
   q_drums = new Audio(semiColon_drums)
   acceptableDrumNotes = ["a", "s", "d", "f", "j", "k", "l", ";"]
 
-
   playNote(note, instrument){
     if (instrument === "piano") {
       if (note === ";_piano"){
@@ -112,6 +111,10 @@ export default class ActivityContainer extends Component{
   }
 
   componentDidMount() {
+    io.on('connect', () => {
+      io.emit('room', this.props.roomID )
+    })
+
     io.on('pianoReceive', note => {
       this.playNote(note, "piano")
     })
@@ -131,6 +134,7 @@ export default class ActivityContainer extends Component{
                 acceptablePianoNotes={this.acceptablePianoNotes}
                 acceptableDrumNotes={this.acceptableDrumNotes}
                 playNote={this.playNote}
+                roomID={this.props.roomID} 
                 />
           </React.Fragment>
       )

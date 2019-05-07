@@ -30,7 +30,7 @@ export default class Piano extends Component{
 
     sendNote = (note) => {
         if (this.props.acceptablePianoNotes.includes(note) || note === " "){
-            io.emit('pianoSend', { note: note })
+            io.emit('pianoSend', { note: note, room: this.props.roomID })
         }
     }
 
