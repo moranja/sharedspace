@@ -27,7 +27,7 @@ export default class App extends React.Component {
 
   render (){
       return (
-      <div className="ui container" style={{height: "100%"}}>
+      <div className="ui container" style={{height: "100%", margin: "12px"}}>
         <RoomContainer />
       </div>
     )
