@@ -13,7 +13,8 @@ export default class RoomContainer extends React.Component {
   state = {
     mode: "chat",
     chosenInstrument: "",
-    login: "login"
+    login: "login",
+    videoID: "cJsyMmC76aM"
   }
 
   logout = () => {
@@ -47,6 +48,11 @@ export default class RoomContainer extends React.Component {
     this.setState({roomID: this.state.typingID})
   }
 
+  updateVideoID = (e) => {
+    e.preventDefault()
+    this.setState({videoID: this.state.typingVideoID})
+  }
+
   selectRoomWindow(){
     if (localStorage.token) {
       initSocket()
@@ -61,7 +67,7 @@ export default class RoomContainer extends React.Component {
               <div className="four wide column" style={{borderStyle: "solid", borderWidth: "0.5px"}}>
                 <div className="ui one column grid">
                   <div className="row" style={{borderStyle: "solid", borderWidth: "0.5px"}}>
-                    <OptionsContainer chosenInstrument={this.state.chosenInstrument} selectInstrument={this.selectInstrument} resetInstrument={this.resetInstrument}/>
+                    <OptionsContainer mode={this.state.mode} chosenInstrument={this.state.chosenInstrument} selectInstrument={this.selectInstrument} resetInstrument={this.resetInstrument}/>
                   </div>
                   <div className="row" style={{borderStyle: "solid", borderWidth: "0.5px", overflowY: "scroll",  wordWrap: "break-word", height: "680px"}}>
                     <ChatContainer roomID={this.state.roomID}/>
@@ -75,12 +81,12 @@ export default class RoomContainer extends React.Component {
             <React.Fragment>
               <Header mode={this.state.mode} handleChange={this.handleChange} logout={this.logout}/>
               <div className="twelve wide column" style={{borderStyle: "solid", borderWidth: "2px", overflowY: "scroll",  wordWrap: "break-word", height: "680px"}}>
-                <VideoContainer roomID={this.state.roomID} />
+                <VideoContainer roomID={this.state.roomID} videoID={this.state.videoID} />
               </div>
               <div className="four wide column" style={{borderStyle: "solid", borderWidth: "0.5px"}}>
                 <div className="ui one column grid">
                   <div className="row">
-                    <OptionsContainer roomMode={this.state.roomMode} chosenInstrument={this.state.chosenInstrument} selectInstrument={this.selectInstrument} resetInstrument={this.resetInstrument}/>
+                    <OptionsContainer mode={this.state.mode} updateVideoID={this.updateVideoID} handleChange={this.handleChange}/>
                   </div>
                   <div className="row" style={{borderStyle: "solid", borderWidth: "0.5px", overflowY: "scroll",  wordWrap: "break-word", height: "680px"}}>
                     <ChatContainer roomID={this.state.roomID}/>

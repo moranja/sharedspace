@@ -7,10 +7,6 @@ window.io = io
 export default class VideoContainer extends React.Component {
 
 
-  state = {
-    videoId: "cJsyMmC76aM"
-  }
-
   handleStateChange = (e) => {
     // put the video object into state, so we can grab it later
 
@@ -58,9 +54,8 @@ export default class VideoContainer extends React.Component {
   }
 
   render() {
-    console.log(this.state)
     return(
-      <YouTube videoId={this.state.videoId} onReady={this.handleReady} onStateChange={this.handleStateChange}/>
+      <YouTube videoId={this.props.videoID} onReady={this.handleReady} onStateChange={this.handleStateChange}/>
     )
   }
 }
