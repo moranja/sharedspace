@@ -60,7 +60,7 @@ export default class RoomContainer extends React.Component {
         if (this.state.mode === "music") { // And if that room is in the music mode ...
           return (
             <React.Fragment>
-              <Header mode={this.state.mode} handleChange={this.handleChange} logout={this.logout}/>
+              <Header roomID={this.state.roomID} mode={this.state.mode} handleChange={this.handleChange} logout={this.logout}/>
               <div className="twelve wide column" style={{borderStyle: "solid", borderWidth: "2px"}}>
                 <ActivityContainer roomID={this.state.roomID} chosenInstrument={this.state.chosenInstrument}/>
               </div>
@@ -79,7 +79,7 @@ export default class RoomContainer extends React.Component {
         } else if (this.state.mode === "video") { // else if that room is in the video mode...
           return (
             <React.Fragment>
-              <Header mode={this.state.mode} handleChange={this.handleChange} logout={this.logout}/>
+              <Header roomID={this.state.roomID} mode={this.state.mode} handleChange={this.handleChange} logout={this.logout}/>
               <div className="twelve wide column" style={{borderStyle: "solid", borderWidth: "2px", overflowY: "scroll",  wordWrap: "break-word", height: "680px"}}>
                 <VideoContainer roomID={this.state.roomID} videoID={this.state.videoID} />
               </div>
@@ -98,16 +98,9 @@ export default class RoomContainer extends React.Component {
         } else { // else if that room is in the chat mode (default)...
           return (
             <React.Fragment>
-              <Header mode={this.state.mode} handleChange={this.handleChange} logout={this.logout}/>
-              <div className="twelve wide column" style={{borderStyle: "solid", borderWidth: "0.5px", overflowY: "scroll",  wordWrap: "break-word", height: "680px"}}>
+              <Header roomID={this.state.roomID} mode={this.state.mode} handleChange={this.handleChange} logout={this.logout}/>
+              <div className="sixteen wide column" style={{borderStyle: "solid", borderWidth: "0.5px", overflowY: "scroll",  wordWrap: "break-word", height: "680px"}}>
                 <ChatContainer roomID={this.state.roomID}/>
-              </div>
-              <div className="four wide column" style={{borderStyle: "solid", borderWidth: "0.5px"}}>
-                <div className="ui one column grid">
-                  <div className="row">
-                    <OptionsContainer roomMode={this.state.roomMode} chosenInstrument={this.state.chosenInstrument} selectInstrument={this.selectInstrument} resetInstrument={this.resetInstrument}/>
-                  </div>
-                </div>
               </div>
             </React.Fragment>
           )
@@ -115,7 +108,7 @@ export default class RoomContainer extends React.Component {
       } else { // If you haven't entered a room yet ...
         return (
           <React.Fragment>
-            <Header logout={this.logout}/>
+            <Header roomID={this.state.roomID} logout={this.logout}/>
             <div className="twelve wide column" style={{borderStyle: "solid", borderWidth: "0.5px", overflowY: "scroll",  wordWrap: "break-word", height: "680px"}}>
               <h1>Please enter a room number</h1>
               <form onSubmit={this.handleSubmit} >
@@ -137,7 +130,7 @@ export default class RoomContainer extends React.Component {
       if (this.state.login === "login"){
         return (
           <React.Fragment>
-            <Header logout={this.logout}/>
+            <Header roomID={this.state.roomID} logout={this.logout}/>
             <div className="sixteen wide column" style={{borderStyle: "solid", borderWidth: "0.5px"}}>
               <Login login={this.login} createUser={this.createUser}/>
             </div>
@@ -146,7 +139,7 @@ export default class RoomContainer extends React.Component {
       } else if (this.state.login === "createUser"){
         return (
           <React.Fragment>
-            <Header logout={this.logout}/>
+            <Header roomID={this.state.roomID} logout={this.logout}/>
             <div className="sixteen wide column" style={{borderStyle: "solid", borderWidth: "0.5px"}}>
               <CreateUser login={this.login}/>
             </div>
