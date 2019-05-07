@@ -16,7 +16,7 @@ export default class Key extends React.Component {
   render() {
     //if (this.props.currentKey === this.props.character) {this.flashKey()}
     return (
-      <div className="key" style = {{border: `${this.props.character === "blank" ? "5px solid white" : "5px solid black"}`, background:`${this.props.currentKeys.includes(this.props.character) ? "blue" : "white"}`}}>
+      <div className="key" style = {{border: `${this.props.character === "blank" ? "#ffffff00" : "2px solid black"}`, background:`${this.props.currentKeys.includes(this.props.character) ? "blue" : "#ffffffa8"}`, backgroundColor: `${this.props.character === "blank" ? "#ffffff00" : "#ffffffa8"}`,}}>
 
           <h1 className="keyContent"  style = {{textAlign:"center", display:"table-cell", verticalAlign:"middle"}}>{this.props.character === "blank" ? null : this.props.character.toUpperCase()} </h1>
 

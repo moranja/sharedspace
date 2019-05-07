@@ -2,7 +2,7 @@ import React from 'react'
 
 const ChatMessage = (props) => (
   <div  className="comment"
-        style={{borderStyle: "solid", borderWidth: "0.5px"}}
+        style={{borderStyle: "solid", borderWidth: "0.5px", backgroundColor: "#ffffffa8"}}
         margin="10px"
         width="100%"
         align={props.message.username === localStorage.name? "right" : "left"} >

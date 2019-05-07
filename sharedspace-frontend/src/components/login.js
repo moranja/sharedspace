@@ -42,28 +42,25 @@ export default class Login extends Component {
 
     render(){
         return(
-            <div>
+            <div >
                 <h4>Please log in</h4>
-                <form onSubmit={(e) => this.submitUser(e)}>
-                    <label>Username: &nbsp;</label>
-                    <input type="text" id="username" placeholder="&nbsp;name" onChange={(e) => this.handleChange(e)}></input>{
-                        (this.state.failType === "Username") ? <h4 style={{color: "red", display: "inline"}}>&nbsp;&nbsp;Username does not exist. Please Create User to register.</h4> : null
-                        }
-                    <br></br>
-                    <br></br>
-                    <label>Password: &nbsp;</label>
-                    <input type="password" id="password" placeholder="&nbsp;password" onChange={(e) => this.handleChange(e)}></input>{
-                        (this.state.failType === "Password") ? <h4 style={{color: "red", display: "inline"}}>&nbsp;&nbsp;Password was entered incorrectly.</h4> : null
-                        }
-                    <br></br>
-                    <br></br>
-                    <input type="submit"></input>
-                </form>
-                    <br></br>
-                    <br></br>
-                <form onSubmit={(e) => this.createUser(e)}>
-                    <input type="submit" value="Create User" onClick={e => this.props.createUser(e)}></input>
-                </form>
+                <div>
+                    <form onSubmit={(e) => this.submitUser(e)} className="ui input">
+                        <label>Username: &nbsp;</label>
+                        <input type="text" id="username" placeholder="&nbsp;name" onChange={(e) => this.handleChange(e)} ></input>{
+                            (this.state.failType === "Username") ? <h4 style={{color: "red", display: "inline"}}>&nbsp;&nbsp;Username does not exist. Please Create User to register.</h4> : null
+                            }
+                        <label>Password: &nbsp;</label>
+                        <input type="password" id="password" placeholder="&nbsp;password" onChange={(e) => this.handleChange(e)}></input>{
+                            (this.state.failType === "Password") ? <h4 style={{color: "red", display: "inline"}}>&nbsp;&nbsp;Password was entered incorrectly.</h4> : null
+                            }
+
+                        <input type="submit" className="ui black basic button"></input>
+                    </form>
+                    <form onSubmit={(e) => this.createUser(e)} >
+                        <input type="submit" value="Create User" onClick={e => this.props.createUser(e)} className="ui black basic button"></input>
+                    </form>
+                </div>
             </div>
         )
     }

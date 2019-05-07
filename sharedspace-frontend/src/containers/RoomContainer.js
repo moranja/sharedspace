@@ -63,15 +63,15 @@ export default class RoomContainer extends React.Component {
           return (
             <React.Fragment>
               <Header mode={this.state.mode} handleChange={this.handleChange} logout={this.logout}/>
-              <div className="twelve wide column" style={{borderStyle: "solid", borderWidth: "2px"}}>
+              <div className="twelve wide column" style={{borderStyle: "solid", borderWidth: "0.5px"}}>
                 <ActivityContainer chosenInstrument={this.state.chosenInstrument}/>
               </div>
-              <div className="four wide column" style={{borderStyle: "solid", borderWidth: "2px"}}>
+              <div className="four wide column" style={{borderStyle: "solid", borderWidth: "0.5px"}}>
                 <div className="ui one column grid">
-                  <div className="row" style={{borderStyle: "solid", borderWidth: "2px"}}>
+                  <div className="row" style={{borderStyle: "solid", borderWidth: "0.5px"}}>
                     <OptionsContainer chosenInstrument={this.state.chosenInstrument} selectInstrument={this.selectInstrument} resetInstrument={this.resetInstrument}/>
                   </div>
-                  <div className="row" style={{borderStyle: "solid", borderWidth: "2px", overflowY: "scroll",  wordWrap: "break-word", height: "680px"}}>
+                  <div className="row" style={{borderStyle: "solid", borderWidth: "0.5px", overflowY: "scroll",  wordWrap: "break-word", height: "680px"}}>
                     <ChatContainer roomID={this.state.roomID}/>
                   </div>
                 </div>
@@ -82,15 +82,15 @@ export default class RoomContainer extends React.Component {
           return (
             <React.Fragment>
               <Header mode={this.state.mode} handleChange={this.handleChange} logout={this.logout}/>
-              <div className="twelve wide column" style={{borderStyle: "solid", borderWidth: "2px", overflowY: "scroll",  wordWrap: "break-word", height: "680px"}}>
+              <div className="twelve wide column" style={{borderStyle: "solid", borderWidth: "0.5px", overflowY: "scroll",  wordWrap: "break-word", height: "680px"}}>
                 <YouTube videoId="cJsyMmC76aM" onPlay={this.handlePlay} onPause={this.handlePause}/>
               </div>
-              <div className="four wide column" style={{borderStyle: "solid", borderWidth: "2px"}}>
+              <div className="four wide column" style={{borderStyle: "solid", borderWidth: "0.5px"}}>
                 <div className="ui one column grid">
                   <div className="row">
                     <OptionsContainer roomMode={this.state.roomMode} chosenInstrument={this.state.chosenInstrument} selectInstrument={this.selectInstrument} resetInstrument={this.resetInstrument}/>
                   </div>
-                  <div className="row" style={{borderStyle: "solid", borderWidth: "2px", overflowY: "scroll",  wordWrap: "break-word", height: "680px"}}>
+                  <div className="row" style={{borderStyle: "solid", borderWidth: "0.5px", overflowY: "scroll",  wordWrap: "break-word", height: "680px"}}>
                     <ChatContainer roomID={this.state.roomID}/>
                   </div>
                 </div>
@@ -101,10 +101,10 @@ export default class RoomContainer extends React.Component {
           return (
             <React.Fragment>
               <Header mode={this.state.mode} handleChange={this.handleChange} logout={this.logout}/>
-              <div className="twelve wide column" style={{borderStyle: "solid", borderWidth: "2px", overflowY: "scroll",  wordWrap: "break-word", height: "680px"}}>
+              <div className="twelve wide column" style={{borderStyle: "solid", borderWidth: "0.5px", overflowY: "scroll",  wordWrap: "break-word", height: "680px"}}>
                 <ChatContainer roomID={this.state.roomID}/>
               </div>
-              <div className="four wide column" style={{borderStyle: "solid", borderWidth: "2px"}}>
+              <div className="four wide column" style={{borderStyle: "solid", borderWidth: "0.5px"}}>
                 <div className="ui one column grid">
                   <div className="row">
                     <OptionsContainer roomMode={this.state.roomMode} chosenInstrument={this.state.chosenInstrument} selectInstrument={this.selectInstrument} resetInstrument={this.resetInstrument}/>
@@ -118,14 +118,14 @@ export default class RoomContainer extends React.Component {
         return (
           <React.Fragment>
             <Header logout={this.logout}/>
-            <div className="twelve wide column" style={{borderStyle: "solid", borderWidth: "2px", overflowY: "scroll",  wordWrap: "break-word", height: "680px"}}>
+            <div className="twelve wide column" style={{borderStyle: "solid", borderWidth: "0.5px", overflowY: "scroll",  wordWrap: "break-word", height: "680px"}}>
               <h1>Please enter a room number</h1>
               <form onSubmit={this.handleSubmit} >
                 <input type="text" onChange={(e) => this.handleChange(e, "typingID")}/>
                 <input type="submit" />
               </form>
             </div>
-            <div className="four wide column" style={{borderStyle: "solid", borderWidth: "2px"}}>
+            <div className="four wide column" style={{borderStyle: "solid", borderWidth: "0.5px"}}>
               <div className="ui one column grid">
                 <div className="row">
                   <OptionsContainer roomMode={this.state.roomMode} chosenInstrument={this.state.chosenInstrument} selectInstrument={this.selectInstrument} resetInstrument={this.resetInstrument}/>
@@ -140,7 +140,7 @@ export default class RoomContainer extends React.Component {
         return (
           <React.Fragment>
             <Header logout={this.logout}/>
-            <div className="sixteen wide column" style={{borderStyle: "solid", borderWidth: "2px"}}>
+            <div className="sixteen wide column" style={{borderStyle: "solid", borderWidth: "0.5px"}}>
               <Login login={this.login} createUser={this.createUser}/>
             </div>
           </React.Fragment>
@@ -149,7 +149,7 @@ export default class RoomContainer extends React.Component {
         return (
           <React.Fragment>
             <Header logout={this.logout}/>
-            <div className="sixteen wide column" style={{borderStyle: "solid", borderWidth: "2px"}}>
+            <div className="sixteen wide column" style={{borderStyle: "solid", borderWidth: "0.5px"}}>
               <CreateUser login={this.login}/>
             </div>
           </React.Fragment>
@@ -161,8 +161,10 @@ export default class RoomContainer extends React.Component {
   render(){
     return (
       <React.Fragment>
-        <div className="ui grid" style={{borderStyle: "solid", borderWidth: "2px"}}>
-          {this.selectRoomWindow()}
+        <div>
+          <div className="ui grid foreground" style={{borderStyle: "solid", borderWidth: "0.5px"}}>
+            {this.selectRoomWindow()}
+          </div>
         </div>
       </React.Fragment>
     )
