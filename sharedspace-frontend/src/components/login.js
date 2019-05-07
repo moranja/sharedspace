@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {initSocket} from './ioConnection'
 
 export default class Login extends Component {
 
@@ -29,9 +30,10 @@ export default class Login extends Component {
             if (typeof response === "object") {
                 localStorage.setItem('token', response.token)
                 localStorage.setItem('name', response.username)
-                localStorage.setItem('id', response.id)
+                localStorage.setItem('userID', response.id)
                 this.props.login()
                 this.setState({"failType": ""})
+                initSocket()
             } else {
                 this.setState({"failType": response })
             }

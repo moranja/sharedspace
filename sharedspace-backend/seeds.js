@@ -1,31 +1,36 @@
 const Message = require('./models/Message')
 const User = require('./models/User')
 
-Message.sync()
+
 
 const messages = [
   {
     userID: 1,
+    username: "Adam",
     roomID: 1,
     content: "Hello 1"
   },
   {
     userID: 2,
+    username: "Mark",
     roomID: 1,
     content: "Hello 2"
   },
   {
     userID: 1,
+    username: "Adam",
     roomID: 1,
     content: "Hello 3"
   },
   {
     userID: 2,
+    username: "Mark",
     roomID: 1,
     content: "Hello 4"
   },
   {
     userID: 1,
+    username: "Adam",
     roomID: 2,
     content: "Hello 5"
   }
@@ -34,19 +39,26 @@ const messages = [
 const users = [
   {
     username: "Adam",
-    password: "password"
+    password: "1234"
   },
   {
     username: "Mark",
-    password: "password"
+    password: "1234"
   }
 ]
 
-Message.destroy({ where: {}}).then(res =>
+Message.drop()
+.then(res => Message.sync())
+.then(res => Message.destroy({ where: {}}))
+.then(res =>
   messages.forEach( message => Message.create(message))
 )
 
-User.destroy({ where: {}}).then(res =>
+
+User.drop()
+.then(res => User.sync())
+.then( res => User.destroy({ where: {}}))
+.then(res =>
   users.forEach( user => {
     let newUser = User.create( {username: user.username} )
     newUser.password = user.password

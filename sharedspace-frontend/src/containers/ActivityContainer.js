@@ -29,7 +29,7 @@ import k_drums from '../media/Drums/187535__waveplay-old__crash-cymbol.wav'
 import l_drums from '../media/Drums/250530__waveplay-old__hi-hat.wav'
 import semiColon_drums from '../media/Drums/270156__theriavirra__04c-snare-smooth-cymbals-snares.wav'
 
-import io from '../components/ioConnection'
+import {io} from '../components/ioConnection'
 
 window.io = io
 

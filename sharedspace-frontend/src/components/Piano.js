@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Key from '../components/Key'
-import io from '../components/ioConnection'
+import {io} from '../components/ioConnection'
 
 window.io = io
 

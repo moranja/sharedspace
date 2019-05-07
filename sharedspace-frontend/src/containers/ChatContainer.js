@@ -1,9 +1,9 @@
 import React from 'react'
 import ChatBox from '../components/ChatBox'
 import ChatHistoryContainer from './ChatHistoryContainer'
-import io from '../components/ioConnection'
+import {io} from '../components/ioConnection'
 
-window.io = io
+//window.io = io
 
 export default class ChatContainer extends React.Component {
 
@@ -21,9 +21,9 @@ export default class ChatContainer extends React.Component {
   handleSubmit = (e) => {
     e.persist()
     e.preventDefault()
-    console.log(e)
     const newMessage = {
-      userID: localStorage.id,
+      userID: parseInt(localStorage.userID),
+      username: localStorage.name,
       roomID: 1,
       content: this.state.workingMessage
     }
@@ -35,7 +35,6 @@ export default class ChatContainer extends React.Component {
 
   componentDidMount() {
     io.emit('messages.index', { roomID: this.state.roomID }, roomMessages => {
-      console.log(roomMessages)
       this.setState({ messages: roomMessages })
     })
 
@@ -46,10 +45,9 @@ export default class ChatContainer extends React.Component {
   }
 
   render() {
-    console.log(localStorage.id)
     return (
       <React.Fragment>
-          <div className="ui comments">
+          <div className="ui comments" style={{width: "95%", margin: "2.5%"}}>
             <ChatHistoryContainer messages={this.state.messages} />
           </div>
           <div className="ui reply form">

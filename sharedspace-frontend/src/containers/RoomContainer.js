@@ -5,6 +5,7 @@ import OptionsContainer from './OptionsContainer'
 import Login from '../components/login'
 import CreateUser from '../components/CreateUser'
 import Header from '../components/Header'
+import {initSocket} from '../components/ioConnection'
 
 export default class RoomContainer extends React.Component {
 
@@ -37,6 +38,7 @@ export default class RoomContainer extends React.Component {
 
   selectRoomWindow(){
     if (localStorage.token) {
+      initSocket()
       return (
         <React.Fragment>
           <Header logout={this.logout}/>
@@ -48,7 +50,7 @@ export default class RoomContainer extends React.Component {
               <div className="row" style={{borderStyle: "solid", borderWidth: "2px"}}>
                 <OptionsContainer chosenInstrument={this.state.chosenInstrument} selectInstrument={this.selectInstrument} resetInstrument={this.resetInstrument}/>
               </div>
-              <div className="row" style={{borderStyle: "solid", borderWidth: "2px", overflow: "scroll", height: "680px"}}>
+              <div className="row" style={{borderStyle: "solid", borderWidth: "2px", overflowY: "scroll",  wordWrap: "break-word", height: "680px"}}>
                 <ChatContainer />
               </div>
             </div>
@@ -79,6 +81,7 @@ export default class RoomContainer extends React.Component {
   }
 
   render(){
+    console.log(localStorage.name)
     return (
       <React.Fragment>
         <div className="ui grid" style={{borderStyle: "solid", borderWidth: "2px"}}>

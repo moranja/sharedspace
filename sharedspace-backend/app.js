@@ -17,7 +17,6 @@ const io = socketIo(8080,  {
         }
         res.writeHead(200, headers)
         res.end()
-
     }
 })
 
@@ -26,6 +25,7 @@ app.use(bodyParser())
 io.on('connection', socket => {
 console.log("trying to connect")
   //if the authorization is good, cool, if not close the socket
+  console.log("attempting to connect")
 
   if (socket.handshake.headers.authorization !== "Bearer null") {
     console.log(socket.handshake.headers.authorization)
@@ -42,6 +42,7 @@ console.log("trying to connect")
     })
 
     socket.on('messages.new', (message, respond) => {
+      console.log(message)
       const roomID = message.roomID
       Message.create(message)
       Message.findAll()
@@ -72,7 +73,7 @@ console.log("trying to connect")
 app.use(cors())
 
 
-io.listen(8080)
+io.listen(8081)
 
 
 
