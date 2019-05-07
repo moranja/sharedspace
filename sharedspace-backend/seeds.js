@@ -1,8 +1,6 @@
 const Message = require('./models/Message')
 const User = require('./models/User')
 
-
-
 const messages = [
   {
     userID: 1,
@@ -49,7 +47,6 @@ const users = [
 
 Message.drop()
 .then(res => Message.sync())
-.then(res => Message.destroy({ where: {}}))
 .then(res =>
   messages.forEach( message => Message.create(message))
 )
@@ -57,10 +54,10 @@ Message.drop()
 
 User.drop()
 .then(res => User.sync())
-.then( res => User.destroy({ where: {}}))
 .then(res =>
   users.forEach( user => {
-    let newUser = User.create( {username: user.username} )
+    let newUser = User.build( {username: user.username} )
     newUser.password = user.password
+    newUser.save()
   })
 )
