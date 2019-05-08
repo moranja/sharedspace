@@ -105,7 +105,7 @@ export default class ActivityContainer extends Component{
   render(){
       return(
           <React.Fragment>
-              <ViewContainer />
+              {/* <ViewContainer /> */}
               <InstrumentContainer
                 chosenInstrument={this.props.chosenInstrument}
                 acceptablePianoNotes={this.acceptableNotes.piano}

@@ -83,7 +83,7 @@ export default class RoomContainer extends React.Component {
           return (
             <React.Fragment>
               <Header roomID={this.state.roomID} mode={this.state.mode} handleChange={this.handleChange} logout={this.logout}/>
-              <div className="twelve wide column" style={{borderRight: "solid 0.5px"}}>
+              <div className="twelve wide column" style={{maxHeight: "87vh", overflow: "hidden", borderRight: "solid 0.5px"}}>
                 <ActivityContainer roomID={this.state.roomID} chosenInstrument={this.state.chosenInstrument}/>
               </div>
               <div className="four wide column" style={{maxHeight: "87vh", display: "flex", "flex-flow": "column", overflow: "hidden"}} >
