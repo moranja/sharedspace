@@ -1,11 +1,11 @@
 import socketIO from 'socket.io-client'
 
-// const io = socketIO('http://10.185.1.139:8080')
+// const io = socketIO('http://10.185.5.173:8080')
 
 let io = null
 
 const initSocket = () => {
-  io = socketIO('http://localhost:8080', {
+  io = socketIO('http://10.185.5.173:8080', {
     transportOptions: {
       polling: {
         extraHeaders: {

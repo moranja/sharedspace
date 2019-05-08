@@ -67,7 +67,7 @@ export default class RoomContainer extends React.Component {
               <div className="four wide column" style={{borderStyle: "solid", borderWidth: "0.5px"}}>
                 <div className="ui one column grid">
                   <div className="row" style={{borderStyle: "solid", borderWidth: "0.5px"}}>
-                    <OptionsContainer mode={this.state.mode} chosenInstrument={this.state.chosenInstrument} selectInstrument={this.selectInstrument} resetInstrument={this.resetInstrument}/>
+                    <OptionsContainer roomID={this.state.roomID} mode={this.state.mode} chosenInstrument={this.state.chosenInstrument} selectInstrument={this.selectInstrument} resetInstrument={this.resetInstrument}/>
                   </div>
                   <div className="row" style={{borderStyle: "solid", borderWidth: "0.5px", overflowY: "scroll",  height: "680px"}}>
                     <ChatContainer roomID={this.state.roomID}/>
@@ -79,14 +79,14 @@ export default class RoomContainer extends React.Component {
         } else if (this.state.mode === "video") { // else if that room is in the video mode...
           return (
             <React.Fragment>
-              <Header mode={this.state.mode} handleChange={this.handleChange} logout={this.logout} roomID={this.state.roomID} />
+              <Header roomID={this.state.roomID} mode={this.state.mode} handleChange={this.handleChange} logout={this.logout}/>
               <div className="twelve wide column" style={{borderStyle: "solid", borderWidth: "2px", overflowY: "scroll",  height: "680px"}}>
                 <VideoContainer roomID={this.state.roomID} videoID={this.state.videoID} />
               </div>
               <div className="four wide column" style={{borderStyle: "solid", borderWidth: "0.5px"}}>
                 <div className="ui one column grid">
                   <div className="row">
-                    <OptionsContainer mode={this.state.mode} updateVideoID={this.updateVideoID} handleChange={this.handleChange}/>
+                    <OptionsContainer roomID={this.state.roomID} mode={this.state.mode} updateVideoID={this.updateVideoID} handleChange={this.handleChange}/>
                   </div>
                   <div className="row" style={{borderStyle: "solid", borderWidth: "0.5px", overflowY: "scroll",  height: "680px"}}>
                     <ChatContainer roomID={this.state.roomID}/>
@@ -99,8 +99,15 @@ export default class RoomContainer extends React.Component {
           return (
             <React.Fragment>
               <Header roomID={this.state.roomID} mode={this.state.mode} handleChange={this.handleChange} logout={this.logout}/>
-              <div className="sixteen wide column scroller" align="center" style={{borderStyle: "solid", borderWidth: "0.5px", overflowY: "scroll",  height: "680px"}}>
+              <div className="twelve wide column scroller" style={{borderStyle: "solid", borderWidth: "0.5px", overflowY: "scroll",  height: "680px"}}>
                 <ChatContainer roomID={this.state.roomID}/>
+              </div>
+              <div className="four wide column" style={{borderStyle: "solid", borderWidth: "0.5px"}}>
+                <div className="ui one column grid">
+                  <div className="row">
+                    <OptionsContainer roomID={this.state.roomID} mode={this.state.mode} updateVideoID={this.updateVideoID} handleChange={this.handleChange}/>
+                  </div>
+                </div>
               </div>
             </React.Fragment>
           )
@@ -109,7 +116,7 @@ export default class RoomContainer extends React.Component {
         return (
           <React.Fragment>
             <Header roomID={this.state.roomID} logout={this.logout}/>
-            <div className="twelve wide column" style={{borderStyle: "solid", borderWidth: "0.5px", overflowY: "scroll",  height: "680px"}}>
+            <div className="sixteen wide column" style={{borderStyle: "solid", borderWidth: "0.5px", overflowY: "scroll",  height: "680px"}}>
               <h3>&nbsp;&nbsp;Please enter a room number:</h3>
               <div className="ui form">
                 <div className="fields">
@@ -119,13 +126,6 @@ export default class RoomContainer extends React.Component {
                   <div className="field">
                     <input type="submit" onClick={this.handleSubmit} className="ui black basic button"/>
                   </div>
-                </div>
-              </div>
-            </div>
-            <div className="four wide column" style={{borderStyle: "solid", borderWidth: "0.5px"}}>
-              <div className="ui one column grid">
-                <div className="row">
-                  <OptionsContainer roomMode={this.state.roomMode} chosenInstrument={this.state.chosenInstrument} selectInstrument={this.selectInstrument} resetInstrument={this.resetInstrument}/>
                 </div>
               </div>
             </div>

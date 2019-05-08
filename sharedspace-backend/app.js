@@ -21,8 +21,11 @@ const io = socketIo(8080,  {
 })
 
 app.use(bodyParser())
+const usernamesAndSocketIDs = {}
+const rooms = {}
 
 io.on('connection', socket => {
+
 console.log("trying to connect")
   //if the authorization is good, cool, if not close the socket
   console.log("attempting to connect")
@@ -33,9 +36,49 @@ console.log("trying to connect")
     let result = jwt.decode(token)
     let userID = result.id
 
-    socket.on('room', (roomID) => {
-      socket.join(`room_${roomID}`)
+    usernamesAndSocketIDs[socket.id] = result.username
+
+
+    socket.on('disconnect', () => {
+      let departingUser = usernamesAndSocketIDs[socket.id]
+      console.log(departingUser)
+      let currentRoom = null
+
+      for (var room in rooms) {
+        if (rooms[room].users.includes(departingUser)){
+          currentRoom = rooms[room]
+          break
+        }
+      }
+
+      if (currentRoom) {
+      currentRoom.users.splice(currentRoom.users.indexOf(departingUser),1)
+
+      io.sockets.in(`room_${currentRoom.id}`).emit('usersInRoom', currentRoom.users)
+      }
+
     })
+
+    socket.on('room', (obj) => {
+      socket.join(`room_${obj.roomID}`)
+      console.log(obj)
+      if (rooms[obj.roomID] === undefined) {
+        rooms[obj.roomID] = {
+          id: obj.roomID,
+          users: [obj.username]
+        }
+      } else if (!rooms[obj.roomID].users.includes(obj.username)) {
+        rooms[obj.roomID].users.push(obj.username)
+      }
+
+      io.sockets.in(`room_${obj.roomID}`).emit('usersInRoom', rooms[obj.roomID].users)
+    })
+
+    // socket.on('leaveRoom', (obj) => {
+    //   console.log(obj)
+    //   rooms[obj.roomID].splice(room.indexOf(obj.username),1)
+    //   io.sockets.in(`room_${obj.roomID}`).emit('usersInRoom', rooms[obj.roomID])
+    // })
 
     socket.on('messages.index', (room, respond) => {
       Message.findAll()
@@ -73,6 +116,14 @@ console.log("trying to connect")
       console.log(obj)
       io.sockets.in(`room_${obj.room}`).emit('pauseVideoForAll', ("test"))
     })
+
+    // socket.on('usersInRoom', (roomID) => {
+    //   io.sockets.in(`room_${roomID}`).emit('requestUsers')
+    // })
+
+    // socket.on('requestedUsers', (id) => {
+    //   console.log(id)
+    // })
 
   } else {
     console.log("shutting this socket down")

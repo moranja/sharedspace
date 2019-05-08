@@ -2,6 +2,9 @@ import React from 'react'
 import InstrumentSelector from '../components/InstrumentSelector'
 import MusicOptions from '../components/MusicOptions'
 import VideoOptions from '../components/VideoOptions'
+import {io} from '../components/ioConnection'
+
+window.io = io
 
 export default class OptionsContainer extends React.Component {
 
@@ -25,6 +28,17 @@ export default class OptionsContainer extends React.Component {
     }
   }
 
+  componentDidMount() {
+    io.on('connect', () => {
+      console.log({roomID: this.props.roomID, username: localStorage.name})
+      io.emit('room', {roomID: this.props.roomID, username: localStorage.name} )
+    })
+
+    io.on('usersInRoom', users => {
+      console.log(users)
+    })
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -32,4 +46,8 @@ export default class OptionsContainer extends React.Component {
       </React.Fragment>
     )
   }
+
+  // componentWillUnmount() {
+  //   io.emit('leaveRoom', {roomID: this.props.roomID, username: localStorage.name})
+  // }
 }
