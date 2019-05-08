@@ -2,11 +2,16 @@ import React from 'react'
 import InstrumentSelector from '../components/InstrumentSelector'
 import MusicOptions from '../components/MusicOptions'
 import VideoOptions from '../components/VideoOptions'
+import UsersList from '../components/UsersList'
 import {io} from '../components/ioConnection'
 
 window.io = io
 
 export default class OptionsContainer extends React.Component {
+
+  state = {
+    users: []
+  }
 
   displayOptions() {
     if (this.props.mode === "music") {
@@ -35,13 +40,14 @@ export default class OptionsContainer extends React.Component {
     })
 
     io.on('usersInRoom', users => {
-      console.log(users)
+      this.setState({users: users})
     })
   }
 
   render() {
     return (
       <React.Fragment>
+        <UsersList users={this.state.users} />
         {this.displayOptions()}
       </React.Fragment>
     )

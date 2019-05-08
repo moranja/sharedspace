@@ -20,14 +20,16 @@ import l_piano from '../media/piano/448609__tedagame__d4.ogg'
 import p_piano from '../media/piano/448602__tedagame__d-4.ogg'
 import semiColon_piano from '../media/piano/448613__tedagame__e4.ogg'
 // Drum sounds
-import i_drums from '../media/Drums/241746__abhijitchirde__cymbol.wav' // think this file is bad, aiffs are huge it might be too big
-import c_drums from '../media/Drums/111202__corrodedmaster__bass.wav'
-import x_drums from '../media/Drums/111661__bigjoedrummer__tom-gretsch-cat-maple-14-floor-1.wav'
+import i_drums from '../media/Drums/241746__abhijitchirde__cymbol.wav'
+import c_drums from '../media/Drums/111661__bigjoedrummer__tom-gretsch-cat-maple-14-floor-1.wav'
+import x_drums from '../media/Drums/270156__theriavirra__04c-snare-smooth-cymbals-snares.wav'
 import d_drums from '../media/Drums/173838__yellowtree__tom-high.wav'
 import j_drums from '../media/Drums/186621__snapper4298__tom-2.wav'
 import w_drums from '../media/Drums/187535__waveplay-old__crash-cymbol.wav'
 import a_drums from '../media/Drums/250530__waveplay-old__hi-hat.wav'
-import l_drums from '../media/Drums/270156__theriavirra__04c-snare-smooth-cymbals-snares.wav'
+import l_drums from '../media/Drums/111202__corrodedmaster__bass.wav'
+
+
 
 import {io} from '../components/ioConnection'
 
@@ -54,7 +56,7 @@ export default class ActivityContainer extends Component{
   l_piano = new Audio(l_piano)
   p_piano = new Audio(p_piano)
   q_piano = new Audio(semiColon_piano)
-  acceptablePianoNotes = ["a", "w", "s", "e", "d", "f", "t", "g", "y", "h", "u", "j", "k", "o", "l", "p", ";"]
+  //acceptableNotes = ["a", "w", "s", "e", "d", "f", "t", "g", "y", "h", "u", "j", "k", "o", "l", "p", ";"]
 
   i_drums = new Audio(i_drums)
   l_drums = new Audio(l_drums)
@@ -64,49 +66,30 @@ export default class ActivityContainer extends Component{
   w_drums = new Audio(w_drums)
   a_drums = new Audio(a_drums)
   c_drums = new Audio(c_drums)
-  acceptableDrumNotes = ["i", "l", "x", "d", "j", "w", "a", "c"]
+  acceptableNotes = {
+    piano: ["a", "w", "s", "e", "d", "f", "t", "g", "y", "h", "u", "j", "k", "o", "l", "p", ";"],
+    drums: ["i", "l", "x", "d", "j", "w", "a", "c"]
+  }
 
   playNote(note, instrument){
-    if (instrument === "piano") {
-      if (note === ";_piano"){
-          this.q_piano.pause()
-          this.q_piano.currentTime = 0
-          this.q_piano.play()
-      } else if (note===" _piano") {
-          this.acceptablePianoNotes.forEach( note => {
-            if (note === ";") {
-              this.q_piano.pause()
-              this.q_piano.currentTime = 0
-            } else {
-              this[`${note}_piano`].pause()
-              this[`${note}_piano`].currentTime = 0
-            }
-          })
-      } else {
-          this[note].pause()
-          this[note].currentTime = 0
-          this[note].play()
-      }
-    } else if (instrument === "drums") {
-      if (note === ";_drums"){
-          this.q_drums.pause()
-          this.q_drums.currentTime = 0
-          this.q_drums.play()
-      } else if (note===" _drums") {
-          this.acceptableDrumNotes.forEach( note => {
-            if (note === ";") {
-              this.q_drums.pause()
-              this.q_drums.currentTime = 0
-            } else {
-              this[`${note}_drums`].pause()
-              this[`${note}_drums`].currentTime = 0
-            }
-          })
-      } else {
-          this[note].pause()
-          this[note].currentTime = 0
-          this[note].play()
-      }
+    if (note === `;_${instrument}`){
+        this[`q_${instrument}`].pause()
+        this[`q_${instrument}`].currentTime = 0
+        this[`q_${instrument}`].play()
+    } else if (note===` _${instrument}`) {
+        this.acceptableNotes[instrument].forEach( note => {
+          if (note === ";") {
+            this[`q_${instrument}`].pause()
+            this[`q_${instrument}`].currentTime = 0
+          } else {
+            this[`${note}_${instrument}`].pause()
+            this[`${note}_${instrument}`].currentTime = 0
+          }
+        })
+    } else {
+        this[note].pause()
+        this[note].currentTime = 0
+        this[note].play()
     }
   }
 
@@ -138,8 +121,8 @@ export default class ActivityContainer extends Component{
               <ViewContainer />
               <InstrumentContainer
                 chosenInstrument={this.props.chosenInstrument}
-                acceptablePianoNotes={this.acceptablePianoNotes}
-                acceptableDrumNotes={this.acceptableDrumNotes}
+                acceptablePianoNotes={this.acceptableNotes.piano}
+                acceptableDrumNotes={this.acceptableNotes.drums}
                 playNote={this.playNote}
                 roomID={this.props.roomID}
                 />
