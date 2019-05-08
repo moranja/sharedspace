@@ -39,7 +39,8 @@ export default class GuitarContainer extends Component{
             <div onKeyDown={this.handleKeyDown} onKeyUp={this.handleKeyUp} tabIndex="0">
                 <br></br>
                 <div>
-                    <div>
+                    <div align="center">
+                        <img src={require("../media/guitar.png")} alt="guitar" width="75%" style={{opacity: "0.7"}}></img>
                         <img src={require("../media/pianoKeyboard.jpg")} alt="piano keyboard" width="100%" style={{opacity: "0.7"}}></img>
                     </div>
                     <div>
