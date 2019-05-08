@@ -42,7 +42,7 @@ console.log("trying to connect")
     socket.on('disconnect', () => {
       let departingUser = usernamesAndSocketIDs[socket.id]
       let currentRoom = null
-      
+
       for (var room in rooms) {
         if (rooms[room].users.includes(departingUser)){
           currentRoom = rooms[room]
@@ -117,6 +117,10 @@ console.log("trying to connect")
     socket.on('pauseVideo', (obj) => {
       console.log("pausingVideo")
       io.sockets.in(`room_${obj.room}`).emit('pauseVideoForAll', ("test"))
+    })
+
+    socket.on('updateVideoID', (obj) => {
+      io.sockets.in(`room_${obj.room}`).emit('receiveNewVideoID', (obj.videoID))
     })
 
     // socket.on('usersInRoom', (roomID) => {
