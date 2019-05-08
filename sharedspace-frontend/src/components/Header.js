@@ -53,7 +53,7 @@ export default class Header extends Component {
 
     render(){
         return (
-            <div className="sixteen wide column" style={{borderStyle: "solid", borderWidth: "0.5px", }}>
+            <div className="sixteen wide column" style={{borderBottom: "solid 0.5px"}}>
 
                 <div className="ui grid" >
                     {this.isInARoom()}

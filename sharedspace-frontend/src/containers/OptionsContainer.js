@@ -52,10 +52,12 @@ export default class OptionsContainer extends React.Component {
 
   render() {
     return (
-      <div className="row" style={{flex: "1", overflow: "hidden"}}>
+      <div className="row" style={{flex: "3", overflow: "hidden"}}>
         <UsersList users={this.state.users} />
         <input type="submit" value="Leave this room" onClick={this.props.leaveRoom} className="ui black basic button"></input>
-        {this.displayOptions()}
+        <br></br>
+        <br></br>
+       {this.displayOptions()}
       </div>
     )
   }

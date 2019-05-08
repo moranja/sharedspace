@@ -97,7 +97,7 @@ export default class RoomContainer extends React.Component {
           return (
             <React.Fragment>
               <Header roomID={this.state.roomID} mode={this.state.mode} handleChange={this.handleChange} logout={this.logout}/>
-              <div className="twelve wide column" align="center" style={{borderRight: "solid 0.5px", overflowY: "scroll",  maxHeight: "680px"}}>
+              <div className="twelve wide column" align="center" style={{borderRight: "solid 0.5px"}}>
                 <VideoContainer roomID={this.state.roomID} videoID={this.state.videoID} />
               </div>
               <div className="four wide column" style={{maxHeight: "87vh", display: "flex", "flex-flow": "column", overflow: "hidden"}}> 
@@ -133,7 +133,7 @@ export default class RoomContainer extends React.Component {
         return (
           <React.Fragment>
             <Header roomID={this.state.roomID} logout={this.logout}/>
-            <div className="sixteen wide column" style={{borderStyle: "solid", borderWidth: "0.5px", overflowY: "scroll"}}>
+            <div className="sixteen wide column">
               <h3>&nbsp;&nbsp;Please enter a room number:</h3>
               <div className="ui form">
                 <div className="fields">
