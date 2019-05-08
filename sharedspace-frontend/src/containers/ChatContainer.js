@@ -24,7 +24,7 @@ export default class ChatContainer extends React.Component {
     const newMessage = {
       userID: parseInt(localStorage.userID),
       username: localStorage.name,
-      roomID: parseInt(this.props.roomID),
+      roomID: this.props.roomID,
       content: this.state.workingMessage
     }
 

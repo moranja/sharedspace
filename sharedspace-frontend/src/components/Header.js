@@ -30,8 +30,8 @@ export default class Header extends Component {
             <div className="eight wide column" style={{borderLeft: "solid 0.5px"}}>
                 <h1>Change Room Mode</h1>
                 <select onChange={(e) => this.props.handleChange(e, "mode")}>
-                    <option value="chat">Chat</option>
                     <option value="music">Music</option>
+                    <option value="chat">Chat</option>
                     <option value="video">Video</option>
                 </select>
             </div>
