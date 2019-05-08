@@ -21,9 +21,9 @@ export default class Header extends Component {
             <div className="four wide column" align="middle">
                 <img src={require("../media/logo.png")} alt="piano keyboard" width="50%"></img>
             </div>
-            <div className="eight wide column" style={{borderLeft: "solid 0.5px"}}>
-                <h1>Change Room Mode</h1>
-                <select onChange={(e) => this.props.handleChange(e, "mode")}>
+            <div className="eight wide column" style={{borderLeft: "solid 0.5px"}} align="right">
+                <h2>Change Room Mode</h2>
+                <select onChange={(e) => this.props.handleChange(e, "mode")} className="ui compact selection dropdown">
                     <option value="music">Music</option>
                     <option value="chat">Chat</option>
                     <option value="video">Video</option>

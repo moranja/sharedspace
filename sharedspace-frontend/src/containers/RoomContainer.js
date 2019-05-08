@@ -58,7 +58,7 @@ export default class RoomContainer extends React.Component {
   updateVideoID = (e) => {
     e.preventDefault()
     io.emit('updateVideoID', {room: this.state.roomID, videoID: this.state.typingVideoID})
-    this.setState({videoID: this.state.typingVideoID})
+    this.setState({videoID: this.state.typingVideoID, typingVideoID: ""})
   }
 
   updateVideoIDFromSocket = (val) => {
@@ -108,7 +108,7 @@ export default class RoomContainer extends React.Component {
               <div className="four wide column" style={{maxHeight: "87vh", display: "flex", "flex-flow": "column", overflow: "hidden"}}>
                 {/* <div className="ui one column grid"> */}
                   {/* <div className="row"> */}
-                    <OptionsContainer leaveRoom={this.leaveRoom} roomID={this.state.roomID} mode={this.state.mode} updateVideoID={this.updateVideoID} handleChange={this.handleChange}/>
+                    <OptionsContainer leaveRoom={this.leaveRoom} roomID={this.state.roomID} mode={this.state.mode} updateVideoID={this.updateVideoID} handleChange={this.handleChange} typingVideoID={this.state.typingVideoID}/>
                   {/* </div> */}
                   {/* <div className="row" style={{borderStyle: "solid", borderWidth: "0.5px", overflowY: "scroll",  height: "680px"}}> */}
                     <ChatContainer roomID={this.state.roomID}/>

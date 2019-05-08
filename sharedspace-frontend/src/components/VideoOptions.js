@@ -7,7 +7,7 @@ const VideoOptions = (props) => (
       <div className="ui form" >
         <div className="fields">
           <div style={{width: "95%", position: "relative", margin: "auto"}} className="field">
-            <input placeholder="YouTube video ID" type="text" onChange={(e) => props.handleChange(e, "typingVideoID")}/>
+            <input placeholder="YouTube video ID" value={props.typingVideoID} type="text" onChange={(e) => props.handleChange(e, "typingVideoID")}/>
             <input type="submit" className="ui black basic button" style={{width: "100%", display: "block"}}/>
           </div>
         </div>

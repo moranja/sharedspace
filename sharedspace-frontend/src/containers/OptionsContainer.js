@@ -23,7 +23,7 @@ export default class OptionsContainer extends React.Component {
     } else if (this.props.mode === "video"){
       return (
         <React.Fragment>
-          <VideoOptions updateVideoID={this.props.updateVideoID} handleChange={this.props.handleChange} />
+          <VideoOptions updateVideoID={this.props.updateVideoID} handleChange={this.props.handleChange} typingVideoID={this.props.typingVideoID}/>
         </React.Fragment>
       )
     }

@@ -20,7 +20,7 @@ export default class InstrumentContainer extends Component{
       )
     } else {
       return(
-        <h2 style={{textAlign: "center"}}>Please Select Your Instrument on the right</h2>
+        <h2 style={{textAlign: "center"}}>Please Select Your Instrument on the Right</h2>
       )
     }
   }
