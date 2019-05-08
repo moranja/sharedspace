@@ -47,7 +47,7 @@ export default class ChatContainer extends React.Component {
   render() {
     return (
       <React.Fragment>
-          <div className="ui comments" style={{overflowY: "scroll", overflowX: "hidden", maxHeight: "650px"}}>
+          <div className="ui comments" style={{width: "95%", position: "relative", overflowY: "scroll", overflowX: "hidden", maxHeight: "650px", margin: "auto"}}>
             <ChatHistoryContainer messages={this.state.messages} />
           {/* </div>
           <div className="ui comments" > */}

@@ -26,10 +26,6 @@ export default class OptionsContainer extends React.Component {
           <VideoOptions updateVideoID={this.props.updateVideoID} handleChange={this.props.handleChange} />
         </React.Fragment>
       )
-    } else {
-      return (
-        <h1>Something's wrong</h1>
-      )
     }
   }
 
@@ -57,10 +53,10 @@ export default class OptionsContainer extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
+      <div className="row">
         <UsersList users={this.state.users} />
         {this.displayOptions()}
-      </React.Fragment>
+      </div>
     )
   }
 
