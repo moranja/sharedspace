@@ -24,10 +24,10 @@ export default class Header extends Component {
       if (this.props.roomID) {
         return (
           <React.Fragment>
-            <div className="four wide column" style={{borderStyle: "non", borderWidth: "0.5px"}} align="middle">
+            <div className="four wide column" align="middle">
                 <img src={require("../media/logo.png")} alt="piano keyboard" width="50%"></img>
             </div>
-            <div className="eight wide column" style={{borderStyle: "solid", borderWidth: "0.5px"}}>
+            <div className="eight wide column" style={{borderLeft: "solid 0.5px"}}>
                 <h1>Change Room Mode</h1>
                 <select onChange={(e) => this.props.handleChange(e, "mode")}>
                     <option value="chat">Chat</option>
@@ -56,7 +56,7 @@ export default class Header extends Component {
 
                 <div className="ui grid" >
                     {this.isInARoom()}
-                    <div className="four wide column" style={{borderStyle: "solid", borderWidth: "0.5px", verticalAlign: "middle"}} align="right" >
+                    <div className="four wide column" align="right" style={{borderLeft: "solid 0.5px"}} >
                         {this.isLoggedIn()}
                     </div>
                 </div>
