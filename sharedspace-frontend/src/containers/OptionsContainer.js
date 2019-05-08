@@ -38,7 +38,7 @@ export default class OptionsContainer extends React.Component {
       })
     }
 
-    // 
+    //
     // console.log('HERE', io) // write an if io.connected statement here, already connected "usually"
     // // socket.io.on('connect', () => {
     //   console.log("connecting on front end")
@@ -46,7 +46,6 @@ export default class OptionsContainer extends React.Component {
     // // })
 
     io.on('usersInRoom', users => {
-      console.log(users)
       this.setState({users: users})
     })
   }

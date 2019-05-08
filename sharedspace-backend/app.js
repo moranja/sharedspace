@@ -94,8 +94,13 @@ console.log("trying to connect")
       Message.create(message)
       Message.findAll()
       .then( messages => {
-        const roomMessages = messages.filter(msg => msg.roomID === roomID)
-        io.emit('messages.newMessageFromServer', roomMessages)
+        const roomMessages = messages.filter(msg => {
+          // console.log(msg.roomID)
+          // console.log(roomID)
+          return msg.roomID == roomID
+        })
+        // console.log(roomMessages)
+        io.sockets.in(`room_${roomID}`).emit('messages.newMessageFromServer', roomMessages)
       })
     })
 

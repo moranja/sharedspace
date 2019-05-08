@@ -6,7 +6,7 @@ export default class ChatHistoryContainer extends React.Component {
   render() {
     return (
       <React.Fragment>
-        {this.props.messages.map(msg => <ChatMessage message={msg} />)}
+        {this.props.messages.map(msg => <ChatMessage message={msg} key={msg.id}/>)}
       </React.Fragment>
     )
   }

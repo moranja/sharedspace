@@ -56,7 +56,6 @@ export default class ActivityContainer extends Component{
   l_piano = new Audio(l_piano)
   p_piano = new Audio(p_piano)
   q_piano = new Audio(semiColon_piano)
-  //acceptableNotes = ["a", "w", "s", "e", "d", "f", "t", "g", "y", "h", "u", "j", "k", "o", "l", "p", ";"]
 
   i_drums = new Audio(i_drums)
   l_drums = new Audio(l_drums)
@@ -94,28 +93,14 @@ export default class ActivityContainer extends Component{
   }
 
   componentDidMount() {
-    console.log(io)
     io.on('pianoReceive', note => {
-      //console.log(note)
       this.playNote(note, "piano")
     })
 
     io.on('drumReceive', note => {
       this.playNote(note, "drums")
     })
-
-
-    // io.on('requestUsers', () => {
-    //   io.emit('requestedUsers', (this.props.roomID))
-    // })
-
   }
-
-  componentDidUpdate() {
-    // console.log("updated")
-    // io.emit('usersInRoom', (this.props.roomID))
-  }
-
 
   render(){
       return(
@@ -131,6 +116,4 @@ export default class ActivityContainer extends Component{
           </React.Fragment>
       )
   }
-
-
 }

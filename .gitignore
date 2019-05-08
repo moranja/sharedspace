@@ -3,6 +3,7 @@
 /sharedspace-backend/package-lock.json
 /sharedspace-frontend/node_modules/
 /sharedspace-frontend/package-lock.json
+/sharedspace-backend/database.sqlite
 
 
 # Compiled source #
