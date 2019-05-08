@@ -3,8 +3,6 @@ import ChatBox from '../components/ChatBox'
 import ChatHistoryContainer from './ChatHistoryContainer'
 import {io} from '../components/ioConnection'
 
-//window.io = io
-
 export default class ChatContainer extends React.Component {
 
   state = {
@@ -12,11 +10,10 @@ export default class ChatContainer extends React.Component {
     workingMessage: ""
   }
 
-
   handleChange = (e) => {
     e.persist()
     this.setState({workingMessage: e.target.value})
-  } // Mark is typing?
+  }
 
   handleSubmit = (e) => {
     e.persist()
@@ -41,7 +38,6 @@ export default class ChatContainer extends React.Component {
     io.on('messages.newMessageFromServer', roomMessages => {
       this.setState({ messages: roomMessages })
     })
-
   }
 
   render() {
@@ -49,8 +45,6 @@ export default class ChatContainer extends React.Component {
       <React.Fragment>
           <div className="ui comments" style={{borderTop: "solid 0.5px", flex: "5", width: "95%", overflowY: "scroll", overflowX: "hidden", margin: "auto"}}>
             <ChatHistoryContainer messages={this.state.messages} />
-          {/* </div>
-          <div className="ui comments" > */}
           <p></p>
             <ChatBox workingMessage={this.state.workingMessage} handleSubmit={this.handleSubmit} handleChange={this.handleChange}/>
           </div>

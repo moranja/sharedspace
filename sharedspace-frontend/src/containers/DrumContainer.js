@@ -4,7 +4,7 @@ import DrumKey from '../components/DrumKey'
 
 window.io = io
 
-export default class Drum extends Component{
+export default class DrumContainer extends Component{
 
     drumKeys =[
         {character: "A",
@@ -45,7 +45,7 @@ export default class Drum extends Component{
             this.setState({currentKeys: [...this.state.currentKeys, e.key.toUpperCase()]})
         }
       }
-  
+
       handleKeyUp = (e) => {
         e.persist()
         let newKeys = [...this.state.currentKeys].filter(k => k !== e.key.toUpperCase())

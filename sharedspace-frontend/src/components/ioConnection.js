@@ -6,7 +6,7 @@ let io = null
 
 const initSocket = () => {
   if (!io) {
-    io = socketIO('http://10.185.5.173:8080', { //socket.io = io =......
+    io = socketIO('http://10.185.5.173:8080', {
       transportOptions: {
         polling: {
           extraHeaders: {
@@ -22,4 +22,3 @@ const resetIO = () => {
   io = null
 }
 export  {io, initSocket, resetIO}
-// export const socket =   { io }

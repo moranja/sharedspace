@@ -20,6 +20,15 @@ export default class RoomContainer extends React.Component {
     roomID: null
   }
 
+  createUser = (e) => {
+    e.preventDefault()
+    this.setState({login: "createUser"})
+  }
+
+  login = () => {
+    this.setState({login: "loggedIn"})
+  }
+
   logout = () => {
     localStorage.clear()
     io.disconnect()
@@ -46,13 +55,14 @@ export default class RoomContainer extends React.Component {
     this.setState({ chosenInstrument: "" })
   }
 
-  login = () => {
-    this.setState({login: "loggedIn"})
+  updateVideoID = (e) => {
+    e.preventDefault()
+    io.emit('updateVideoID', {room: this.state.roomID, videoID: this.state.typingVideoID})
+    this.setState({videoID: this.state.typingVideoID})
   }
 
-  createUser = (e) => {
-    e.preventDefault()
-    this.setState({login: "createUser"})
+  updateVideoIDFromSocket = (val) => {
+    this.setState({videoID: val})
   }
 
   handleChange = (e, stateValue) => {
@@ -63,16 +73,6 @@ export default class RoomContainer extends React.Component {
     e.persist()
     e.preventDefault()
     this.setState({roomID: this.state.typingID})
-  }
-
-  updateVideoID = (e) => {
-    e.preventDefault()
-    io.emit('updateVideoID', {room: this.state.roomID, videoID: this.state.typingVideoID})
-    this.setState({videoID: this.state.typingVideoID})
-  }
-
-  updateVideoIDFromSocket = (val) => {
-    this.setState({videoID: val})
   }
 
   selectRoomWindow(){
@@ -188,5 +188,4 @@ export default class RoomContainer extends React.Component {
       </React.Fragment>
     )
   }
-
 }

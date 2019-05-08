@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import ViewContainer from './ViewContainer'
 import InstrumentContainer from './InstrumentContainer'
 // Piano sounds
 import a_piano from '../media/piano/448546__tedagame__c3.ogg'
@@ -29,13 +28,9 @@ import w_drums from '../media/Drums/187535__waveplay-old__crash-cymbol.wav'
 import a_drums from '../media/Drums/250530__waveplay-old__hi-hat.wav'
 import l_drums from '../media/Drums/111202__corrodedmaster__bass.wav'
 
-
-
 import {io} from '../components/ioConnection'
 
 window.io = io
-
-
 
 export default class ActivityContainer extends Component{
 
@@ -105,7 +100,6 @@ export default class ActivityContainer extends Component{
   render(){
       return(
           <React.Fragment>
-              <ViewContainer />
               <InstrumentContainer
                 chosenInstrument={this.props.chosenInstrument}
                 acceptablePianoNotes={this.acceptableNotes.piano}

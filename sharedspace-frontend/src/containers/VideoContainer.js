@@ -40,14 +40,10 @@ export default class VideoContainer extends React.Component {
   componentDidMount() {
     console.log(io)
     io.on('playVideoForAll', note => {
-      // console.log(note)
-      // console.log(this.state.yt)
       this.playVideo()
     })
 
     io.on('pauseVideoForAll', note => {
-      // console.log(note)
-      // console.log(this.state.yt)
       this.pauseVideo()
     })
 
