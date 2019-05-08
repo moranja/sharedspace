@@ -2,33 +2,55 @@ import React, {Component} from 'react'
 import {io} from '../components/ioConnection'
 import DrumKey from '../components/DrumKey'
 
-// import a_drums from '../media/Drums/241746__abhijitchirde__cymbol.wav' // think this file is bad, aiffs are huge it might be too big
-// import s_drums from '../media/Drums/111202__corrodedmaster__bass.wav'
-// import d_drums from '../media/Drums/111661__bigjoedrummer__tom-gretsch-cat-maple-14-floor-1.wav'
-// import f_drums from '../media/Drums/173838__yellowtree__tom-high.wav'
-// import j_drums from '../media/Drums/186621__snapper4298__tom-2.wav'
-// import k_drums from '../media/Drums/187535__waveplay-old__crash-cymbol.wav'
-// import l_drums from '../media/Drums/250530__waveplay-old__hi-hat.wav'
-// import semiColon_drums from '../media/Drums/270156__theriavirra__04c-snare-smooth-cymba
-
 window.io = io
 
 export default class Drum extends Component{
 
-    drumKeys=["i", "l", "x", "d", "j", "w", "a", "c"]
-
+    drumKeys =[
+        {character: "A",
+        top: "25%",
+        left: "13%"},
+        {character: "X",
+        top: "42%",
+        left: "31%"},
+        {character: "W",
+        top: "4%",
+        left: "27%"},
+        {character: "D",
+        top: "28%",
+        left: "35%"},
+        {character: "J",
+        top: "28%",
+        left: "57%"},
+        {character: "L",
+        top: "36%",
+        left: "76%"},
+        {character: "I",
+        top: "13%",
+        left: "84%"},
+        {character: "C",
+        top: "59%",
+        left: "45.5%"},
+    ]
 
     state={
         currentKeys: []
       }
 
-    handleClick = (e) => {
-      e.preventDefault() // so space doesnt move the page
+    handleKeyDown = (e) => {
+        e.preventDefault()
         if (!e.repeat) {
             const note = e.key
             this.sendNote(note)
+            this.setState({currentKeys: [...this.state.currentKeys, e.key.toUpperCase()]})
         }
-    }
+      }
+  
+      handleKeyUp = (e) => {
+        e.persist()
+        let newKeys = [...this.state.currentKeys].filter(k => k !== e.key.toUpperCase())
+        this.setState({currentKeys: [...newKeys]})
+      }
 
     sendNote = (note) => {
         if (this.props.acceptableDrumNotes.includes(note) || note === " "){
@@ -38,38 +60,12 @@ export default class Drum extends Component{
 
     render(){
         return(
-            <div onKeyDown={(e) => this.handleClick(e)} tabIndex="0" >
+            <div onKeyDown={this.handleKeyDown} onKeyUp={this.handleKeyUp}  tabIndex="0" >
                 <br></br>
                 <div>
                     <div id="drumContainer" style={{position: "relative", borderStyle: "solid", borderWidth: "1px"}}>
                         <img src={require("../media/Drumset.jpg")} alt="drum" width="100%" style={{opacity: "0.7"}}></img>
-                        {/* <div style={{borderStyle: "solid", borderWidth: "2px"}}></div> */}
-                        {/* {this.drumKeys.map(key => <DrumKey character={key} currentKeys={this.state.currentKeys}/>)} */}
-                        <div className="drumKey" style={{position: "absolute", top: "24%", left: "12%", border: "2px solid black", background:"#ffffffa8", backgroundColor: "#ffffffa8"}}>
-                            <h1 className="drumKeyContent">A</h1>
-                        </div>
-                        <div className="drumKey" style={{position: "absolute", top: "41%", left: "30%", border: "2px solid black", background:"#ffffffa8", backgroundColor: "#ffffffa8"}}>
-                            <h1 className="drumKeyContent">X</h1>
-                        </div>
-                        <div className="drumKey" style={{position: "absolute", top: "3%", left: "26%", border: "2px solid black", background:"#ffffffa8", backgroundColor: "#ffffffa8"}}>
-                            <h1 className="drumKeyContent">W</h1>
-                        </div>
-                        <div className="drumKey" style={{position: "absolute", top: "27%", left: "34%", border: "2px solid black", background:"#ffffffa8", backgroundColor: "#ffffffa8"}}>
-                            <h1 className="drumKeyContent">D</h1>
-                        </div>
-                        <div className="drumKey" style={{position: "absolute", top: "27%", left: "56%", border: "2px solid black", background:"#ffffffa8", backgroundColor: "#ffffffa8"}}>
-                            <h1 className="drumKeyContent">J</h1>
-                        </div>
-                        <div className="drumKey" style={{position: "absolute", top: "35%", left: "75%", border: "2px solid black", background:"#ffffffa8", backgroundColor: "#ffffffa8"}}>
-                            <h1 className="drumKeyContent">L</h1>
-                        </div>
-                        <div className="drumKey" style={{position: "absolute", top: "12%", left: "83%", border: "2px solid black", background:"#ffffffa8", backgroundColor: "#ffffffa8"}}>
-                            <h1 className="drumKeyContent">I</h1>
-                        </div>
-                        <div className="drumKey" style={{position: "absolute", top: "57%", left: "44.5%", border: "2px solid black", background:"#ffffffa8", backgroundColor: "#ffffffa8"}}>
-                            <h1 className="drumKeyContent">C</h1>
-                        </div>
-                        
+                        {this.drumKeys.map(key => <DrumKey key={key.character} {...key} currentKeys={this.state.currentKeys}/>)}
                     </div>
 
                 </div>

@@ -36,23 +36,47 @@
 
     <style>
     .key {
-      width: 10%;
+      width: 9%;
       display: table;
+      margin: 0.5%
     }
 
     .drumKey {
-      align: center;
-      width: 8%;
+      width: 6%;
+      display: table;
+      position: absolute;
+    }
+
+    .drumKey:after {
+      content: "";
+      display: block;
+      padding-bottom: 10%;
+      align-content: center;
+    }
+
+    .drumKey:before {
+      content: "";
+      display: block;
+      padding-bottom: 10%;
+      align-content: center;
     }
 
     .drumKeyContent {
       text-align: center;
+      position: relative;
     }
 
     .key:after {
       content: "";
       display: block;
-      padding-bottom: 100%;
+      padding-bottom: 20%;
+      align-content: center;
+    }
+
+    .key:before {
+      content: "";
+      display: block;
+      padding-bottom: 20%;
       align-content: center;
     }
 
@@ -70,8 +94,8 @@
 
     .keyContent {
       position: absolute;
-      height: 8%;
-      width: 8%;
+      text-align: center;
+      position: relative;
     }
 
     .foreground {

@@ -11,7 +11,7 @@ import {initSocket} from '../components/ioConnection'
 export default class RoomContainer extends React.Component {
 
   state = {
-    mode: "chat",
+    mode: "music",
     chosenInstrument: "",
     login: "login",
     videoID: "cJsyMmC76aM"
