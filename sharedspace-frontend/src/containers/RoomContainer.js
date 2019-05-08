@@ -6,7 +6,9 @@ import VideoContainer from './VideoContainer'
 import Login from '../components/login'
 import CreateUser from '../components/CreateUser'
 import Header from '../components/Header'
-import {initSocket} from '../components/ioConnection'
+import { io, initSocket, resetIO } from '../components/ioConnection'
+
+window.io = io
 
 export default class RoomContainer extends React.Component {
 
@@ -14,11 +16,26 @@ export default class RoomContainer extends React.Component {
     mode: "music",
     chosenInstrument: "",
     login: "login",
-    videoID: "cJsyMmC76aM"
+    videoID: "cJsyMmC76aM",
+    roomID: null
   }
 
   logout = () => {
-    this.setState({login: "login"})
+    localStorage.clear()
+    io.disconnect()
+    resetIO()
+    this.setState({
+      login: "login",
+      roomID: null
+    })
+  }
+
+  leaveRoom = () => {
+    io.disconnect()
+    resetIO()
+    this.setState({
+      roomID: null
+    })
   }
 
   selectInstrument = (inst) => {
@@ -67,7 +84,7 @@ export default class RoomContainer extends React.Component {
               <div className="four wide column" style={{maxHeight: "87vh", display: "flex", "flex-flow": "column", overflow: "hidden"}} >
                 {/* <div className="ui one column grid" style={{height: "105%", bottom: "0px"}}> */}
                   {/* <div className="row"> */}
-                    <OptionsContainer roomID={this.state.roomID} mode={this.state.mode} chosenInstrument={this.state.chosenInstrument} selectInstrument={this.selectInstrument} resetInstrument={this.resetInstrument}/>
+                    <OptionsContainer leaveRoom={this.leaveRoom} roomID={this.state.roomID} mode={this.state.mode} chosenInstrument={this.state.chosenInstrument} selectInstrument={this.selectInstrument} resetInstrument={this.resetInstrument}/>
                   {/* </div> */}
                   {/* <div className="row" style={{bottom: "0px", borderTop: "solid 0.5px", overflowY: "scroll", maxHeight: "450px"}}> */}
                     <ChatContainer roomID={this.state.roomID}/>
@@ -86,7 +103,7 @@ export default class RoomContainer extends React.Component {
               <div className="four wide column" style={{maxHeight: "87vh", display: "flex", "flex-flow": "column", overflow: "hidden"}}> 
                 {/* <div className="ui one column grid"> */}
                   {/* <div className="row"> */}
-                    <OptionsContainer roomID={this.state.roomID} mode={this.state.mode} updateVideoID={this.updateVideoID} handleChange={this.handleChange}/>
+                    <OptionsContainer leaveRoom={this.leaveRoom} roomID={this.state.roomID} mode={this.state.mode} updateVideoID={this.updateVideoID} handleChange={this.handleChange}/>
                   {/* </div> */}
                   {/* <div className="row" style={{borderStyle: "solid", borderWidth: "0.5px", overflowY: "scroll",  height: "680px"}}> */}
                     <ChatContainer roomID={this.state.roomID}/>
@@ -105,7 +122,7 @@ export default class RoomContainer extends React.Component {
               <div className="four wide column" style={{maxHeight: "87vh", display: "flex", "flex-flow": "column", overflow: "hidden"}}>
                 {/* <div className="ui one column grid"> */}
                   {/* <div className="row"> */}
-                    <OptionsContainer roomID={this.state.roomID} mode={this.state.mode} updateVideoID={this.updateVideoID} handleChange={this.handleChange}/>
+                    <OptionsContainer leaveRoom={this.leaveRoom} roomID={this.state.roomID} mode={this.state.mode} updateVideoID={this.updateVideoID} handleChange={this.handleChange}/>
                   {/* </div> */}
                 {/* </div> */}
               </div>
