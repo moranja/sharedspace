@@ -67,7 +67,12 @@ export default class RoomContainer extends React.Component {
 
   updateVideoID = (e) => {
     e.preventDefault()
+    io.emit('updateVideoID', {room: this.state.roomID, videoID: this.state.typingVideoID})
     this.setState({videoID: this.state.typingVideoID})
+  }
+
+  updateVideoIDFromSocket = (val) => {
+    this.setState({videoID: val})
   }
 
   selectRoomWindow(){
@@ -98,9 +103,9 @@ export default class RoomContainer extends React.Component {
             <React.Fragment>
               <Header roomID={this.state.roomID} mode={this.state.mode} handleChange={this.handleChange} logout={this.logout}/>
               <div className="twelve wide column" align="center" style={{borderRight: "solid 0.5px", overflowY: "scroll",  maxHeight: "680px"}}>
-                <VideoContainer roomID={this.state.roomID} videoID={this.state.videoID} />
+                <VideoContainer roomID={this.state.roomID} videoID={this.state.videoID} updateVideoIDFromSocket={this.updateVideoIDFromSocket}/>
               </div>
-              <div className="four wide column" style={{maxHeight: "87vh", display: "flex", "flex-flow": "column", overflow: "hidden"}}> 
+              <div className="four wide column" style={{maxHeight: "87vh", display: "flex", "flex-flow": "column", overflow: "hidden"}}>
                 {/* <div className="ui one column grid"> */}
                   {/* <div className="row"> */}
                     <OptionsContainer leaveRoom={this.leaveRoom} roomID={this.state.roomID} mode={this.state.mode} updateVideoID={this.updateVideoID} handleChange={this.handleChange}/>

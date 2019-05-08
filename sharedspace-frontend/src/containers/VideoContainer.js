@@ -19,7 +19,7 @@ export default class VideoContainer extends React.Component {
     // 5 (video cued)
 
     if (e.data === 1) { // if the video has been unpaused, then tell that to the backend
-      io.emit('playVideo', {room: this.props.roomID })
+        io.emit('playVideo', {room: this.props.roomID })
     } else if (e.data === 2) { // same for when it gets paused
       io.emit('pauseVideo', {room: this.props.roomID })
     }
@@ -49,6 +49,10 @@ export default class VideoContainer extends React.Component {
       // console.log(note)
       // console.log(this.state.yt)
       this.pauseVideo()
+    })
+
+    io.on('receiveNewVideoID', videoID => {
+      this.props.updateVideoIDFromSocket(videoID)
     })
   }
 
