@@ -50,7 +50,7 @@ export default class OptionsContainer extends React.Component {
         <input type="submit" value="Leave this room" onClick={this.props.leaveRoom} className="ui black basic button"></input>
         <br></br>
         <br></br>
-       {this.displayOptions()}
+        {this.displayOptions()}
       </div>
     )
   }

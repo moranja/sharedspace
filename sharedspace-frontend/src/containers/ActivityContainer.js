@@ -140,17 +140,17 @@ export default class ActivityContainer extends Component{
   }
 
   render(){
-      return(
-          <React.Fragment>
-              <InstrumentContainer
-                chosenInstrument={this.props.chosenInstrument}
-                acceptablePianoNotes={this.acceptableNotes.piano}
-                acceptableDrumNotes={this.acceptableNotes.drums}
-                acceptableGuitarNotes={this.acceptableNotes.guitar}
-                playNote={this.playNote}
-                roomID={this.props.roomID}
-                />
-          </React.Fragment>
-      )
+    return(
+      <React.Fragment>
+        <InstrumentContainer
+          chosenInstrument={this.props.chosenInstrument}
+          acceptablePianoNotes={this.acceptableNotes.piano}
+          acceptableDrumNotes={this.acceptableNotes.drums}
+          acceptableGuitarNotes={this.acceptableNotes.guitar}
+          playNote={this.playNote}
+          roomID={this.props.roomID}
+          />
+      </React.Fragment>
+    )
   }
 }

@@ -83,18 +83,12 @@ export default class RoomContainer extends React.Component {
           return (
             <React.Fragment>
               <Header roomID={this.state.roomID} mode={this.state.mode} handleChange={this.handleChange} logout={this.logout}/>
-              <div className="twelve wide column" style={{maxHeight: "87vh", overflow: "hidden", borderRight: "solid 0.5px"}}>
+              <div className="twelve wide column" style={{height: "87vh", overflow: "hidden", borderRight: "solid 0.5px"}}>
                 <ActivityContainer roomID={this.state.roomID} chosenInstrument={this.state.chosenInstrument}/>
               </div>
-              <div className="four wide column" style={{maxHeight: "87vh", display: "flex", "flex-flow": "column", overflow: "hidden"}} >
-                {/* <div className="ui one column grid" style={{height: "105%", bottom: "0px"}}> */}
-                  {/* <div className="row"> */}
-                    <OptionsContainer leaveRoom={this.leaveRoom} roomID={this.state.roomID} mode={this.state.mode} chosenInstrument={this.state.chosenInstrument} selectInstrument={this.selectInstrument} resetInstrument={this.resetInstrument}/>
-                  {/* </div> */}
-                  {/* <div className="row" style={{bottom: "0px", borderTop: "solid 0.5px", overflowY: "scroll", maxHeight: "450px"}}> */}
-                    <ChatContainer roomID={this.state.roomID}/>
-                  {/* </div> */}
-                {/* </div> */}
+              <div className="four wide column" style={{height: "87vh", display: "flex", "flex-flow": "column", overflow: "hidden"}} >
+                <OptionsContainer leaveRoom={this.leaveRoom} roomID={this.state.roomID} mode={this.state.mode} chosenInstrument={this.state.chosenInstrument} selectInstrument={this.selectInstrument} resetInstrument={this.resetInstrument}/>
+                <ChatContainer roomID={this.state.roomID}/>
               </div>
             </React.Fragment>
           )
@@ -106,14 +100,8 @@ export default class RoomContainer extends React.Component {
                 <VideoContainer roomID={this.state.roomID} videoID={this.state.videoID} updateVideoIDFromSocket={this.updateVideoIDFromSocket}/>
               </div>
               <div className="four wide column" style={{maxHeight: "87vh", display: "flex", "flex-flow": "column", overflow: "hidden"}}>
-                {/* <div className="ui one column grid"> */}
-                  {/* <div className="row"> */}
-                    <OptionsContainer leaveRoom={this.leaveRoom} roomID={this.state.roomID} mode={this.state.mode} updateVideoID={this.updateVideoID} handleChange={this.handleChange} typingVideoID={this.state.typingVideoID}/>
-                  {/* </div> */}
-                  {/* <div className="row" style={{borderStyle: "solid", borderWidth: "0.5px", overflowY: "scroll",  height: "680px"}}> */}
-                    <ChatContainer roomID={this.state.roomID}/>
-                  {/* </div> */}
-                {/* </div> */}
+                <OptionsContainer leaveRoom={this.leaveRoom} roomID={this.state.roomID} mode={this.state.mode} updateVideoID={this.updateVideoID} handleChange={this.handleChange} typingVideoID={this.state.typingVideoID}/>
+                <ChatContainer roomID={this.state.roomID}/>
               </div>
             </React.Fragment>
           )
@@ -125,11 +113,7 @@ export default class RoomContainer extends React.Component {
                 <ChatContainer roomID={this.state.roomID}/>
               </div>
               <div className="four wide column" style={{maxHeight: "87vh", display: "flex", "flex-flow": "column", overflow: "hidden"}}>
-                {/* <div className="ui one column grid"> */}
-                  {/* <div className="row"> */}
-                    <OptionsContainer leaveRoom={this.leaveRoom} roomID={this.state.roomID} mode={this.state.mode} updateVideoID={this.updateVideoID} handleChange={this.handleChange}/>
-                  {/* </div> */}
-                {/* </div> */}
+                <OptionsContainer leaveRoom={this.leaveRoom} roomID={this.state.roomID} mode={this.state.mode} updateVideoID={this.updateVideoID} handleChange={this.handleChange}/>
               </div>
             </React.Fragment>
           )

@@ -35,27 +35,27 @@ export default class PianoContainer extends Component{
     }
 
     render(){
-        return(
-            <div onKeyDown={this.handleKeyDown} onKeyUp={this.handleKeyUp} tabIndex="0">
-                <br></br>
-                <div>
-                    <div>
-                        <img src={require("../media/pianoKeyboard.jpg")} alt="piano keyboard" width="100%" style={{opacity: "0.7"}}></img>
-                    </div>
-                    <div>
-                        <div className="ui grid">
-                          <div className="row">
-                            <div className="halfKey" />
-                            {this.topRowKeys.map(key => <PianoKey character={key} currentKeys={this.state.currentKeys}/>)}
-                            <div className="halfKey" />
-                          </div>
-                          <div className="row">
-                            {this.bottomRowKeys.map(key => <PianoKey character={key} currentKeys={this.state.currentKeys}/>)}
-                          </div>
-                        </div>
-                    </div>
-                </div>
+      return(
+        <div onKeyDown={this.handleKeyDown} onKeyUp={this.handleKeyUp} tabIndex="0">
+          <br></br>
+          <div>
+            <div>
+                <img src={require("../media/pianoKeyboard.jpg")} alt="piano keyboard" width="100%" style={{opacity: "0.7"}}></img>
             </div>
-        )
+            <div>
+              <div className="ui grid">
+                <div className="row">
+                  <div className="halfKey" />
+                    {this.topRowKeys.map(key => <PianoKey character={key} currentKeys={this.state.currentKeys}/>)}
+                  <div className="halfKey" />
+                </div>
+                <div className="row">
+                  {this.bottomRowKeys.map(key => <PianoKey character={key} currentKeys={this.state.currentKeys}/>)}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )
     }
 }

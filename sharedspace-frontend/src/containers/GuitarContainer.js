@@ -47,7 +47,7 @@ export default class GuitarContainer extends Component{
                         <div className="ui grid">
                           <div className="row">
                             <div className="halfKey" />
-                            {this.topRowKeys.map(key => <PianoKey character={key} currentKeys={this.state.currentKeys}/>)}
+                              {this.topRowKeys.map(key => <PianoKey character={key} currentKeys={this.state.currentKeys}/>)}
                             <div className="halfKey" />
                           </div>
                           <div className="row">

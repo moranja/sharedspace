@@ -33,13 +33,13 @@ export default class Header extends Component {
         )
       } else {
         return (
-          <React.Fragment>
-            <div className="four wide column" align="middle">
-                <img src={require("../media/logo.png")} alt="piano keyboard" width="50%"></img>
-            </div>
-            <div className="eight wide column" >
-            </div>
-          </React.Fragment>
+            <React.Fragment>
+                <div className="four wide column" align="middle">
+                    <img src={require("../media/logo.png")} alt="piano keyboard" width="50%"></img>
+                </div>
+                <div className="eight wide column" >
+                </div>
+            </React.Fragment>
         )
       }
     }

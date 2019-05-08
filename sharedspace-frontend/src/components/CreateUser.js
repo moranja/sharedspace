@@ -15,7 +15,6 @@ export default class CreateUser extends Component {
     }
 
     submitUser = (e) => {
-        console.log(this.state.password.length)
         e.persist()
         e.preventDefault()
         fetch('http://10.185.5.173:3001/createUser', {
