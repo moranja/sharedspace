@@ -52,7 +52,7 @@ export default class OptionsContainer extends React.Component {
 
   render() {
     return (
-      <div className="row">
+      <div className="row" style={{flex: "1", overflow: "hidden"}}>
         <UsersList users={this.state.users} />
         {this.displayOptions()}
       </div>

@@ -63,7 +63,7 @@ export default class Drum extends Component{
             <div onKeyDown={this.handleKeyDown} onKeyUp={this.handleKeyUp}  tabIndex="0" >
                 <br></br>
                 <div>
-                    <div id="drumContainer" style={{position: "relative", borderStyle: "solid", borderWidth: "1px"}}>
+                    <div id="drumContainer" style={{width: "95%", position: "relative", margin: "auto"}}>
                         <img src={require("../media/Drumset.jpg")} alt="drum" width="100%" style={{opacity: "0.7"}}></img>
                         {this.drumKeys.map(key => <DrumKey key={key.character} {...key} currentKeys={this.state.currentKeys}/>)}
                     </div>

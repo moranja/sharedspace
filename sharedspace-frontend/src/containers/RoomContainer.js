@@ -64,7 +64,7 @@ export default class RoomContainer extends React.Component {
               <div className="twelve wide column" style={{borderRight: "solid 0.5px"}}>
                 <ActivityContainer roomID={this.state.roomID} chosenInstrument={this.state.chosenInstrument}/>
               </div>
-              <div className="four wide column" style={{position: "relative"}} >
+              <div className="four wide column" style={{maxHeight: "87vh", display: "flex", "flex-flow": "column", overflow: "hidden"}} >
                 {/* <div className="ui one column grid" style={{height: "105%", bottom: "0px"}}> */}
                   {/* <div className="row"> */}
                     <OptionsContainer roomID={this.state.roomID} mode={this.state.mode} chosenInstrument={this.state.chosenInstrument} selectInstrument={this.selectInstrument} resetInstrument={this.resetInstrument}/>
@@ -80,10 +80,10 @@ export default class RoomContainer extends React.Component {
           return (
             <React.Fragment>
               <Header roomID={this.state.roomID} mode={this.state.mode} handleChange={this.handleChange} logout={this.logout}/>
-              <div className="twelve wide column" style={{borderStyle: "solid", borderWidth: "2px", overflowY: "scroll",  height: "680px"}}>
+              <div className="twelve wide column" align="center" style={{borderRight: "solid 0.5px", overflowY: "scroll",  maxHeight: "680px"}}>
                 <VideoContainer roomID={this.state.roomID} videoID={this.state.videoID} />
               </div>
-              <div className="four wide column">
+              <div className="four wide column" style={{maxHeight: "87vh", display: "flex", "flex-flow": "column", overflow: "hidden"}}> 
                 {/* <div className="ui one column grid"> */}
                   {/* <div className="row"> */}
                     <OptionsContainer roomID={this.state.roomID} mode={this.state.mode} updateVideoID={this.updateVideoID} handleChange={this.handleChange}/>
@@ -102,7 +102,7 @@ export default class RoomContainer extends React.Component {
               <div className="twelve wide column scroller" style={{borderStyle: "solid", borderWidth: "0.5px", overflowY: "scroll",  height: "680px"}}>
                 <ChatContainer roomID={this.state.roomID}/>
               </div>
-              <div className="four wide column">
+              <div className="four wide column" style={{maxHeight: "87vh", display: "flex", "flex-flow": "column", overflow: "hidden"}}>
                 {/* <div className="ui one column grid"> */}
                   {/* <div className="row"> */}
                     <OptionsContainer roomID={this.state.roomID} mode={this.state.mode} updateVideoID={this.updateVideoID} handleChange={this.handleChange}/>
@@ -159,7 +159,7 @@ export default class RoomContainer extends React.Component {
     return (
       <React.Fragment>
         <div>
-          <div className="ui grid foreground" style={{borderStyle: "solid", borderWidth: "0.5px"}}>
+          <div className="ui grid foreground" style={{maxHeight: "100vh", borderStyle: "solid", borderWidth: "0.5px"}}>
             {this.selectRoomWindow()}
           </div>
         </div>
