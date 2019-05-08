@@ -38,10 +38,6 @@ export default class VideoContainer extends React.Component {
   }
 
   componentDidMount() {
-    io.on('connect', () => {
-      io.emit('room', this.props.roomID )
-    })
-
     io.on('playVideoForAll', () => {
       console.log(this.state.yt)
       this.playVideo()
