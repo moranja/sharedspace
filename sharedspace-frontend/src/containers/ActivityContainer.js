@@ -20,14 +20,14 @@ import l_piano from '../media/piano/448609__tedagame__d4.ogg'
 import p_piano from '../media/piano/448602__tedagame__d-4.ogg'
 import semiColon_piano from '../media/piano/448613__tedagame__e4.ogg'
 // Drum sounds
-import a_drums from '../media/Drums/241746__abhijitchirde__cymbol.wav' // think this file is bad, aiffs are huge it might be too big
-import s_drums from '../media/Drums/111202__corrodedmaster__bass.wav'
-import d_drums from '../media/Drums/111661__bigjoedrummer__tom-gretsch-cat-maple-14-floor-1.wav'
-import f_drums from '../media/Drums/173838__yellowtree__tom-high.wav'
+import i_drums from '../media/Drums/241746__abhijitchirde__cymbol.wav' // think this file is bad, aiffs are huge it might be too big
+import c_drums from '../media/Drums/111202__corrodedmaster__bass.wav'
+import x_drums from '../media/Drums/111661__bigjoedrummer__tom-gretsch-cat-maple-14-floor-1.wav'
+import d_drums from '../media/Drums/173838__yellowtree__tom-high.wav'
 import j_drums from '../media/Drums/186621__snapper4298__tom-2.wav'
-import k_drums from '../media/Drums/187535__waveplay-old__crash-cymbol.wav'
-import l_drums from '../media/Drums/250530__waveplay-old__hi-hat.wav'
-import semiColon_drums from '../media/Drums/270156__theriavirra__04c-snare-smooth-cymbals-snares.wav'
+import w_drums from '../media/Drums/187535__waveplay-old__crash-cymbol.wav'
+import a_drums from '../media/Drums/250530__waveplay-old__hi-hat.wav'
+import l_drums from '../media/Drums/270156__theriavirra__04c-snare-smooth-cymbals-snares.wav'
 
 import {io} from '../components/ioConnection'
 
@@ -56,15 +56,15 @@ export default class ActivityContainer extends Component{
   q_piano = new Audio(semiColon_piano)
   acceptablePianoNotes = ["a", "w", "s", "e", "d", "f", "t", "g", "y", "h", "u", "j", "k", "o", "l", "p", ";"]
 
-  a_drums = new Audio(a_drums)
-  s_drums = new Audio(s_drums)
-  d_drums = new Audio(d_drums)
-  f_drums = new Audio(f_drums)
-  j_drums = new Audio(j_drums)
-  k_drums = new Audio(k_drums)
+  i_drums = new Audio(i_drums)
   l_drums = new Audio(l_drums)
-  q_drums = new Audio(semiColon_drums)
-  acceptableDrumNotes = ["a", "s", "d", "f", "j", "k", "l", ";"]
+  x_drums = new Audio(x_drums)
+  d_drums = new Audio(d_drums)
+  j_drums = new Audio(j_drums)
+  w_drums = new Audio(w_drums)
+  a_drums = new Audio(a_drums)
+  c_drums = new Audio(c_drums)
+  acceptableDrumNotes = ["i", "l", "x", "d", "j", "w", "a", "c"]
 
   playNote(note, instrument){
     if (instrument === "piano") {

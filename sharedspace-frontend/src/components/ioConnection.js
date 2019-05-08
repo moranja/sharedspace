@@ -5,7 +5,7 @@ import socketIO from 'socket.io-client'
 let io = null
 
 const initSocket = () => {
-  io = socketIO('http://10.185.1.169:8080', {
+  io = socketIO('http://localhost:8080', {
     transportOptions: {
       polling: {
         extraHeaders: {

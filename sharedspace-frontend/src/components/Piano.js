@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Key from '../components/Key'
+import PianoKey from './PianoKey'
 import {io} from '../components/ioConnection'
 
 window.io = io
@@ -46,11 +46,11 @@ export default class Piano extends Component{
                         <div className="ui grid">
                           <div className="row">
                             <div className="halfKey" />
-                            {this.topRowKeys.map(key => <Key character={key} currentKeys={this.state.currentKeys}/>)}
+                            {this.topRowKeys.map(key => <PianoKey character={key} currentKeys={this.state.currentKeys}/>)}
                             <div className="halfKey" />
                           </div>
                           <div className="row">
-                            {this.bottomRowKeys.map(key => <Key character={key} currentKeys={this.state.currentKeys}/>)}
+                            {this.bottomRowKeys.map(key => <PianoKey character={key} currentKeys={this.state.currentKeys}/>)}
                           </div>
                         </div>
                     </div>
