@@ -143,6 +143,7 @@ io.listen(8081)
 app.post('/createUser', (req, res) => {
   newUser = User.build({username: req.body.username})
   newUser.password = req.body.password
+  // eval(pry.it)
   newUser.save()
   .then(newUser => res.json(newUser.toJSON()))
   .catch(error => {
@@ -152,7 +153,10 @@ app.post('/createUser', (req, res) => {
 })
 
 app.post('/login', (req, res) => {
-  User.findOne({ where: {username: req.body.username} }).then(user => {
+  // eval(pry.it)
+  User.findOne({ where: {username: req.body.username} })
+  .then(user => {
+    // console.log(user)
     if (user == null){
       res.json("Username")
     } else {
@@ -163,8 +167,23 @@ app.post('/login', (req, res) => {
       }
     }
   })
+.catch(error => {
+  console.log(error)
+})
 })
 
 app.listen(3001)
 
 console.log("backend up and running!")
+
+// User.findOne({ where: {username: "adam12"} }).then(user => console.log(user))
+
+// user = User.build({username: "adam12"})
+// user.password = "adam12"
+// $2b$05$bl9KVhiBUWObZg2hoSBF6OOIyuXS3clWRd0mu1d.O9HLHkxZT/a7G
+// user.save().then(res => console.log(res))
+// User.findOne({ where: {username: "adam12"} }).then(user => console.log(user))
+// User.findAll().then(res => console.log(res))
+// User.findOne({ where: {username: "adam12"} }).then(user => console.log(user.authenticate("adam12")))
+
+

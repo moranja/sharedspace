@@ -37,11 +37,11 @@ const messages = [
 const users = [
   {
     username: "Adam",
-    password: "1234"
+    password: "123456"
   },
   {
     username: "Mark",
-    password: "1234"
+    password: "123456"
   }
 ]
 
