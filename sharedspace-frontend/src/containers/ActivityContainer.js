@@ -94,7 +94,9 @@ export default class ActivityContainer extends Component{
   }
 
   componentDidMount() {
+    console.log(io)
     io.on('pianoReceive', note => {
+      //console.log(note)
       this.playNote(note, "piano")
     })
 

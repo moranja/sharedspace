@@ -100,6 +100,7 @@ console.log("trying to connect")
     })
 
     socket.on('pianoSend', (obj) => {
+      console.log(`${obj.note}_piano`)
       io.sockets.in(`room_${obj.room}`).emit('pianoReceive', (`${obj.note}_piano`))
     })
 
@@ -108,12 +109,12 @@ console.log("trying to connect")
     })
 
     socket.on('playVideo', (obj) => {
-      console.log(obj)
+      console.log("playingVideo")
       io.sockets.in(`room_${obj.room}`).emit('playVideoForAll', ("test"))
     })
 
     socket.on('pauseVideo', (obj) => {
-      console.log(obj)
+      console.log("pausingVideo")
       io.sockets.in(`room_${obj.room}`).emit('pauseVideoForAll', ("test"))
     })
 
@@ -185,5 +186,3 @@ console.log("backend up and running!")
 // User.findOne({ where: {username: "adam12"} }).then(user => console.log(user))
 // User.findAll().then(res => console.log(res))
 // User.findOne({ where: {username: "adam12"} }).then(user => console.log(user.authenticate("adam12")))
-
-

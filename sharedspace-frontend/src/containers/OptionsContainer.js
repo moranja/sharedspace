@@ -3,7 +3,7 @@ import InstrumentSelector from '../components/InstrumentSelector'
 import MusicOptions from '../components/MusicOptions'
 import VideoOptions from '../components/VideoOptions'
 import UsersList from '../components/UsersList'
-import {io} from '../components/ioConnection'
+import { io } from '../components/ioConnection'
 
 window.io = io
 
@@ -34,12 +34,23 @@ export default class OptionsContainer extends React.Component {
   }
 
   componentDidMount() {
-    io.on('connect', () => {
-      console.log({roomID: this.props.roomID, username: localStorage.name})
-      io.emit('room', {roomID: this.props.roomID, username: localStorage.name} )
-    })
+    if (io.connected) {
+      io.emit('room', {roomID: this.props.roomID, username: localStorage.name})
+    } else {
+      io.on('connect', () => {
+        io.emit('room', {roomID: this.props.roomID, username: localStorage.name})
+      })
+    }
+
+    // 
+    // console.log('HERE', io) // write an if io.connected statement here, already connected "usually"
+    // // socket.io.on('connect', () => {
+    //   console.log("connecting on front end")
+    //   io.emit('room', {roomID: this.props.roomID, username: localStorage.name} )
+    // // })
 
     io.on('usersInRoom', users => {
+      console.log(users)
       this.setState({users: users})
     })
   }

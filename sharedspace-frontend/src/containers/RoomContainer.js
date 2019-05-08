@@ -56,6 +56,7 @@ export default class RoomContainer extends React.Component {
   selectRoomWindow(){
     if (localStorage.token) {
       initSocket()
+      console.log("test")
       if (this.state.roomID) { // If you've already entered a room...
         if (this.state.mode === "music") { // And if that room is in the music mode ...
           return (
