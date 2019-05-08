@@ -6,7 +6,7 @@ let io = null
 
 const initSocket = () => {
   if (!io) {
-    io = socketIO('http://10.185.5.173:8080', {
+    io = socketIO('http://localhost:8080', {
       transportOptions: {
         polling: {
           extraHeaders: {

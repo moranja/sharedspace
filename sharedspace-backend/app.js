@@ -80,6 +80,11 @@ console.log("trying to connect")
     socket.on('drumSend', (obj) => {
       io.sockets.in(`room_${obj.room}`).emit('drumReceive', (`${obj.note}_drums`))
     })
+
+    socket.on('guitarSend', (obj) => {
+      io.sockets.in(`room_${obj.room}`).emit('guitarReceive', (`${obj.note}_guitar`))
+    })
+
     // Videos
     socket.on('playVideo', (obj) => {
       io.sockets.in(`room_${obj.room}`).emit('playVideoForAll', ("test"))

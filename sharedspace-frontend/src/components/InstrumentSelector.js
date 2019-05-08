@@ -3,7 +3,7 @@ import React from 'react'
 export default class InstrumentSelector extends React.Component {
 
 
-  possibleInstruments = ["piano", "drums"]
+  possibleInstruments = ["piano", "drums", "guitar"]
 
   render() {
     return (
