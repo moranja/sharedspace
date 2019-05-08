@@ -47,10 +47,11 @@ export default class ChatContainer extends React.Component {
   render() {
     return (
       <React.Fragment>
-          <div className="ui comments" style={{width: "95%", margin: "2.5%"}}>
+          <div className="ui comments" style={{overflowY: "scroll", overflowX: "hidden", maxHeight: "650px"}}>
             <ChatHistoryContainer messages={this.state.messages} />
-          </div>
-          <div className="ui comments" style={{width: "95%", margin: "2.5%"}}  >
+          {/* </div>
+          <div className="ui comments" > */}
+          <p></p>
             <ChatBox workingMessage={this.state.workingMessage} handleSubmit={this.handleSubmit} handleChange={this.handleChange}/>
           </div>
       </React.Fragment>

@@ -61,18 +61,18 @@ export default class RoomContainer extends React.Component {
           return (
             <React.Fragment>
               <Header roomID={this.state.roomID} mode={this.state.mode} handleChange={this.handleChange} logout={this.logout}/>
-              <div className="twelve wide column" style={{borderStyle: "solid", borderWidth: "2px"}}>
+              <div className="twelve wide column" style={{borderRight: "solid 0.5px"}}>
                 <ActivityContainer roomID={this.state.roomID} chosenInstrument={this.state.chosenInstrument}/>
               </div>
-              <div className="four wide column" style={{borderStyle: "solid", borderWidth: "0.5px"}}>
-                <div className="ui one column grid">
-                  <div className="row" style={{borderStyle: "solid", borderWidth: "0.5px"}}>
+              <div className="four wide column" >
+                {/* <div className="ui one column grid" style={{height: "105%", bottom: "0px"}}> */}
+                  <div className="row" style={{borderStyle: "solid", borderWidth: "0px"}}>
                     <OptionsContainer roomID={this.state.roomID} mode={this.state.mode} chosenInstrument={this.state.chosenInstrument} selectInstrument={this.selectInstrument} resetInstrument={this.resetInstrument}/>
                   </div>
-                  <div className="row" style={{borderStyle: "solid", borderWidth: "0.5px", overflowY: "scroll",  height: "680px"}}>
+                  {/* <div className="row" style={{bottom: "0px", borderTop: "solid 0.5px", overflowY: "scroll", maxHeight: "450px"}}> */}
                     <ChatContainer roomID={this.state.roomID}/>
-                  </div>
-                </div>
+                  {/* </div> */}
+                {/* </div> */}
               </div>
             </React.Fragment>
           )
@@ -116,7 +116,7 @@ export default class RoomContainer extends React.Component {
         return (
           <React.Fragment>
             <Header roomID={this.state.roomID} logout={this.logout}/>
-            <div className="sixteen wide column" style={{borderStyle: "solid", borderWidth: "0.5px", overflowY: "scroll",  height: "680px"}}>
+            <div className="sixteen wide column" style={{borderStyle: "solid", borderWidth: "0.5px", overflowY: "scroll"}}>
               <h3>&nbsp;&nbsp;Please enter a room number:</h3>
               <div className="ui form">
                 <div className="fields">
