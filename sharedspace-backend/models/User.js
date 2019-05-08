@@ -25,7 +25,7 @@ class User extends Model {
   }
 
   get token() {
-    return jwt.sign({ id: this.id }, 'random-secret')
+    return jwt.sign({ id: this.id, username: this.username }, 'random-secret')
   }
 
   toJSON(){

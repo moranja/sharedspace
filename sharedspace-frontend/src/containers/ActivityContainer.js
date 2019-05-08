@@ -111,10 +111,6 @@ export default class ActivityContainer extends Component{
   }
 
   componentDidMount() {
-    io.on('connect', () => {
-      io.emit('room', this.props.roomID )
-    })
-
     io.on('pianoReceive', note => {
       this.playNote(note, "piano")
     })
@@ -122,6 +118,17 @@ export default class ActivityContainer extends Component{
     io.on('drumReceive', note => {
       this.playNote(note, "drums")
     })
+
+
+    // io.on('requestUsers', () => {
+    //   io.emit('requestedUsers', (this.props.roomID))
+    // })
+
+  }
+
+  componentDidUpdate() {
+    // console.log("updated")
+    // io.emit('usersInRoom', (this.props.roomID))
   }
 
 
@@ -134,7 +141,7 @@ export default class ActivityContainer extends Component{
                 acceptablePianoNotes={this.acceptablePianoNotes}
                 acceptableDrumNotes={this.acceptableDrumNotes}
                 playNote={this.playNote}
-                roomID={this.props.roomID} 
+                roomID={this.props.roomID}
                 />
           </React.Fragment>
       )
