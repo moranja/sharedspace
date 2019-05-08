@@ -30,6 +30,14 @@ export default class RoomContainer extends React.Component {
     })
   }
 
+  leaveRoom = () => {
+    io.disconnect()
+    resetIO()
+    this.setState({
+      roomID: null
+    })
+  }
+
   selectInstrument = (inst) => {
     this.setState({ chosenInstrument: inst})
   }
@@ -76,7 +84,7 @@ export default class RoomContainer extends React.Component {
               <div className="four wide column" style={{position: "relative"}} >
                 {/* <div className="ui one column grid" style={{height: "105%", bottom: "0px"}}> */}
                   {/* <div className="row"> */}
-                    <OptionsContainer roomID={this.state.roomID} mode={this.state.mode} chosenInstrument={this.state.chosenInstrument} selectInstrument={this.selectInstrument} resetInstrument={this.resetInstrument}/>
+                    <OptionsContainer leaveRoom={this.leaveRoom} roomID={this.state.roomID} mode={this.state.mode} chosenInstrument={this.state.chosenInstrument} selectInstrument={this.selectInstrument} resetInstrument={this.resetInstrument}/>
                   {/* </div> */}
                   {/* <div className="row" style={{bottom: "0px", borderTop: "solid 0.5px", overflowY: "scroll", maxHeight: "450px"}}> */}
                     <ChatContainer roomID={this.state.roomID}/>
@@ -95,7 +103,7 @@ export default class RoomContainer extends React.Component {
               <div className="four wide column">
                 {/* <div className="ui one column grid"> */}
                   {/* <div className="row"> */}
-                    <OptionsContainer roomID={this.state.roomID} mode={this.state.mode} updateVideoID={this.updateVideoID} handleChange={this.handleChange}/>
+                    <OptionsContainer leaveRoom={this.leaveRoom} roomID={this.state.roomID} mode={this.state.mode} updateVideoID={this.updateVideoID} handleChange={this.handleChange}/>
                   {/* </div> */}
                   {/* <div className="row" style={{borderStyle: "solid", borderWidth: "0.5px", overflowY: "scroll",  height: "680px"}}> */}
                     <ChatContainer roomID={this.state.roomID}/>
@@ -114,7 +122,7 @@ export default class RoomContainer extends React.Component {
               <div className="four wide column">
                 {/* <div className="ui one column grid"> */}
                   {/* <div className="row"> */}
-                    <OptionsContainer roomID={this.state.roomID} mode={this.state.mode} updateVideoID={this.updateVideoID} handleChange={this.handleChange}/>
+                    <OptionsContainer leaveRoom={this.leaveRoom} roomID={this.state.roomID} mode={this.state.mode} updateVideoID={this.updateVideoID} handleChange={this.handleChange}/>
                   {/* </div> */}
                 {/* </div> */}
               </div>
@@ -165,7 +173,6 @@ export default class RoomContainer extends React.Component {
   }
 
   render(){
-    console.log(this.state)
     return (
       <React.Fragment>
         <div>
