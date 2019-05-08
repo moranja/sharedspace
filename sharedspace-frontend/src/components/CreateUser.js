@@ -54,7 +54,7 @@ export default class CreateUser extends Component {
                     <div className="field">
                         <input type="password" id="password" placeholder="&nbsp;password" onChange={(e) => this.handleChange(e)}></input>
                             <div>
-                                {(this.state.failType === "password") ? <h4 className="ui pointing red basic label" style={{color: "red", display: "inline"}}>&nbsp;&nbsp;Password was entered incorrectly.</h4> : null}
+                                {(this.state.failType === "password") ? <h4 className="ui pointing red basic label" style={{color: "red", display: "inline"}}>&nbsp;&nbsp;Password must be 6 or more characters.</h4> : null}
                             </div>
                     </div>
                     <div>
