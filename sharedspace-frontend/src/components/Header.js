@@ -1,18 +1,19 @@
 import React, {Component} from 'react'
 
 export default class Header extends Component {
-
-    logout = () =>{
-        localStorage.clear()
-        this.props.logout()
-    }
+    //
+    // logout = () =>{
+    //     localStorage.clear()
+    //     this.props.logout()
+    //     io.disconnect()
+    // }
 
     isLoggedIn= () => {
         if (localStorage.name){
             return (
                 <React.Fragment>
                     <h4 style={{textAlign: "right", verticalAlign: "middle"}} >Logged in as {localStorage.name}</h4>
-                    <input type="submit" value="logout" onClick={this.logout} className="ui black basic button"></input>
+                    <input type="submit" value="logout" onClick={this.props.logout} className="ui black basic button"></input>
                 </React.Fragment>
             )
         } else {

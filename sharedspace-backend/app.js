@@ -41,22 +41,18 @@ console.log("trying to connect")
 
     socket.on('disconnect', () => {
       let departingUser = usernamesAndSocketIDs[socket.id]
-      console.log(departingUser)
       let currentRoom = null
-
+      
       for (var room in rooms) {
         if (rooms[room].users.includes(departingUser)){
           currentRoom = rooms[room]
           break
         }
       }
-
       if (currentRoom) {
-      currentRoom.users.splice(currentRoom.users.indexOf(departingUser),1)
-
-      io.sockets.in(`room_${currentRoom.id}`).emit('usersInRoom', currentRoom.users)
+        currentRoom.users.splice(currentRoom.users.indexOf(departingUser),1)
+        io.sockets.in(`room_${currentRoom.id}`).emit('usersInRoom', currentRoom.users)
       }
-
     })
 
     socket.on('room', (obj) => {
@@ -129,6 +125,12 @@ console.log("trying to connect")
 
     // socket.on('requestedUsers', (id) => {
     //   console.log(id)
+    // })
+
+    // socket.on('logout', (obj) => {
+    //   console.log("user logged out")
+    //
+    //   io.close()
     // })
 
   } else {

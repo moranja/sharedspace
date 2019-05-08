@@ -18,5 +18,8 @@ const initSocket = () => {
   }
 }
 
-export  {io, initSocket}
+const resetIO = () => {
+  io = null
+}
+export  {io, initSocket, resetIO}
 // export const socket =   { io }

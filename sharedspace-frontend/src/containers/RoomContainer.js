@@ -6,7 +6,9 @@ import VideoContainer from './VideoContainer'
 import Login from '../components/login'
 import CreateUser from '../components/CreateUser'
 import Header from '../components/Header'
-import {initSocket} from '../components/ioConnection'
+import { io, initSocket, resetIO } from '../components/ioConnection'
+
+window.io = io
 
 export default class RoomContainer extends React.Component {
 
@@ -14,11 +16,18 @@ export default class RoomContainer extends React.Component {
     mode: "music",
     chosenInstrument: "",
     login: "login",
-    videoID: "cJsyMmC76aM"
+    videoID: "cJsyMmC76aM",
+    roomID: null
   }
 
   logout = () => {
-    this.setState({login: "login"})
+    localStorage.clear()
+    io.disconnect()
+    resetIO()
+    this.setState({
+      login: "login",
+      roomID: null
+    })
   }
 
   selectInstrument = (inst) => {
@@ -156,6 +165,7 @@ export default class RoomContainer extends React.Component {
   }
 
   render(){
+    console.log(this.state)
     return (
       <React.Fragment>
         <div>
