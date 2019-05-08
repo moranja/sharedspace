@@ -1,4 +1,4 @@
-const { STRING, Model } = require('sequelize')
+const { STRING, Model, VIRTUAL } = require('sequelize')
 const sequelize = require('./sequelize')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
@@ -49,12 +49,15 @@ User.init({
       len: [3 ,100]
     }
   },
-  password_digest: {
-    type: STRING,
+  password:{
+    type: VIRTUAL,
     validate: {
       notEmpty: true,
-      len: [3 ,100],
+      len: [6, 100]
     }
+  },
+  password_digest: {
+    type: STRING,
   }
 }, {sequelize, modelName: 'user'}
 )

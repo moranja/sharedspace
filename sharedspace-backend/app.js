@@ -94,7 +94,10 @@ app.post('/createUser', (req, res) => {
   newUser.password = req.body.password
   newUser.save()
   .then(newUser => res.json(newUser.toJSON()))
-  .catch(error => res.json({validationError: error.errors[0].path}))
+  .catch(error => {
+    console.log(error.errors[0])
+    res.json({validationError: error.errors[0].path})
+   })
 })
 
 app.post('/login', (req, res) => {
