@@ -18,7 +18,7 @@ export default class CreateUser extends Component {
         console.log(this.state.password.length)
         e.persist()
         e.preventDefault()
-        fetch('http://localhost:3001/createUser', {
+        fetch('http://10.185.5.173:3001/createUser', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'

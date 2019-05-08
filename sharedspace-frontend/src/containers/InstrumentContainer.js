@@ -1,17 +1,17 @@
 import React, {Component} from 'react'
-import Piano from '../components/Piano.js'
-import Drum from '../components/Drum.js'
+import PianoContainer from './PianoContainer'
+import DrumContainer from './DrumContainer'
 
 export default class InstrumentContainer extends Component{
 
   renderInstrument = () => {
     if (this.props.chosenInstrument === "piano") {
       return(
-        <Piano roomID={this.props.roomID} acceptablePianoNotes={this.props.acceptablePianoNotes} playNote={this.props.playNote} />
+        <PianoContainer roomID={this.props.roomID} acceptablePianoNotes={this.props.acceptablePianoNotes} playNote={this.props.playNote} />
       )
     } else if (this.props.chosenInstrument === "drums") {
       return(
-        <Drum roomID={this.props.roomID} acceptableDrumNotes={this.props.acceptableDrumNotes} playNote={this.props.playNote} />
+        <DrumContainer roomID={this.props.roomID} acceptableDrumNotes={this.props.acceptableDrumNotes} playNote={this.props.playNote} />
       )
     } else {
       return(

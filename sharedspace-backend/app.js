@@ -20,7 +20,6 @@ const io = socketIo(8080,  {
     }
 })
 
-app.use(bodyParser())
 const usernamesAndSocketIDs = {}
 const rooms = {}
 
@@ -37,8 +36,63 @@ console.log("trying to connect")
     let userID = result.id
 
     usernamesAndSocketIDs[socket.id] = result.username
+    // puts the user in a room
+    socket.on('room', (obj) => {
+      socket.join(`room_${obj.roomID}`)
+      console.log(obj)
+      if (rooms[obj.roomID] === undefined) {
+        rooms[obj.roomID] = {
+          id: obj.roomID,
+          users: [obj.username]
+        }
+      } else if (!rooms[obj.roomID].users.includes(obj.username)) {
+        rooms[obj.roomID].users.push(obj.username)
+      }
 
+      io.sockets.in(`room_${obj.roomID}`).emit('usersInRoom', rooms[obj.roomID].users)
+    })
+    // Messages
+    socket.on('messages.index', (room, respond) => {
+      Message.findAll()
+      .then( messages => {
+        const roomMessages = messages.filter(msg => msg.roomID === room.roomID)
+        respond(roomMessages)
+      })
+    })
 
+    socket.on('messages.new', (message, respond) => {
+      console.log(message)
+      const roomID = message.roomID
+      Message.create(message)
+      Message.findAll()
+      .then( messages => {
+        const roomMessages = messages.filter(msg => {
+          return msg.roomID == roomID
+        })
+        io.sockets.in(`room_${roomID}`).emit('messages.newMessageFromServer', roomMessages)
+      })
+    })
+    // Instruments
+    socket.on('pianoSend', (obj) => {
+      io.sockets.in(`room_${obj.room}`).emit('pianoReceive', (`${obj.note}_piano`))
+    })
+
+    socket.on('drumSend', (obj) => {
+      io.sockets.in(`room_${obj.room}`).emit('drumReceive', (`${obj.note}_drums`))
+    })
+    // Videos
+    socket.on('playVideo', (obj) => {
+      io.sockets.in(`room_${obj.room}`).emit('playVideoForAll', ("test"))
+    })
+
+    socket.on('pauseVideo', (obj) => {
+      io.sockets.in(`room_${obj.room}`).emit('pauseVideoForAll', ("test"))
+    })
+
+    socket.on('updateVideoID', (obj) => {
+      io.sockets.in(`room_${obj.room}`).emit('receiveNewVideoID', (obj.videoID))
+    })
+    // Removes a user from a room on disconnect
     socket.on('disconnect', () => {
       let departingUser = usernamesAndSocketIDs[socket.id]
       let currentRoom = null
@@ -55,102 +109,16 @@ console.log("trying to connect")
       }
     })
 
-    socket.on('room', (obj) => {
-      socket.join(`room_${obj.roomID}`)
-      console.log(obj)
-      if (rooms[obj.roomID] === undefined) {
-        rooms[obj.roomID] = {
-          id: obj.roomID,
-          users: [obj.username]
-        }
-      } else if (!rooms[obj.roomID].users.includes(obj.username)) {
-        rooms[obj.roomID].users.push(obj.username)
-      }
-
-      io.sockets.in(`room_${obj.roomID}`).emit('usersInRoom', rooms[obj.roomID].users)
-    })
-
-    // socket.on('leaveRoom', (obj) => {
-    //   console.log(obj)
-    //   rooms[obj.roomID].splice(room.indexOf(obj.username),1)
-    //   io.sockets.in(`room_${obj.roomID}`).emit('usersInRoom', rooms[obj.roomID])
-    // })
-
-    socket.on('messages.index', (room, respond) => {
-      Message.findAll()
-      .then( messages => {
-        const roomMessages = messages.filter(msg => msg.roomID === room.roomID)
-        respond(roomMessages)
-      })
-    })
-
-    socket.on('messages.new', (message, respond) => {
-      console.log(message)
-      const roomID = message.roomID
-      Message.create(message)
-      Message.findAll()
-      .then( messages => {
-        const roomMessages = messages.filter(msg => {
-          // console.log(msg.roomID)
-          // console.log(roomID)
-          return msg.roomID == roomID
-        })
-        // console.log(roomMessages)
-        io.sockets.in(`room_${roomID}`).emit('messages.newMessageFromServer', roomMessages)
-      })
-    })
-
-    socket.on('pianoSend', (obj) => {
-      console.log(`${obj.note}_piano`)
-      io.sockets.in(`room_${obj.room}`).emit('pianoReceive', (`${obj.note}_piano`))
-    })
-
-    socket.on('drumSend', (obj) => {
-      io.sockets.in(`room_${obj.room}`).emit('drumReceive', (`${obj.note}_drums`))
-    })
-
-    socket.on('playVideo', (obj) => {
-      console.log("playingVideo")
-      io.sockets.in(`room_${obj.room}`).emit('playVideoForAll', ("test"))
-    })
-
-    socket.on('pauseVideo', (obj) => {
-      console.log("pausingVideo")
-      io.sockets.in(`room_${obj.room}`).emit('pauseVideoForAll', ("test"))
-    })
-
-    socket.on('updateVideoID', (obj) => {
-      io.sockets.in(`room_${obj.room}`).emit('receiveNewVideoID', (obj.videoID))
-    })
-
-    // socket.on('usersInRoom', (roomID) => {
-    //   io.sockets.in(`room_${roomID}`).emit('requestUsers')
-    // })
-
-    // socket.on('requestedUsers', (id) => {
-    //   console.log(id)
-    // })
-
-    // socket.on('logout', (obj) => {
-    //   console.log("user logged out")
-    //
-    //   io.close()
-    // })
-
   } else {
     console.log("shutting this socket down")
     io.close()
   }
 })
 
-
-app.use(cors())
-
-
 io.listen(8081)
-
-
-
+//------------------------------------------------------------------------------------
+app.use(cors())
+app.use(bodyParser())
 
 app.post('/createUser', (req, res) => {
   newUser = User.build({username: req.body.username})
@@ -187,13 +155,3 @@ app.post('/login', (req, res) => {
 app.listen(3001)
 
 console.log("backend up and running!")
-
-// User.findOne({ where: {username: "adam12"} }).then(user => console.log(user))
-
-// user = User.build({username: "adam12"})
-// user.password = "adam12"
-// $2b$05$bl9KVhiBUWObZg2hoSBF6OOIyuXS3clWRd0mu1d.O9HLHkxZT/a7G
-// user.save().then(res => console.log(res))
-// User.findOne({ where: {username: "adam12"} }).then(user => console.log(user))
-// User.findAll().then(res => console.log(res))
-// User.findOne({ where: {username: "adam12"} }).then(user => console.log(user.authenticate("adam12")))

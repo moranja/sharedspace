@@ -38,13 +38,6 @@ export default class OptionsContainer extends React.Component {
       })
     }
 
-    //
-    // console.log('HERE', io) // write an if io.connected statement here, already connected "usually"
-    // // socket.io.on('connect', () => {
-    //   console.log("connecting on front end")
-    //   io.emit('room', {roomID: this.props.roomID, username: localStorage.name} )
-    // // })
-
     io.on('usersInRoom', users => {
       this.setState({users: users})
     })
@@ -61,8 +54,4 @@ export default class OptionsContainer extends React.Component {
       </div>
     )
   }
-
-  // componentWillUnmount() {
-  //   io.emit('leaveRoom', {roomID: this.props.roomID, username: localStorage.name})
-  // }
 }

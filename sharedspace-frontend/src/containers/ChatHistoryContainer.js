@@ -1,13 +1,10 @@
 import React from 'react'
 import ChatMessage from '../components/ChatMessage'
 
-export default class ChatHistoryContainer extends React.Component {
+const ChatHistoryContainer = (props) => (
+  <React.Fragment>
+    {props.messages.map(msg => <ChatMessage message={msg} key={msg.id}/>)}
+  </React.Fragment>
+)
 
-  render() {
-    return (
-      <React.Fragment>
-        {this.props.messages.map(msg => <ChatMessage message={msg} key={msg.id}/>)}
-      </React.Fragment>
-    )
-  }
-}
+export default ChatHistoryContainer

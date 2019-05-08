@@ -1,13 +1,6 @@
 import React, {Component} from 'react'
 
 export default class Header extends Component {
-    //
-    // logout = () =>{
-    //     localStorage.clear()
-    //     this.props.logout()
-    //     io.disconnect()
-    // }
-
     isLoggedIn= () => {
         if (localStorage.name){
             return (
