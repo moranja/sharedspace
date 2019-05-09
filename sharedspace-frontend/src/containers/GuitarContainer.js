@@ -10,7 +10,7 @@ export default class GuitarContainer extends Component{
       currentKeys: []
     }
 
-    topRowKeys=["w", "e", "blank", "t", "y", "u", "blank", "o", "p"]
+    topRowKeys=["w", "e", "blank", "t", "y", "u", "blank2", "o", "p"]
     bottomRowKeys=["a", "s", "d", "f", "g", "h", "j", "k", "l", ";"]
 
     handleKeyDown = (e) => {
@@ -47,11 +47,11 @@ export default class GuitarContainer extends Component{
                         <div className="ui grid">
                           <div className="row">
                             <div className="halfKey" />
-                              {this.topRowKeys.map(key => <PianoKey character={key} currentKeys={this.state.currentKeys}/>)}
+                              {this.topRowKeys.map(key => <PianoKey character={key} key={key} currentKeys={this.state.currentKeys}/>)}
                             <div className="halfKey" />
                           </div>
                           <div className="row">
-                            {this.bottomRowKeys.map(key => <PianoKey character={key} currentKeys={this.state.currentKeys}/>)}
+                            {this.bottomRowKeys.map(key => <PianoKey character={key} key={key} currentKeys={this.state.currentKeys}/>)}
                           </div>
                         </div>
                     </div>

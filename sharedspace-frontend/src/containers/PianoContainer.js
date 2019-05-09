@@ -10,7 +10,7 @@ export default class PianoContainer extends Component{
       currentKeys: []
     }
 
-    topRowKeys=["w", "e", "blank", "t", "y", "u", "blank", "o", "p"]
+    topRowKeys=["w", "e", "blank", "t", "y", "u", "blank2", "o", "p"]
     bottomRowKeys=["a", "s", "d", "f", "g", "h", "j", "k", "l", ";"]
 
     handleKeyDown = (e) => {

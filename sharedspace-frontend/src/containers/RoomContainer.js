@@ -17,7 +17,8 @@ export default class RoomContainer extends React.Component {
     chosenInstrument: "",
     login: "login",
     videoID: "cJsyMmC76aM",
-    roomID: null
+    roomID: null,
+    typingID: ""
   }
 
   createUser = (e) => {
@@ -72,7 +73,11 @@ export default class RoomContainer extends React.Component {
   handleSubmit = (e) => {
     e.persist()
     e.preventDefault()
-    this.setState({roomID: this.state.typingID})
+    if (parseInt(this.state.typingID)) {
+      this.setState({roomID: parseInt(this.state.typingID)})
+    } else {
+      this.setState({typingID: ""})
+    }
   }
 
   selectRoomWindow(){
@@ -86,7 +91,7 @@ export default class RoomContainer extends React.Component {
               <div className="twelve wide column" style={{height: "87vh", overflow: "hidden", borderRight: "solid 0.5px"}}>
                 <ActivityContainer roomID={this.state.roomID} chosenInstrument={this.state.chosenInstrument}/>
               </div>
-              <div className="four wide column" style={{height: "87vh", display: "flex", "flex-flow": "column", overflow: "hidden"}} >
+              <div className="four wide column" style={{height: "87vh", display: "flex", "flexFlow": "column", overflow: "hidden"}} >
                 <OptionsContainer leaveRoom={this.leaveRoom} roomID={this.state.roomID} mode={this.state.mode} chosenInstrument={this.state.chosenInstrument} selectInstrument={this.selectInstrument} resetInstrument={this.resetInstrument}/>
                 <ChatContainer roomID={this.state.roomID}/>
               </div>
@@ -99,7 +104,7 @@ export default class RoomContainer extends React.Component {
               <div className="twelve wide column" align="center" style={{borderRight: "solid 0.5px", overflowY: "scroll",  maxHeight: "680px"}}>
                 <VideoContainer roomID={this.state.roomID} videoID={this.state.videoID} updateVideoIDFromSocket={this.updateVideoIDFromSocket}/>
               </div>
-              <div className="four wide column" style={{maxHeight: "87vh", display: "flex", "flex-flow": "column", overflow: "hidden"}}>
+              <div className="four wide column" style={{maxHeight: "87vh", display: "flex", "flexFlow": "column", overflow: "hidden"}}>
                 <OptionsContainer leaveRoom={this.leaveRoom} roomID={this.state.roomID} mode={this.state.mode} updateVideoID={this.updateVideoID} handleChange={this.handleChange} typingVideoID={this.state.typingVideoID}/>
                 <ChatContainer roomID={this.state.roomID}/>
               </div>
@@ -112,7 +117,7 @@ export default class RoomContainer extends React.Component {
               <div className="twelve wide column scroller" style={{borderStyle: "solid", borderWidth: "0.5px", overflowY: "scroll",  height: "680px"}}>
                 <ChatContainer roomID={this.state.roomID}/>
               </div>
-              <div className="four wide column" style={{maxHeight: "87vh", display: "flex", "flex-flow": "column", overflow: "hidden"}}>
+              <div className="four wide column" style={{maxHeight: "87vh", display: "flex", "flexFlow": "column", overflow: "hidden"}}>
                 <OptionsContainer leaveRoom={this.leaveRoom} roomID={this.state.roomID} mode={this.state.mode} updateVideoID={this.updateVideoID} handleChange={this.handleChange}/>
               </div>
             </React.Fragment>
@@ -127,7 +132,7 @@ export default class RoomContainer extends React.Component {
               <div className="ui form">
                 <div className="fields">
                   <div className="field">
-                    <input type="text" placeholder="&nbsp;room number" onChange={(e) => this.handleChange(e, "typingID")}/>
+                    <input type="text" placeholder="&nbsp;room number" value={this.state.typingID} onChange={(e) => this.handleChange(e, "typingID")}/>
                   </div>
                   <div className="field">
                     <input type="submit" onClick={this.handleSubmit} className="ui black basic button"/>
