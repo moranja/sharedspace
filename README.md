@@ -11,12 +11,12 @@ The frontend is built on React, and the backend is built on Node.js. Login and u
 For a short video demo visit:
 https://www.youtube.com/watch?v=nEqshMHKoH8&feature=youtu.be
 
-#Install Instructions
+# Install Instructions
 1. Download the app
 2. Navigate to the frontend folder and run 'npm start'
 3. Navigate to the backend folder and run 'node app'
 
-#Contributors
+# Contributors
 This web app was written by Mark Pothecary and Adam Moran, students at the Flatiron School
 
 # Licence
