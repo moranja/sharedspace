@@ -19,5 +19,5 @@ https://www.youtube.com/watch?v=nEqshMHKoH8&feature=youtu.be
 # Contributors
 This web app was written by Mark Pothecary and Adam Moran, students at the Flatiron School
 
-# Licence
+# License
 Software licence in lib/LICENSE.md
