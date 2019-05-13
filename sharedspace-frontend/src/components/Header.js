@@ -2,16 +2,16 @@ import React, {Component} from 'react'
 
 export default class Header extends Component {
     isLoggedIn= () => {
-        if (localStorage.name){
-            return (
-                <React.Fragment>
-                    <h4 style={{textAlign: "right", verticalAlign: "middle"}} >Logged in as {localStorage.name}</h4>
-                    <input type="submit" value="logout" onClick={this.props.logout} className="ui black basic button"></input>
-                </React.Fragment>
-            )
-        } else {
-            return <h4 style={{textAlign: "right", verticalAlign: "middle"}}>Logged Out</h4>
-        }
+if (localStorage.name){
+    return (
+        <React.Fragment>
+            <h4 style={{textAlign: "right", verticalAlign: "middle"}} >Logged in as {localStorage.name}</h4>
+            <input type="submit" value="logout" onClick={this.props.logout} className="ui black basic button"></input>
+        </React.Fragment>
+    )
+} else {
+    return <h4 style={{textAlign: "right", verticalAlign: "middle"}}>Logged Out</h4>
+}
     }
 
     isInARoom = () => {

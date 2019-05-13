@@ -34,7 +34,7 @@ export default class GuitarContainer extends Component{
         }
     }
 
-    render(){
+    render(){ //calls piano keys as the guitar notes use the same mapping
         return(
             <div onKeyDown={this.handleKeyDown} onKeyUp={this.handleKeyUp} tabIndex="0">
                 <br></br>

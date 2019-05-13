@@ -6,7 +6,7 @@ window.io = io
 
 export default class DrumContainer extends Component{
 
-    drumKeys =[
+    drumKeys =[   //keys & positions
         {character: "A",
         top: "25%",
         left: "13%"},
