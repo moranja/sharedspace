@@ -3,14 +3,10 @@ A real-time web-app for friends to join a 'room' together and enjoy different ac
 * Jamming on different instruments, including piano, guitar and drums
 * Chat via a chat box
 * Share YouTube videos and watch together.
-Multiple rooms can be set up by room number.
-The app includes full user login and validation.  Usernames and passwords are validated at creation.
-The app uses JSON Web Tokens for login persistance between sessions.
 
-The frontend is built on React.
-The backend is built on Node.js
-Login and user creation comms are handled via fetch requests
-Real-time comms for music, chat, and YouTube are handled via WebSockets
+Shared Space includes full user authentication, and usernames and passwords are validated at creation. The app uses JSON Web Tokens for login persistance between sessions. Rooms can be dynamically created and joined by any user, and all music, video, or chat is only broadcast to others in your room.
+
+The frontend is built on React, and the backend is built on Node.js. Login and user creation are handled via fetch requests, while WebSockets are used for all other real-time communication (music, chat, and YouTube).
 
 For a short video demo visit:
 https://www.youtube.com/watch?v=nEqshMHKoH8&feature=youtu.be
