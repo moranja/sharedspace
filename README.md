@@ -1,8 +1,8 @@
 # sharedspace
 A real-time web-app for friends to join a 'room' together and enjoy different activities including:
-    Jamming on different instruments, including piano, guitar and drums
-    Chat via a chat box
-    Share YouTube videos and watch together.
+* Jamming on different instruments, including piano, guitar and drums
+* Chat via a chat box
+* Share YouTube videos and watch together.
 Multiple rooms can be set up by room number.
 The app includes full user login and validation.  Usernames and passwords are validated at creation.
 The app uses JSON Web Tokens for login persistance between sessions.
