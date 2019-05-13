@@ -12,7 +12,7 @@ const io = socketIo(8080,  {
     handlePreflightRequest: function (req, res) {
         var headers = {
             'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-            'Access-Control-Allow-Origin': 'http://10.185.1.193:3000',
+            'Access-Control-Allow-Origin': 'http://localhost:3000',
             'Access-Control-Allow-Credentials': true
         }
         res.writeHead(200, headers)
@@ -120,12 +120,12 @@ console.log("trying to connect")
   }
 })
 
-io.listen(8081)
 //------------------------------------------------------------------------------------
 app.use(cors())
 app.use(bodyParser())
 
 app.post('/createUser', (req, res) => {
+  console.log("req")
   newUser = User.build({username: req.body.username})
   newUser.password = req.body.password
   // eval(pry.it)

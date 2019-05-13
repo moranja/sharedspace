@@ -1,0 +1,88 @@
+.key {
+    width: 9%;
+    display: table;
+    margin: 0.5%
+  }
+
+  .drumKey {
+    width: 6%;
+    display: table;
+    position: absolute;
+  }
+
+  .drumKey:after {
+    content: "";
+    display: block;
+    padding-bottom: 10%;
+    align-content: center;
+  }
+
+  .drumKey:before {
+    content: "";
+    display: block;
+    padding-bottom: 10%;
+    align-content: center;
+  }
+
+  .drumKeyContent {
+    text-align: center;
+    position: relative;
+  }
+
+  .key:after {
+    content: "";
+    display: block;
+    padding-bottom: 20%;
+    align-content: center;
+  }
+
+  .key:before {
+    content: "";
+    display: block;
+    padding-bottom: 20%;
+    align-content: center;
+  }
+
+  .halfKey {
+    width: 5%;
+    display: table;
+  }
+
+  .halfKey:after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+    align-content: center;
+  }
+
+  .keyContent {
+    position: absolute;
+    text-align: center;
+    position: relative;
+  }
+
+  .foreground {
+    background-color: #ffffff9a;
+    background-size: 100% 100%;
+    margin: 0px;
+    width: 100%
+  }
+
+  /* background-image: url("https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"); */
+
+  .background {
+    background-image: url("/media/background.jpeg");
+    background-color: #b3b3b3;
+    background-size: 100% 100%
+  }
+
+  #root {
+    max-height: 50%
+  }
+
+  .activeWindow {
+    background-color: #ffffff00;
+    background-size: 100% 100%;
+    margin: 0px;
+    width: 100%
+  }

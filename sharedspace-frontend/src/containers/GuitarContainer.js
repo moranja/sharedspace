@@ -34,7 +34,7 @@ export default class GuitarContainer extends Component{
         }
     }
 
-    render(){
+    render(){ //calls piano keys as the guitar notes use the same mapping
         return(
             <div onKeyDown={this.handleKeyDown} onKeyUp={this.handleKeyUp} tabIndex="0">
                 <br></br>
@@ -46,7 +46,7 @@ export default class GuitarContainer extends Component{
                     <div>
                         <div className="ui grid">
                           <div className="row">
-                            <div className="halfKey" />
+                            <div className="halfKey" />  
                               {this.topRowKeys.map(key => <PianoKey character={key} currentKeys={this.state.currentKeys}/>)}
                             <div className="halfKey" />
                           </div>
