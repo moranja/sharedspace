@@ -15,6 +15,7 @@ https://www.youtube.com/watch?v=nEqshMHKoH8&feature=youtu.be
 1. Download the app
 2. Navigate to the frontend folder and run 'npm start'
 3. Navigate to the backend folder and run 'node app'
+4. To use Shared Space with other users on your network, change the path variable (in app.js on the backend, and App.js on the frontend) to your IP address, and direct the other users to that IP address, port 3000
 
 # Contributors
 This web app was written by Mark Pothecary and Adam Moran, students at the Flatiron School
