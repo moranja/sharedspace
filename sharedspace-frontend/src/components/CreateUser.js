@@ -17,7 +17,7 @@ export default class CreateUser extends Component {
     submitUser = (e) => {
         e.persist()
         e.preventDefault()
-        fetch('http://localhost:3001/createUser', {
+        fetch('http://localhost:80/createUser', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'

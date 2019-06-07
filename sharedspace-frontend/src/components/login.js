@@ -18,7 +18,7 @@ export default class Login extends Component {
     submitUser = (e) => {
         e.persist()
         e.preventDefault()
-        fetch('http://localhost:3001/login', {
+        fetch('http://localhost:80/login', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
