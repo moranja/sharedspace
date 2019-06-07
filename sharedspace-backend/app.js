@@ -8,17 +8,10 @@ const pry = require('pryjs')
 const socketIo = require('socket.io')
 const jwt = require('jsonwebtoken')
 
-const io = socketIo(8080,  {
-    handlePreflightRequest: function (req, res) {
-        var headers = {
-            'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-            'Access-Control-Allow-Origin': 'http://localhost:3000',
-            'Access-Control-Allow-Credentials': true
-        }
-        res.writeHead(200, headers)
-        res.end()
-    }
-})
+var server = require('http').Server(app)
+var io = require('socket.io')(server)
+
+server.listen(80)
 
 const usernamesAndSocketIDs = {}
 const rooms = {}
@@ -152,11 +145,11 @@ app.post('/login', (req, res) => {
       }
     }
   })
-.catch(error => {
-  console.log(error)
-})
+  .catch(error => {
+    console.log(error)
+  })
 })
 
-app.listen(3001)
+app.use('/',express.static('public'))
 
 console.log("backend up and running!")
